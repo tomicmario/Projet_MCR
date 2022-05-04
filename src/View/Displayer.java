@@ -11,6 +11,7 @@ package View;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
 
 public interface Displayer {
     int getWidth();
@@ -19,4 +20,5 @@ public interface Displayer {
     void repaint();
     void setTitle(String s);
     void addKeyListener(KeyAdapter ka);
+    void addMouseMotionListener(MouseAdapter ma);
 }

@@ -13,6 +13,8 @@ import View.GameDisplay;
 import View.Renderer;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 
 /**
@@ -23,6 +25,7 @@ public class Player implements Entity {
     protected int x;
     protected int y;
     protected int size;
+    protected double angle = 0;
     protected int moves = 2;
     protected Direction directionX;
     protected Direction directionY;
@@ -101,4 +104,19 @@ public class Player implements Entity {
         }
     }
 
+    public void setAngle(double angle) {
+        this.angle = angle;
+    }
+
+    public double getAngle() {
+        return angle;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

@@ -11,12 +11,10 @@ import Entities.Direction;
 import Entities.Entity;
 import Entities.Player;
 import View.GameDisplay;
-import View.FullRenderer;
+import View.PlayerRenderer;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.LinkedList;
 
 
@@ -37,8 +35,18 @@ public class Bouncers {
         gameDisplay = GameDisplay.getInstance();
         gameDisplay.setTitle("Not A Space Invader");
 
-        p = new Player(new FullRenderer());
+        p = new Player(new PlayerRenderer());
         entities.add(p);
+
+        gameDisplay.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                double dx = e.getX() - p.getX();
+                double dy = e.getY() - p.getY();
+                p.setAngle(Math.atan2(dy, dx));
+            }
+        });
+
         // Key handling
         gameDisplay.addKeyListener(new KeyAdapter() {
             @Override

@@ -8,4 +8,7 @@ public interface Entity {
     void move();
     Color getColor();
     Shape getShape();
+    double getAngle();
+    int getY();
+    int getX();
 }
