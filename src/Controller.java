@@ -7,18 +7,18 @@
  -----------------------------------------------------------------------------------
  */
 
-import Entities.Direction;
+import Entities.Character.Player.Direction;
 import Entities.Entity;
-import Entities.Player;
+import Entities.Character.Player.Player;
 import View.GameDisplay;
-import View.PlayerRenderer;
+import Entities.Character.Player.PlayerRenderer;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.LinkedList;
 
 
-public class Bouncers {
+public class Controller {
 
     private static final LinkedList<Entity> entities = new LinkedList<>();
     private static final int REFRESH_TIME = 1000 / 60;
@@ -28,14 +28,14 @@ public class Bouncers {
     /**
      * Initialises the class and adds a key
      */
-    public Bouncers() {
+    public Controller() {
 
 
         // Display
         gameDisplay = GameDisplay.getInstance();
         gameDisplay.setTitle("Not A Space Invader");
 
-        p = new Player(new PlayerRenderer());
+        p = new Player();
         entities.add(p);
 
         gameDisplay.addMouseMotionListener(new MouseAdapter() {
@@ -104,7 +104,7 @@ public class Bouncers {
     }
 
     public static void main(String ... args) {
-        new Bouncers().run();
+        new Controller().run();
     }
 
 }

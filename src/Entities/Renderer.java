@@ -7,9 +7,8 @@
  -----------------------------------------------------------------------------------
  */
 
-package View;
+package Entities;
 
-import Entities.Entity;
 import java.awt.*;
 
 public interface Renderer {

@@ -7,9 +7,11 @@
  -----------------------------------------------------------------------------------
  */
 
-package View;
+package Entities.Character.Player;
 
 import Entities.Entity;
+import Entities.Renderer;
+
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 

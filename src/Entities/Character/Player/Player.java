@@ -7,20 +7,16 @@
  -----------------------------------------------------------------------------------
  */
 
-package Entities;
+package Entities.Character.Player;
 
-import View.GameDisplay;
-import View.Renderer;
-
+import Entities.Character.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 
 /**
  * Abstract class that will be used to implement different bounceables, with their own shapes and colors
  */
-public class Player implements Entity {
+public class Player extends Being {
 
     protected int x;
     protected int y;
@@ -29,16 +25,9 @@ public class Player implements Entity {
     protected int moves = 2;
     protected Direction directionX;
     protected Direction directionY;
-    protected GameDisplay view; // Important for when the window resizes
-    protected Renderer renderer;
 
-    /**
-     * Implements a new bounceable with random values
-     * @param renderer Determines the render of the bouncer
-     */
-    public Player(Renderer renderer) {
-        this.renderer = renderer;
-        view = GameDisplay.getInstance();
+    public Player() {
+        super(new PlayerRenderer());
         this.x = view.getWidth() / 2;
         this.y = view.getHeight() / 2;
         this.size = 10;
@@ -46,10 +35,6 @@ public class Player implements Entity {
         this.directionY = Direction.STILL;
     }
 
-    @Override
-    public void draw() {
-        renderer.display(view.getGraphics(), this);
-    }
 
     @Override
     public void move() {
@@ -79,6 +64,7 @@ public class Player implements Entity {
     public void setYDirection(Direction d){
         directionY = d;
     }
+
     @Override
     public Color getColor() {
         return Color.ORANGE;
