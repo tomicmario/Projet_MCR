@@ -25,6 +25,8 @@ public class Player extends Being {
     protected int moves = 2;
     protected Direction directionX;
     protected Direction directionY;
+    protected int mouseX;
+    protected int mouseY;
 
     public Player() {
         super(new PlayerRenderer());
@@ -55,6 +57,7 @@ public class Player extends Being {
             }
         }
         checkBounds();
+        setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
 
     public void setXDirection(Direction d){
@@ -92,6 +95,11 @@ public class Player extends Being {
 
     public void setAngle(double angle) {
         this.angle = angle;
+    }
+
+    public void setMousePosition(int x, int y){
+        this.mouseX = x;
+        this.mouseY = y;
     }
 
     public double getAngle() {

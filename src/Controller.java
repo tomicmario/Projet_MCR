@@ -14,6 +14,7 @@ import View.GameDisplay;
 import Entities.Character.Player.PlayerRenderer;
 
 import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
 import java.awt.event.*;
 import java.util.LinkedList;
 
@@ -38,14 +39,16 @@ public class Controller {
         p = new Player();
         entities.add(p);
 
+
         gameDisplay.addMouseMotionListener(new MouseAdapter() {
+
             @Override
             public void mouseMoved(MouseEvent e) {
-                double dx = e.getX() - p.getX();
-                double dy = e.getY() - p.getY();
-                p.setAngle(Math.atan2(dy, dx));
+                // les valeurs hard codées sont dégueulasses, mais on dirait que (8,31) est la coordonnée du display, tout en haut à gauche
+                p.setMousePosition(e.getX() - 8, e.getY() - 31);
             }
         });
+
 
         // Key handling
         gameDisplay.addKeyListener(new KeyAdapter() {
