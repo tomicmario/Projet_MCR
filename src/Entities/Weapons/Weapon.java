@@ -9,7 +9,7 @@ public abstract class Weapon extends Entity {
     protected GameDisplay view;
     protected final int width = 10;
     protected final int height = 50;
-    protected final int FIRE_RATE = 10;
+    protected final int FIRE_RATE = 15;
     protected int counter = FIRE_RATE;
 
     protected Weapon(Renderer r, Entity e){

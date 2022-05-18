@@ -56,6 +56,7 @@ public class Player extends Being {
                 y += moves;
             }
         }
+        w.move();
         checkBounds();
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
@@ -95,6 +96,11 @@ public class Player extends Being {
 
     public void setAngle(double angle) {
         this.angle = angle;
+    }
+
+    @Override
+    public void attack() {
+        w.fire(x, y, mouseX, mouseY);
     }
 
     public void setMousePosition(int x, int y){

@@ -10,11 +10,11 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 /**
@@ -26,6 +26,7 @@ public class GameDisplay implements Displayer {
     private final JFrame jFrame;
     private final JPanel jPanel;
     private BufferedImage image;
+    private boolean click;
 
     /**
      * Singleton instantiation of the display
@@ -61,6 +62,13 @@ public class GameDisplay implements Displayer {
         Graphics2D g = image.createGraphics();
         g.drawImage(image, null, image.getWidth() , image.getHeight());
         jFrame.pack();
+
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
     }
 
     @Override
@@ -94,5 +102,22 @@ public class GameDisplay implements Displayer {
         jFrame.addKeyListener(ka);
     }
 
-    public void addMouseMotionListener(MouseAdapter ma) {jFrame.addMouseMotionListener(ma);}
+    public boolean isClick(){
+        return click;
+    }
+
+    public void addMouseMotionListener(MouseAdapter ma) {
+        jPanel.addMouseMotionListener(ma);
+        jPanel.addMouseListener(new MouseInputAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                click = true;
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                click = false;
+            }
+        });
+    }
 }

@@ -11,7 +11,6 @@ import Entities.Character.Player.Direction;
 import Entities.Entity;
 import Entities.Character.Player.Player;
 import View.GameDisplay;
-import Entities.Character.Player.PlayerRenderer;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
@@ -40,12 +39,10 @@ public class Controller {
         entities.add(p);
 
 
-        gameDisplay.addMouseMotionListener(new MouseAdapter() {
-
+        gameDisplay.addMouseMotionListener(new MouseInputAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
-                // les valeurs hard codées sont dégueulasses, mais on dirait que (8,31) est la coordonnée du display, tout en haut à gauche
-                p.setMousePosition(e.getX() - 8, e.getY() - 31);
+                p.setMousePosition(e.getX(), e.getY());
             }
         });
 
@@ -97,6 +94,9 @@ public class Controller {
     public void run() {
         ActionListener al = event -> {
             gameDisplay.repaint();
+            if(gameDisplay.isClick()){
+                p.attack();
+            }
             for(Entity b : entities) {
                 b.move();
                 b.draw();

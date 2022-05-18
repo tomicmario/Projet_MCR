@@ -1,5 +1,6 @@
 package Entities.Weapons;
 
+import Entities.Character.Player.PlayerRenderer;
 import Entities.Entity;
 import Entities.Renderer;
 
@@ -7,14 +8,15 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public class Pistol extends Weapon{
-    protected Pistol(Renderer r, Entity e) {
-        super(r, e);
+    public Pistol(Entity entity) {
+        super(new PistolRenderer(), entity);
     }
 
     @Override
     public Projectile[] fire(int currentX, int currentY, int targetX, int targetY) {
         if(counter == FIRE_RATE){
             counter = 0;
+            System.out.println("fire at " + targetX + "," + targetY);
             // Create projectiles
         }
         return new Projectile[0];
