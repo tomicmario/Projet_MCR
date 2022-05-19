@@ -10,10 +10,7 @@
 package Entities.Character.Player;
 
 import Entities.Character.*;
-import Entities.Weapons.Pistol;
-import Entities.Weapons.Projectile;
-import Entities.Weapons.Shotgun;
-import Entities.Weapons.Weapon;
+import Entities.Weapons.*;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -36,7 +33,7 @@ public class Player extends Being {
         super(x, y, SIZE, new PlayerRenderer());
         this.directionX = Direction.STILL;
         this.directionY = Direction.STILL;
-        weapons = new Weapon[]{ new Pistol(this), new Shotgun(this)};
+        weapons = new Weapon[]{ new Pistol(this), new Shotgun(this), new Plasma(this)};
         currentIndex = 0;
         this.current = weapons[currentIndex];
     }
