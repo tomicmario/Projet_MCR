@@ -8,11 +8,13 @@ public abstract class Weapon extends Entity {
     protected Entity e;
     protected final int width = 10;
     protected final int height = 50;
-    protected final int FIRE_RATE = 15;
-    protected int counter = FIRE_RATE;
+    protected final int FIRE_RATE;
+    protected int counter;
 
-    protected Weapon(Renderer r, Entity e, int size){
+    protected Weapon(Renderer r, Entity e, int size, int fireRate){
         super(e.getX(), e.getY(),size, r);
+        this.FIRE_RATE = fireRate;
+        counter = fireRate;
         this.r = r;
         this.e = e;
     }
