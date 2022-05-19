@@ -3,6 +3,7 @@ package Entities.Character;
 import Entities.Entity;
 import Entities.Renderer;
 import Entities.Weapons.Pistol;
+import Entities.Weapons.Projectile;
 import Entities.Weapons.Weapon;
 
 public abstract class Being extends Entity {
@@ -13,5 +14,5 @@ public abstract class Being extends Entity {
         w = new Pistol(this);
     }
 
-    public abstract void attack();
+    public abstract Projectile[] attack();
 }

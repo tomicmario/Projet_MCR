@@ -9,13 +9,12 @@ public class Projectile extends Entity {
     protected final int SPEED;
     protected int speedX;
     protected int speedY;
-    protected int size;
 
     protected Projectile(int posX, int posY, double angle, int speed, int size) {
         super(posX, posY, size, new ProjectileRenderer());
         this.SPEED = speed;
-        speedX = (int)(posY * Math.sin(angle) + posX * Math.cos(angle));
-        speedY = (int)(posX * Math.sin(angle) + posY * Math.cos(angle));
+        speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));
+        speedY = (int)(SPEED * Math.sin(angle) + SPEED * Math.cos(angle));
     }
 
     @Override

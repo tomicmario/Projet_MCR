@@ -10,6 +10,8 @@
 package Entities.Character.Player;
 
 import Entities.Character.*;
+import Entities.Weapons.Projectile;
+
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
@@ -92,8 +94,8 @@ public class Player extends Being {
     }
 
     @Override
-    public void attack() {
-        w.fire(x, y, mouseX, mouseY);
+    public Projectile[] attack() {
+        return w.fire(x, y, mouseX, mouseY);
     }
 
     public void setMousePosition(int x, int y){

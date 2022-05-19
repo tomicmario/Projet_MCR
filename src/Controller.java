@@ -10,6 +10,7 @@
 import Entities.Character.Player.Direction;
 import Entities.Entity;
 import Entities.Character.Player.Player;
+import Entities.Weapons.Projectile;
 import View.GameDisplay;
 
 import javax.swing.*;
@@ -99,7 +100,10 @@ public class Controller {
         ActionListener al = event -> {
             gameDisplay.repaint();
             if(gameDisplay.isClick()){
-                p.attack();
+                Projectile[] proj = p.attack();
+                for(Projectile p: proj){
+                    entities.add(p);
+                }
             }
             for(Entity b : entities) {
                 b.move(WIDTH, HEIGHT);

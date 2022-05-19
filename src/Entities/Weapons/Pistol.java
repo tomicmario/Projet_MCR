@@ -19,7 +19,7 @@ public class Pistol extends Weapon{
         if(counter == FIRE_RATE){
             counter = 0;
             System.out.println("fire at " + targetX + "," + targetY);
-            // Create projectiles
+            return new Projectile[]{new Projectile(e.getX(), e.getY(), e.getAngle(), 10, 10)};
         }
         return new Projectile[0];
     }
