@@ -71,6 +71,12 @@ public class GameDisplay implements Displayer {
         });
     }
 
+    public void setPanelSize(Dimension d){
+        jFrame.setMinimumSize(d);
+        jFrame.setMaximumSize(d);
+        jPanel.setSize(d);
+    }
+
     @Override
     public int getWidth() {
         return jPanel.getWidth();

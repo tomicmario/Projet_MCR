@@ -3,6 +3,7 @@ package Entities.Weapons;
 import Entities.Character.Player.PlayerRenderer;
 import Entities.Entity;
 import Entities.Renderer;
+import View.Displayer;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -23,12 +24,12 @@ public class Pistol extends Weapon{
     }
 
     @Override
-    public void draw() {
+    public void draw(Displayer view) {
         r.display(view.getGraphics(), this);
     }
 
     @Override
-    public void move() {
+    public void move(int maxWidth, int maxHeight) {
         if(counter < FIRE_RATE){
             counter++;
         }

@@ -1,24 +1,22 @@
 package Entities;
 
-import View.GameDisplay;
+import View.Displayer;
 
 import java.awt.*;
 import java.awt.Shape;
 
 public abstract class Entity {
-    protected GameDisplay view;
     protected Renderer renderer;
 
     protected Entity(Renderer r){
-        view = GameDisplay.getInstance();
         renderer = r;
     }
 
-    public void draw() {
+    public void draw(Displayer view) {
         renderer.display(view.getGraphics(), this);
     }
 
-    public abstract void move();
+    public abstract void move(int maxWidth, int maxHeight);
     public abstract Color getColor();
     public abstract Shape getShape();
     public abstract double getAngle();

@@ -14,6 +14,7 @@ import View.GameDisplay;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.LinkedList;
 
@@ -24,6 +25,8 @@ public class Controller {
     private static final int REFRESH_TIME = 1000 / 60;
     private final GameDisplay gameDisplay;
     private final Player p;
+    private final int WIDTH = 500;
+    private final int HEIGHT = 500;
 
     /**
      * Initialises the class and adds a key
@@ -34,8 +37,9 @@ public class Controller {
         // Display
         gameDisplay = GameDisplay.getInstance();
         gameDisplay.setTitle("Not A Space Invader");
+        gameDisplay.setPanelSize(new Dimension(WIDTH + Math.abs(gameDisplay.getWidth() - WIDTH), HEIGHT + Math.abs(gameDisplay.getHeight() - HEIGHT)));
 
-        p = new Player();
+        p = new Player(WIDTH/2, HEIGHT / 2);
         entities.add(p);
 
 
@@ -98,8 +102,8 @@ public class Controller {
                 p.attack();
             }
             for(Entity b : entities) {
-                b.move();
-                b.draw();
+                b.move(WIDTH, HEIGHT);
+                b.draw(gameDisplay);
             }
         };
         Timer timer = new Timer(REFRESH_TIME, al);

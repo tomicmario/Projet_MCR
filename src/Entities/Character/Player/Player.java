@@ -28,10 +28,10 @@ public class Player extends Being {
     protected int mouseX;
     protected int mouseY;
 
-    public Player() {
+    public Player(int x, int y) {
         super(new PlayerRenderer());
-        this.x = view.getWidth() / 2;
-        this.y = view.getHeight() / 2;
+        this.x = x;
+        this.y = y;
         this.size = 10;
         this.directionX = Direction.STILL;
         this.directionY = Direction.STILL;
@@ -39,25 +39,25 @@ public class Player extends Being {
 
 
     @Override
-    public void move() {
+    public void move(int maxWidth, int maxHeight) {
         switch (directionX){
-            case LEFT -> {
+            case LEFT:
                 x -= moves;
-            }
-            case RIGHT -> {
+                break;
+            case RIGHT:
                 x += moves;
-            }
+                break;
         }
         switch (directionY){
-            case UP -> {
+            case UP:
                 y -= moves;
-            }
-            case DOWN -> {
+                break;
+            case DOWN:
                 y += moves;
-            }
+                break;
         }
-        w.move();
-        checkBounds();
+        w.move( maxWidth, maxHeight);
+        checkBounds(maxWidth,maxHeight);
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
 
@@ -83,14 +83,14 @@ public class Player extends Being {
      * Checks if the bounceable has reached the minimum/maximum width/height and corrects
      * the position and movement vector if needed
      */
-    private void checkBounds() {
+    private void checkBounds(int maxWidth, int maxHeight) {
         // Width check
-        if(x >= view.getWidth() - size || x <= 0) {
-            x = x <= 0 ? 0 : view.getWidth() - size;
+        if(x >= maxWidth - size || x <= 0) {
+            x = x <= 0 ? 0 : maxWidth - size;
         }
         // Height check
-        if(y >= view.getHeight() - size || y <= 0) {
-            y = y <= 0 ? 0 : view.getHeight() - size;
+        if(y >= maxHeight - size || y <= 0) {
+            y = y <= 0 ? 0 : maxHeight - size;
         }
     }
 
