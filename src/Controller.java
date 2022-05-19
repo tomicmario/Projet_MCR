@@ -23,7 +23,7 @@ import java.util.LinkedList;
 public class Controller {
 
     private static final LinkedList<Entity> entities = new LinkedList<>();
-    private static final int REFRESH_TIME = 1000 / 60;
+    private static final int REFRESH_TIME = 1000 / 144;
     private final GameDisplay gameDisplay;
     private final Player p;
     private final int WIDTH = 500;
@@ -47,6 +47,11 @@ public class Controller {
         gameDisplay.addMouseMotionListener(new MouseInputAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
+                p.setMousePosition(e.getX(), e.getY());
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e){
                 p.setMousePosition(e.getX(), e.getY());
             }
         });
