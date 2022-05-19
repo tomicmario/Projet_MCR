@@ -17,11 +17,7 @@ import java.awt.geom.Rectangle2D;
  * Abstract class that will be used to implement different bounceables, with their own shapes and colors
  */
 public class Player extends Being {
-
-    protected int x;
-    protected int y;
-    protected int size;
-    protected double angle = 0;
+    private static final int SIZE = 10;
     protected int moves = 2;
     protected Direction directionX;
     protected Direction directionY;
@@ -29,10 +25,7 @@ public class Player extends Being {
     protected int mouseY;
 
     public Player(int x, int y) {
-        super(new PlayerRenderer());
-        this.x = x;
-        this.y = y;
-        this.size = 10;
+        super(x, y, SIZE, new PlayerRenderer());
         this.directionX = Direction.STILL;
         this.directionY = Direction.STILL;
     }
@@ -108,15 +101,4 @@ public class Player extends Being {
         this.mouseY = y;
     }
 
-    public double getAngle() {
-        return angle;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 }

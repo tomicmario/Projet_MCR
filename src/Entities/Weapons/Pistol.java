@@ -9,8 +9,9 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public class Pistol extends Weapon{
+    private static int SIZE = 3;
     public Pistol(Entity entity) {
-        super(new PistolRenderer(), entity);
+        super(new PistolRenderer(), entity, SIZE);
     }
 
     @Override

@@ -8,8 +8,8 @@ import Entities.Weapons.Weapon;
 public abstract class Being extends Entity {
     protected Weapon w;
 
-    protected Being(Renderer r) {
-        super(r);
+    protected Being(int x, int y, int size, Renderer r) {
+        super(x, y, size, r);
         w = new Pistol(this);
     }
 

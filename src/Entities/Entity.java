@@ -6,9 +6,19 @@ import java.awt.*;
 import java.awt.Shape;
 
 public abstract class Entity {
+
+    protected int x;
+    protected int y;
+    protected int size;
+    protected double angle = 0;
+
+
     protected Renderer renderer;
 
-    protected Entity(Renderer r){
+    protected Entity(int x, int y, int size, Renderer r){
+        this.x = x;
+        this.y = y;
+        this.size = size;
         renderer = r;
     }
 
@@ -19,7 +29,14 @@ public abstract class Entity {
     public abstract void move(int maxWidth, int maxHeight);
     public abstract Color getColor();
     public abstract Shape getShape();
-    public abstract double getAngle();
-    public abstract int getY();
-    public abstract int getX();
+
+    public double getAngle(){
+        return angle;
+    }
+    public int getY(){
+        return y;
+    };
+    public int getX(){
+        return x;
+    };
 }
