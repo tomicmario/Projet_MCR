@@ -7,6 +7,8 @@
  -----------------------------------------------------------------------------------
  */
 
+import Entities.Character.Enemy.Grunt;
+import Entities.Character.Enemy.Sniper;
 import Entities.Character.Player.Direction;
 import Entities.Entity;
 import Entities.Character.Player.Player;
@@ -23,7 +25,7 @@ import java.util.LinkedList;
 public class Controller {
 
     private static final LinkedList<Entity> entities = new LinkedList<>();
-    private static final int REFRESH_TIME = 1000 / 144;
+    private static final int REFRESH_TIME = 1000 / 60;
     private final GameDisplay gameDisplay;
     private final Player p;
     private final int WIDTH = 500;
@@ -42,6 +44,8 @@ public class Controller {
 
         p = new Player(WIDTH/2, HEIGHT / 2);
         entities.add(p);
+        entities.add(new Grunt(5,5,p));
+        entities.add(new Sniper(300, 300, p));
 
 
         gameDisplay.addMouseMotionListener(new MouseInputAdapter() {

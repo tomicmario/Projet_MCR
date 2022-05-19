@@ -35,7 +35,7 @@ public class Player extends Being {
         this.directionY = Direction.STILL;
         weapons = new Weapon[]{ new Pistol(this), new Shotgun(this), new Plasma(this)};
         currentIndex = 0;
-        this.current = weapons[currentIndex];
+        this.currentWeapon = weapons[currentIndex];
     }
 
 
@@ -57,7 +57,7 @@ public class Player extends Being {
                 y += moves;
                 break;
         }
-        current.move( maxWidth, maxHeight);
+        currentWeapon.move( maxWidth, maxHeight);
         checkBounds(maxWidth,maxHeight);
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
@@ -80,21 +80,6 @@ public class Player extends Being {
         return new Rectangle2D.Double(x, y, size, size);
     }
 
-    /**
-     * Checks if the bounceable has reached the minimum/maximum width/height and corrects
-     * the position and movement vector if needed
-     */
-    private void checkBounds(int maxWidth, int maxHeight) {
-        // Width check
-        if(x >= maxWidth - size || x <= 0) {
-            x = x <= 0 ? 0 : maxWidth - size;
-        }
-        // Height check
-        if(y >= maxHeight - size || y <= 0) {
-            y = y <= 0 ? 0 : maxHeight - size;
-        }
-    }
-
     public void setAngle(double angle) {
         this.angle = angle;
     }
@@ -104,12 +89,12 @@ public class Player extends Being {
         if(currentIndex >= weapons.length){
             currentIndex = 0;
         }
-        current = weapons[currentIndex];
+        currentWeapon = weapons[currentIndex];
     }
 
     @Override
     public Projectile[] attack() {
-        return current.fire(x, y, mouseX, mouseY);
+        return currentWeapon.fire(x, y, mouseX, mouseY);
     }
 
     public void setMousePosition(int x, int y){
