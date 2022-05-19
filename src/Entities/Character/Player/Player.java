@@ -10,7 +10,10 @@
 package Entities.Character.Player;
 
 import Entities.Character.*;
+import Entities.Weapons.Pistol;
 import Entities.Weapons.Projectile;
+import Entities.Weapons.Shotgun;
+import Entities.Weapons.Weapon;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -26,10 +29,16 @@ public class Player extends Being {
     protected int mouseX;
     protected int mouseY;
 
+    protected int currentIndex;
+    protected Weapon[] weapons;
+
     public Player(int x, int y) {
         super(x, y, SIZE, new PlayerRenderer());
         this.directionX = Direction.STILL;
         this.directionY = Direction.STILL;
+        weapons = new Weapon[]{ new Pistol(this), new Shotgun(this)};
+        currentIndex = 0;
+        this.current = weapons[currentIndex];
     }
 
 
@@ -51,7 +60,7 @@ public class Player extends Being {
                 y += moves;
                 break;
         }
-        w.move( maxWidth, maxHeight);
+        current.move( maxWidth, maxHeight);
         checkBounds(maxWidth,maxHeight);
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
@@ -93,9 +102,17 @@ public class Player extends Being {
         this.angle = angle;
     }
 
+    public void equipNextWeapon(){
+        currentIndex++;
+        if(currentIndex >= weapons.length){
+            currentIndex = 0;
+        }
+        current = weapons[currentIndex];
+    }
+
     @Override
     public Projectile[] attack() {
-        return w.fire(x, y, mouseX, mouseY);
+        return current.fire(x, y, mouseX, mouseY);
     }
 
     public void setMousePosition(int x, int y){

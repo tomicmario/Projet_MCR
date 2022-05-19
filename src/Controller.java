@@ -72,6 +72,9 @@ public class Controller {
                     case KeyEvent.VK_D: // D
                         p.setXDirection(Direction.RIGHT);
                         break;
+                    case KeyEvent.VK_E:
+                        p.equipNextWeapon();
+                        break;
                 }
             }
         });
