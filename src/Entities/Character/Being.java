@@ -4,6 +4,7 @@ import Entities.Entity;
 import Entities.Renderer;
 import Entities.Weapons.Pistol;
 import Entities.Weapons.Projectile;
+import Entities.Weapons.Shotgun;
 import Entities.Weapons.Weapon;
 
 public abstract class Being extends Entity {
@@ -11,7 +12,7 @@ public abstract class Being extends Entity {
 
     protected Being(int x, int y, int size, Renderer r) {
         super(x, y, size, r);
-        w = new Pistol(this);
+        w = new Shotgun(this);
     }
 
     public abstract Projectile[] attack();

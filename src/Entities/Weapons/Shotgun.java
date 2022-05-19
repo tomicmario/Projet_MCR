@@ -1,13 +1,13 @@
 package Entities.Weapons;
 
 import Entities.Entity;
-
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public class Pistol extends Weapon{
+public class Shotgun extends Weapon{
     private static int SIZE = 3;
-    public Pistol(Entity entity) {
+    private static int pellets = 6;
+    public Shotgun(Entity entity) {
         super(new PistolRenderer(), entity, SIZE);
     }
 
@@ -16,8 +16,12 @@ public class Pistol extends Weapon{
         if(counter == FIRE_RATE){
             counter = 0;
             System.out.println("fire at " + targetX + "," + targetY);
-            double angle = Math.atan2(targetY - currentY, targetX - currentX) - Math.PI / 4;
-            return new Projectile[]{new Projectile(e.getX(), e.getY(), angle , 20, 10)};
+            double angle = Math.atan2(targetY - currentY, targetX - currentX);
+            Projectile[] projectiles = new Projectile[pellets];
+            for(int i = 0; i < pellets; ++ i){
+                projectiles[i] = new Projectile(e.getX(), e.getY(), angle - i * Math.PI / 12 , 20, 10);
+            }
+            return projectiles;
         }
         return new Projectile[0];
     }

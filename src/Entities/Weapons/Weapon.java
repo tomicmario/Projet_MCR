@@ -17,5 +17,12 @@ public abstract class Weapon extends Entity {
         this.e = e;
     }
 
+    @Override
+    public void move(int maxWidth, int maxHeight) {
+        if(counter < FIRE_RATE){
+            counter++;
+        }
+    }
+
     public abstract Projectile[] fire(int currentX, int currentY, int targetX, int targetY);
 }
