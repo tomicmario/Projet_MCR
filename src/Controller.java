@@ -37,7 +37,7 @@ public class Controller {
         // Display
         gameDisplay = GameDisplay.getInstance();
         gameDisplay.setTitle("Not A Space Invader");
-        gameDisplay.setPanelSize(new Dimension(WIDTH + Math.abs(gameDisplay.getWidth() - WIDTH), HEIGHT + Math.abs(gameDisplay.getHeight() - HEIGHT)));
+        gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
 
         p = new Player(WIDTH/2, HEIGHT / 2);
         entities.add(p);

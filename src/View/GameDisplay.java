@@ -45,12 +45,11 @@ public class GameDisplay implements Displayer {
     private GameDisplay() {
         jFrame = new JFrame();
         jPanel = new JPanel();
-        jFrame.setMinimumSize(new Dimension(500, 500));
-        //jFrame.setMinimumSize(new Dimension(640, 480));
+
         jFrame.setBackground(Color.WHITE);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
-        jFrame.setResizable(true);
+        jFrame.setResizable(false);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setContentPane(jPanel);
 
@@ -59,8 +58,6 @@ public class GameDisplay implements Displayer {
         jPanel.setDoubleBuffered(true);
 
         image = (BufferedImage) jPanel.createImage(jPanel.getWidth(), jPanel.getHeight());
-        Graphics2D g = image.createGraphics();
-        g.drawImage(image, null, image.getWidth() , image.getHeight());
         jFrame.pack();
 
         addMouseMotionListener(new MouseAdapter() {
@@ -72,9 +69,9 @@ public class GameDisplay implements Displayer {
     }
 
     public void setPanelSize(Dimension d){
-        jFrame.setMinimumSize(d);
-        jFrame.setMaximumSize(d);
         jPanel.setSize(d);
+        jFrame.getContentPane().setPreferredSize(d);
+        jFrame.pack();
     }
 
     @Override
