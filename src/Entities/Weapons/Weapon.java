@@ -1,30 +1,37 @@
 package Entities.Weapons;
 import Entities.Entity;
-import Entities.Renderer;
-import View.GameDisplay;
 
-public abstract class Weapon extends Entity {
-    protected Renderer r;
+public abstract class Weapon {
     protected Entity e;
-    protected final int width = 10;
-    protected final int height = 50;
-    protected final int FIRE_RATE;
     protected int counter;
+    protected final int PROJECTILE_SIZE;
+    protected final int FIRE_RATE;
+    protected final int PROJECTILE_SPEED;
 
-    protected Weapon(Renderer r, Entity e, int size, int fireRate){
-        super(e.getX(), e.getY(),size, r);
+    protected Weapon(Entity e, int fireRate, int projectileSize, int projectileSpeed){
         this.FIRE_RATE = fireRate;
-        counter = fireRate;
-        this.r = r;
+        this.PROJECTILE_SIZE = projectileSize;
+        this.PROJECTILE_SPEED = projectileSpeed;
+        this.counter = fireRate;
         this.e = e;
     }
 
-    @Override
     public void move(int maxWidth, int maxHeight) {
         if(counter < FIRE_RATE){
             counter++;
         }
     }
 
-    public abstract Projectile[] fire(int currentX, int currentY, int targetX, int targetY);
+    public Projectile[] fire(int currentX, int currentY, int targetX, int targetY){
+        if(counter == FIRE_RATE){
+            counter = 0;
+            double angle = Math.atan2(targetY - currentY, targetX - currentX) - Math.PI / 4;
+            return generateProjectiles(angle);
+        }
+        return new Projectile[0];
+    }
+
+    protected Projectile[] generateProjectiles(double angle){
+        return new Projectile[]{new Projectile(e.getX(), e.getY(), angle , PROJECTILE_SPEED, PROJECTILE_SIZE)};
+    }
 }
