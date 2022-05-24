@@ -118,12 +118,22 @@ public class Controller {
                 }
             }
             for(Entity b : entities) {
-                b.move(WIDTH, HEIGHT);
+                b.move();
+                correctPosition(b);
                 b.draw(gameDisplay);
             }
         };
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();
+    }
+
+    private void correctPosition(Entity e){
+        if(e.getX() >= WIDTH - e.getSize() || e.getX() <= 0) {
+            e.setX(e.getX() <= 0 ? 0 : WIDTH - e.getSize());
+        }
+        if(e.getY() >= HEIGHT - e.getSize() || e.getY() <= 0) {
+            e.setY(e.getY() <= 0 ? 0 : HEIGHT - e.getSize());
+        }
     }
 
     public static void main(String ... args) {

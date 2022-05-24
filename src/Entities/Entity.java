@@ -26,10 +26,10 @@ public abstract class Entity {
         renderer.display(view.getGraphics(), this);
     }
 
-    public abstract void move(int maxWidth, int maxHeight);
+    public abstract void move();
     public abstract Color getColor();
     public abstract Shape getShape();
-
+    public int getSize(){return size;}
     public double getAngle(){
         return angle;
     }
@@ -39,4 +39,10 @@ public abstract class Entity {
     public int getX(){
         return x;
     };
+    public void setX(int x){
+        this.x = x;
+    }
+    public void setY(int y){
+        this.y = y;
+    }
 }

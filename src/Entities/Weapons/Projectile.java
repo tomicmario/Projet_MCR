@@ -18,7 +18,7 @@ public class Projectile extends Entity {
     }
 
     @Override
-    public void move(int maxWidth, int maxHeight) {
+    public void move() {
         x += speedX;
         y += speedY;
     }

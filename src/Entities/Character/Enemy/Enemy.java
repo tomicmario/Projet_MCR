@@ -21,10 +21,9 @@ public abstract class Enemy extends Being {
     }
 
     @Override
-    public void move(int maxWidth, int maxHeight) {
-        currentWeapon.move(maxWidth, maxHeight);
+    public void move() {
+        currentWeapon.nextFrame();
         b.move();
-        checkBounds(maxWidth,maxHeight);
     }
 
 

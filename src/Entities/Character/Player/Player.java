@@ -40,7 +40,7 @@ public class Player extends Being {
 
 
     @Override
-    public void move(int maxWidth, int maxHeight) {
+    public void move() {
         switch (directionX){
             case LEFT:
                 x -= moves;
@@ -57,8 +57,7 @@ public class Player extends Being {
                 y += moves;
                 break;
         }
-        currentWeapon.move( maxWidth, maxHeight);
-        checkBounds(maxWidth,maxHeight);
+        currentWeapon.nextFrame();
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
 

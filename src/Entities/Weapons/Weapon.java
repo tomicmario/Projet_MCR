@@ -16,7 +16,7 @@ public abstract class Weapon {
         this.e = e;
     }
 
-    public void move(int maxWidth, int maxHeight) {
+    public void nextFrame() {
         if(counter < FIRE_RATE){
             counter++;
         }

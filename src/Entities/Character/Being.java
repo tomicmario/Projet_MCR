@@ -14,15 +14,4 @@ public abstract class Being extends Entity {
 
     public abstract Projectile[] attack();
 
-    protected void checkBounds(int maxWidth, int maxHeight) {
-        // Width check
-        if(x >= maxWidth - size || x <= 0) {
-            x = x <= 0 ? 0 : maxWidth - size;
-        }
-        // Height check
-        if(y >= maxHeight - size || y <= 0) {
-            y = y <= 0 ? 0 : maxHeight - size;
-        }
-    }
-
 }
