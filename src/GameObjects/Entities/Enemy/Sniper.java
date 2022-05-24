@@ -1,8 +1,8 @@
-package Entities.Character.Enemy;
+package GameObjects.Entities.Enemy;
 
-import Entities.Character.Enemy.Behaviour.Balanced;
-import Entities.Character.Player.Player;
-import Entities.Weapons.Pistol;
+import GameObjects.Entities.Enemy.Behaviour.Balanced;
+import GameObjects.Entities.Player.Player;
+import GameObjects.Weapons.Pistol;
 
 public class Sniper extends Enemy{
     public Sniper(int x, int y, Player p) {

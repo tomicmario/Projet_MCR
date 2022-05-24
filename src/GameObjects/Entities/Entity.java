@@ -1,5 +1,8 @@
-package Entities;
+package GameObjects.Entities;
 
+import GameObjects.Renderer;
+import GameObjects.Weapons.Projectile;
+import GameObjects.Weapons.Weapon;
 import View.Displayer;
 
 import java.awt.*;
@@ -21,6 +24,9 @@ public abstract class Entity {
         this.size = size;
         renderer = r;
     }
+
+    public abstract Projectile[] attack();
+    protected Weapon currentWeapon;
 
     public void draw(Displayer view) {
         renderer.display(view.getGraphics(), this);

@@ -1,6 +1,6 @@
-package Entities.Weapons;
+package GameObjects.Weapons;
 
-import Entities.Entity;
+import GameObjects.Entities.Entity;
 
 public class Shotgun extends Weapon{
     private static final int PELLETS = 7;

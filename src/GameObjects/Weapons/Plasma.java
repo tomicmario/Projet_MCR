@@ -1,6 +1,6 @@
-package Entities.Weapons;
+package GameObjects.Weapons;
 
-import Entities.Entity;
+import GameObjects.Entities.Entity;
 
 public class Plasma extends Weapon{
     public Plasma(Entity entity) {

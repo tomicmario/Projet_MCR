@@ -7,10 +7,10 @@
  -----------------------------------------------------------------------------------
  */
 
-package Entities.Character.Player;
+package GameObjects.Entities.Player;
 
-import Entities.Entity;
-import Entities.Renderer;
+import GameObjects.Entities.Entity;
+import GameObjects.Renderer;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;

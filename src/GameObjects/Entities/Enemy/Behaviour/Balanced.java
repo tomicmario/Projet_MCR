@@ -1,7 +1,7 @@
-package Entities.Character.Enemy.Behaviour;
+package GameObjects.Entities.Enemy.Behaviour;
 
-import Entities.Character.Enemy.Enemy;
-import Entities.Entity;
+import GameObjects.Entities.Enemy.Enemy;
+import GameObjects.Entities.Entity;
 
 import java.util.Random;
 

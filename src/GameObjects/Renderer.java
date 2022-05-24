@@ -7,7 +7,9 @@
  -----------------------------------------------------------------------------------
  */
 
-package Entities;
+package GameObjects;
+
+import GameObjects.Entities.Entity;
 
 import java.awt.*;
 

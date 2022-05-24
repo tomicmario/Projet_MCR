@@ -7,12 +7,12 @@
  -----------------------------------------------------------------------------------
  */
 
-import Entities.Character.Enemy.Grunt;
-import Entities.Character.Enemy.Sniper;
-import Entities.Character.Player.Direction;
-import Entities.Entity;
-import Entities.Character.Player.Player;
-import Entities.Weapons.Projectile;
+import GameObjects.Entities.Enemy.Grunt;
+import GameObjects.Entities.Enemy.Sniper;
+import GameObjects.Entities.Player.Direction;
+import GameObjects.Entities.Entity;
+import GameObjects.Entities.Player.Player;
+import GameObjects.Weapons.Projectile;
 import View.GameDisplay;
 
 import javax.swing.*;
@@ -25,6 +25,7 @@ import java.util.LinkedList;
 public class Controller {
 
     private static final LinkedList<Entity> entities = new LinkedList<>();
+    private static final LinkedList<Projectile> projectiles = new LinkedList<>();
     private static final int REFRESH_TIME = 1000 / 60;
     private final GameDisplay gameDisplay;
     private final Player p;
@@ -114,13 +115,17 @@ public class Controller {
             if(gameDisplay.isClick()){
                 Projectile[] proj = p.attack();
                 for(Projectile p: proj){
-                    entities.add(p);
+                    projectiles.add(p);
                 }
             }
             for(Entity b : entities) {
                 b.move();
                 correctPosition(b);
                 b.draw(gameDisplay);
+            }
+            for(Projectile p : projectiles) {
+                p.move();
+                p.draw(gameDisplay);
             }
         };
         Timer timer = new Timer(REFRESH_TIME, al);

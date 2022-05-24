@@ -7,10 +7,10 @@
  -----------------------------------------------------------------------------------
  */
 
-package Entities.Character.Player;
+package GameObjects.Entities.Player;
 
-import Entities.Character.*;
-import Entities.Weapons.*;
+import GameObjects.Entities.Entity;
+import GameObjects.Weapons.*;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -18,7 +18,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * Abstract class that will be used to implement different bounceables, with their own shapes and colors
  */
-public class Player extends Being {
+public class Player extends Entity {
     private static final int SIZE = 10;
     protected int moves = 2;
     protected Direction directionX;

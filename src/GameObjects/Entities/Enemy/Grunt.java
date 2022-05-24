@@ -1,8 +1,8 @@
-package Entities.Character.Enemy;
+package GameObjects.Entities.Enemy;
 
-import Entities.Character.Enemy.Behaviour.Aggressive;
-import Entities.Character.Player.Player;
-import Entities.Weapons.Pistol;
+import GameObjects.Entities.Enemy.Behaviour.Aggressive;
+import GameObjects.Entities.Player.Player;
+import GameObjects.Weapons.Pistol;
 
 public class Grunt extends Enemy{
     public Grunt(int x, int y, Player p) {

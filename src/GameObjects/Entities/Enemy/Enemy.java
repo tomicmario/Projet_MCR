@@ -1,15 +1,15 @@
-package Entities.Character.Enemy;
+package GameObjects.Entities.Enemy;
 
-import Entities.Character.Being;
-import Entities.Character.Enemy.Behaviour.Behaviour;
-import Entities.Character.Player.Player;
-import Entities.Character.Player.PlayerRenderer;
-import Entities.Weapons.*;
+import GameObjects.Entities.Enemy.Behaviour.Behaviour;
+import GameObjects.Entities.Player.Player;
+import GameObjects.Entities.Player.PlayerRenderer;
+import GameObjects.Entities.Entity;
+import GameObjects.Weapons.*;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public abstract class Enemy extends Being {
+public abstract class Enemy extends Entity {
     private static final int SIZE = 10;
     protected final Player p;
     protected Behaviour b;

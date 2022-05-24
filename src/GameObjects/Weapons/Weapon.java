@@ -1,5 +1,5 @@
-package Entities.Weapons;
-import Entities.Entity;
+package GameObjects.Weapons;
+import GameObjects.Entities.Entity;
 
 public abstract class Weapon {
     protected Entity e;
