@@ -5,7 +5,7 @@ import Entities.Entity;
 
 import java.util.Random;
 
-public class Defensive implements Behaviour {
+public class Balanced implements Behaviour {
     private final int TOLERABLE_DISTANCE_CLOSE = 150;
     private final int TOLERABLE_DISTANCE_FAR = 200;
     private final Enemy e;
@@ -13,11 +13,11 @@ public class Defensive implements Behaviour {
 
     private int speedX;
     private int speedY;
-    private final int TIME_UNTIL_REFRESH = 10;
+    private final int TIME_UNTIL_REFRESH = 30;
     private int counter = 0;
     Random r;
 
-    public Defensive(Enemy e, Entity target){
+    public Balanced(Enemy e, Entity target){
         this.e = e;
         this.target = target;
         this.r = new Random();
