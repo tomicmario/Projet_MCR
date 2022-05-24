@@ -44,7 +44,7 @@ public class Controller {
 
         p = new Player(WIDTH/2, HEIGHT / 2);
         entities.add(p);
-        entities.add(new Grunt(5,5,p));
+        entities.add(new Grunt(0,0,p));
         entities.add(new Sniper(300, 300, p));
 
 

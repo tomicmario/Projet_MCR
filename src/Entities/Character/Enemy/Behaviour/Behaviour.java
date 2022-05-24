@@ -3,5 +3,5 @@ package Entities.Character.Enemy.Behaviour;
 import Entities.Character.Enemy.Enemy;
 
 public interface Behaviour {
-    void move(Enemy e, int interestX, int interestY);
+    void move();
 }

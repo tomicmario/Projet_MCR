@@ -13,7 +13,7 @@ public abstract class Enemy extends Being {
     private static final int SIZE = 10;
     protected final Player p;
     protected Behaviour b;
-    protected int speed = 1;
+    protected int speed = 2;
 
     public Enemy(int x, int y, Player p) {
         super(x, y, SIZE, new PlayerRenderer());
@@ -23,7 +23,7 @@ public abstract class Enemy extends Being {
     @Override
     public void move(int maxWidth, int maxHeight) {
         currentWeapon.move(maxWidth, maxHeight);
-        b.move(this, p.getX(), p.getY());
+        b.move();
         checkBounds(maxWidth,maxHeight);
     }
 
