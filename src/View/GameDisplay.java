@@ -60,12 +60,6 @@ public class GameDisplay implements Displayer {
         image = (BufferedImage) jPanel.createImage(jPanel.getWidth(), jPanel.getHeight());
         jFrame.pack();
 
-        addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-            }
-        });
     }
 
     public void setPanelSize(Dimension d){
