@@ -7,6 +7,7 @@
  -----------------------------------------------------------------------------------
  */
 
+import GameObjects.Entities.Enemy.EnemyFactory;
 import GameObjects.Entities.Enemy.Grunt;
 import GameObjects.Entities.Enemy.Sniper;
 import GameObjects.Entities.Player.Direction;
@@ -32,19 +33,19 @@ public class Controller {
     private final Player p;
     private final int WIDTH = 500;
     private final int HEIGHT = 500;
+    private final EnemyFactory ef;
 
     /**
      * Initialises the class and adds a key
      */
     public Controller() {
 
-
         // Display
         gameDisplay = GameDisplay.getInstance();
         gameDisplay.setTitle("Not A Space Invader");
         gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
-
         p = new Player(WIDTH/2, HEIGHT / 2);
+        ef = new EnemyFactory(0, 0, WIDTH, HEIGHT, p);
         entities.add(p);
         entities.add(new Grunt(0,0,p));
         entities.add(new Sniper(300, 300, p));
@@ -113,23 +114,33 @@ public class Controller {
     public void run() {
         ActionListener al = event -> {
             gameDisplay.repaint();
+
+            // player shoots
             if(gameDisplay.isClick()){
                 Projectile[] proj = p.attack();
                 for(Projectile p: proj){
                     projectiles.add(p);
                 }
             }
+
+            // entities move
             for(Entity b : entities) {
-                if(b.isAlive()) {
-                    b.move();
-                    correctPosition(b);
-                    b.draw(gameDisplay);
-                }
+                b.move();
+                correctPosition(b);
+                b.draw(gameDisplay);
             }
+
+            // collision check between projectiles and entities
             for(Projectile p : projectiles) {
                 p.move();
+                // remove projectile if out of bounds
+                if(distance(p.getX(), p.getY(), HEIGHT / 2, WIDTH / 2) > HEIGHT + WIDTH){
+                    p.setActive(false);
+                    continue;
+                }
+                // damage check
                 for (Entity e : entities) {
-                    if(e != p.getShooter() && Math.sqrt((e.getY() - p.getY()) * (e.getY() - p.getY()) + (e.getX() - p.getX()) * (e.getX() - p.getX())) < p.getSize() + e.getSize()) {
+                    if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
                         e.damage(p.getDamage());
                         p.setActive(false);
                         break;
@@ -137,11 +148,19 @@ public class Controller {
                 }
                 p.draw(gameDisplay);
             }
+            // removal of inactive projectiles
             entities.removeIf(entity -> !entity.isAlive());
             projectiles.removeIf(projectile -> !projectile.isActive());
+
+            // Uncomment the following and you'll spawn a new enemy every 1/60 of a second
+            //entities.add(ef.generateRandomEnemy());
         };
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();
+    }
+
+    private double distance(int x1, int y1, int x2, int y2){
+        return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
     }
 
     private void correctPosition(Entity e){
