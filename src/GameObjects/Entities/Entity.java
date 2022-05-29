@@ -15,14 +15,16 @@ public abstract class Entity {
     protected int size;
     protected double angle = 0;
 
-
     protected Renderer renderer;
+    protected int health;
+    protected final static int MAX_HEALTH = 100;
 
     protected Entity(int x, int y, int size, Renderer r){
         this.x = x;
         this.y = y;
         this.size = size;
         renderer = r;
+        health = MAX_HEALTH;
     }
 
     public abstract Projectile[] attack();
@@ -50,5 +52,12 @@ public abstract class Entity {
     }
     public void setY(int y){
         this.y = y;
+    }
+    public void damage(int damage){
+        this.health -= damage;
+    }
+
+    public boolean isAlive(){
+        return health > 0;
     }
 }

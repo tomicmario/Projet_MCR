@@ -4,12 +4,12 @@ import GameObjects.Entities.Entity;
 
 public class Flamethrower extends Weapon{
     public Flamethrower(Entity entity) {
-        super(entity, 5, 5, 3);
+        super(entity, 5, 5, 3, 20);
     }
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(e.getX(), e.getY(), angle , PROJECTILE_SPEED, PROJECTILE_SIZE){
+        Projectile p = new Projectile(e.getX(), e.getY(), angle , PROJECTILE_SPEED, PROJECTILE_SIZE, damage, e){
             @Override
             public void move() {
                 super.move();

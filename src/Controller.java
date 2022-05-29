@@ -19,6 +19,7 @@ import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 
@@ -119,14 +120,25 @@ public class Controller {
                 }
             }
             for(Entity b : entities) {
-                b.move();
-                correctPosition(b);
-                b.draw(gameDisplay);
+                if(b.isAlive()) {
+                    b.move();
+                    correctPosition(b);
+                    b.draw(gameDisplay);
+                }
             }
             for(Projectile p : projectiles) {
                 p.move();
+                for (Entity e : entities) {
+                    if(e != p.getShooter() && Math.sqrt((e.getY() - p.getY()) * (e.getY() - p.getY()) + (e.getX() - p.getX()) * (e.getX() - p.getX())) < p.getSize() + e.getSize()) {
+                        e.damage(p.getDamage());
+                        p.setActive(false);
+                        break;
+                    }
+                }
                 p.draw(gameDisplay);
             }
+            entities.removeIf(entity -> !entity.isAlive());
+            projectiles.removeIf(projectile -> !projectile.isActive());
         };
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();
