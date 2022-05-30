@@ -142,7 +142,9 @@ public class Controller {
                 for (Entity e : entities) {
                     if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
                         e.damage(p.getDamage());
-                        p.setActive(false);
+                        if(!p.isPersistent()) {
+                            p.setActive(false);
+                        }
                         break;
                     }
                 }
