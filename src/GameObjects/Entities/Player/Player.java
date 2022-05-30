@@ -71,7 +71,7 @@ public class Player extends Entity {
 
     @Override
     public Color getColor() {
-        return Color.ORANGE;
+        return Color.BLUE;
     }
 
     @Override

@@ -144,8 +144,8 @@ public class Controller {
                         e.damage(p.getDamage());
                         if(!p.isPersistent()) {
                             p.setActive(false);
+                            break;
                         }
-                        break;
                     }
                 }
                 p.draw(gameDisplay);
@@ -155,7 +155,7 @@ public class Controller {
             projectiles.removeIf(projectile -> !projectile.isActive());
 
             // Uncomment the following and you'll spawn a new enemy every 1/60 of a second
-            //entities.add(ef.generateRandomEnemy());
+            entities.add(ef.generateRandomEnemy());
         };
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();

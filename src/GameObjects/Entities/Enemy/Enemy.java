@@ -7,10 +7,11 @@ import GameObjects.Entities.Entity;
 import GameObjects.Weapons.*;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 public abstract class Enemy extends Entity {
-    private static final int SIZE = 10;
+    private static final int SIZE = 30;
     protected final Player p;
     protected Behaviour b;
     protected int speed = 2;
@@ -28,13 +29,8 @@ public abstract class Enemy extends Entity {
 
 
     @Override
-    public Color getColor() {
-        return Color.ORANGE;
-    }
-
-    @Override
     public Shape getShape() {
-        return new Rectangle2D.Double(x, y, size, size);
+        return new Ellipse2D.Double(x, y, size, size);
     }
 
     public void setCoordinates(int x, int y){
