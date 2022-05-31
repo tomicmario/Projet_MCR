@@ -1,17 +1,17 @@
-import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Enemy.EnemyFactory;
+import GameObjects.Entities.Entity;
 
 import java.util.LinkedList;
 
 public class SpawnDirector {
-    private final LinkedList<Enemy> enemies;
+    private final LinkedList<Entity> entities;
     private final EnemyFactory ef;
     private int counter;
     private int spawnDelay = 120;
     private int enemiesToSpawn = 1;
 
-    public SpawnDirector(LinkedList<Enemy> enemies, EnemyFactory ef){
-        this.enemies = enemies;
+    public SpawnDirector(LinkedList<Entity> entities, EnemyFactory ef){
+        this.entities = entities;
         this.ef = ef;
         counter = 0;
     }
@@ -20,7 +20,7 @@ public class SpawnDirector {
         counter++;
         if(counter == spawnDelay){
             for(int i = 0; i < enemiesToSpawn; ++i) {
-                enemies.add(ef.generateRandomEnemy());
+                entities.add(ef.generateRandomEnemy());
             }
             spawnDelay--;
             if(spawnDelay < 60){

@@ -15,9 +15,6 @@ import GameObjects.Weapons.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-/**
- * Abstract class that will be used to implement different bounceables, with their own shapes and colors
- */
 public class Player extends Entity {
     private static final int SIZE = 10;
     protected int moves = 2;
@@ -25,7 +22,7 @@ public class Player extends Entity {
     protected Direction directionY;
     protected int mouseX;
     protected int mouseY;
-
+    protected boolean mouseClicked;
     protected int currentIndex;
     protected Weapon[] weapons;
 
@@ -36,6 +33,7 @@ public class Player extends Entity {
         weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this)};
         currentIndex = 0;
         this.currentWeapon = weapons[currentIndex];
+        mouseClicked = false;
     }
 
 
@@ -61,6 +59,9 @@ public class Player extends Entity {
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
 
+    public void setMouseClicked(boolean clicked){
+        this.mouseClicked = clicked;
+    }
     public void setXDirection(Direction d){
         directionX = d;
     }
@@ -93,7 +94,11 @@ public class Player extends Entity {
 
     @Override
     public Projectile[] attack() {
-        return currentWeapon.fire(x, y, mouseX, mouseY);
+        if(mouseClicked) {
+            return currentWeapon.fire(x, y, mouseX, mouseY);
+        }
+
+        return new Projectile[0];
     }
 
     public void setMousePosition(int x, int y){

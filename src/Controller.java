@@ -24,7 +24,7 @@ import java.util.LinkedList;
 
 public class Controller {
 
-    private static final LinkedList<Enemy> enemies = new LinkedList<>();
+    private static final LinkedList<Entity> entities = new LinkedList<>();
     private static final LinkedList<Projectile> projectiles = new LinkedList<>();
     private static final int REFRESH_TIME = 1000 / 120;
     private final GameDisplay gameDisplay;
@@ -46,7 +46,8 @@ public class Controller {
         gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
         p = new Player(WIDTH/2, HEIGHT / 2);
         ef = new EnemyFactory(0, 0, WIDTH, HEIGHT, p);
-        sd = new SpawnDirector(enemies, ef);
+        sd = new SpawnDirector(entities, ef);
+        entities.add(p);
         /*
         enemies.add(new Grunt(0,0,p));
         enemies.add(new Sniper(300, 300, p));
@@ -120,15 +121,10 @@ public class Controller {
             gameDisplay.repaint();
 
             // player shoots
-            p.move();
-            correctPosition(p);
-            p.draw(gameDisplay);
-            if(gameDisplay.isClick()){
-                projectiles.addAll(Arrays.asList(p.attack()));
-            }
+            p.setMouseClicked(gameDisplay.isMouseClicked());
 
             // entities move
-            for(Entity e : enemies) {
+            for(Entity e : entities) {
                 e.move();
                 correctPosition(e);
                 e.draw(gameDisplay);
@@ -138,13 +134,8 @@ public class Controller {
             // collision check between projectiles and entities
             for(Projectile p : projectiles) {
                 p.move();
-                // remove projectile if out of bounds
-                if(distance(p.getX(), p.getY(), HEIGHT / 2, WIDTH / 2) > HEIGHT + WIDTH){
-                    p.setActive(false);
-                    continue;
-                }
                 // damage check
-                for (Entity e : enemies) {
+                for (Entity e : entities) {
                     if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
                         e.damage(p.getDamage());
                         if(!p.isPersistent()) {
@@ -156,7 +147,7 @@ public class Controller {
                 p.draw(gameDisplay);
             }
             // removal of inactive projectiles
-            enemies.removeIf(entity -> !entity.isAlive());
+            entities.removeIf(entity -> !entity.isAlive());
             projectiles.removeIf(projectile -> !projectile.isActive());
 
             sd.nextFrame();

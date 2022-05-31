@@ -99,7 +99,7 @@ public class GameDisplay implements Displayer {
         jFrame.addKeyListener(ka);
     }
 
-    public boolean isClick(){
+    public boolean isMouseClicked(){
         return click;
     }
 
