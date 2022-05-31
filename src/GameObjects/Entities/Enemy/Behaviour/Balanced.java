@@ -13,7 +13,7 @@ public class Balanced implements Behaviour {
 
     private int speedX;
     private int speedY;
-    private final int TIME_UNTIL_REFRESH = 30;
+    private final int TIME_UNTIL_REFRESH = 15;
     private int counter = 0;
     Random r;
 
@@ -31,11 +31,14 @@ public class Balanced implements Behaviour {
             double angle = Math.atan2(target.getY() - e.getY(), target.getX() - e.getX()) - Math.PI / 4;
             if(distance < TOLERABLE_DISTANCE_CLOSE){
                 angle -= Math.PI;
-            } else if (distance < TOLERABLE_DISTANCE_FAR) {
-                angle =  (Math.PI * 2) * r.nextDouble();
             }
-            speedX = (int)(e.getSpeed() * Math.cos(angle) - e.getSpeed() * Math.sin(angle));
-            speedY = (int)(e.getSpeed() * Math.sin(angle) + e.getSpeed() * Math.cos(angle));
+            if(distance >= TOLERABLE_DISTANCE_CLOSE  && distance < TOLERABLE_DISTANCE_FAR) {
+                speedX = 0;
+                speedY = 0;
+            } else {
+                speedX = (int) (e.getSpeed() * Math.cos(angle) - e.getSpeed() * Math.sin(angle));
+                speedY = (int) (e.getSpeed() * Math.sin(angle) + e.getSpeed() * Math.cos(angle));
+            }
         }
         movePredicted();
         counter++;
