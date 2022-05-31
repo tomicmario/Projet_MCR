@@ -29,9 +29,11 @@ public class Controller {
     private static final int REFRESH_TIME = 1000 / 60;
     private final GameDisplay gameDisplay;
     private final Player p;
-    private final int WIDTH = 500;
-    private final int HEIGHT = 500;
+    public final static int WIDTH = 500;
+    public final static int HEIGHT = 500;
     private final EnemyFactory ef;
+
+    private final SpawnDirector sd;
 
     /**
      * Initialises the class and adds a key
@@ -44,9 +46,13 @@ public class Controller {
         gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
         p = new Player(WIDTH/2, HEIGHT / 2);
         ef = new EnemyFactory(0, 0, WIDTH, HEIGHT, p);
+        sd = new SpawnDirector(enemies, ef);
+        /*
         enemies.add(new Grunt(0,0,p));
         enemies.add(new Sniper(300, 300, p));
         enemies.add(new Tank(WIDTH, HEIGHT, p));
+
+        */
 
 
         gameDisplay.addMouseMotionListener(new MouseInputAdapter() {
@@ -153,8 +159,7 @@ public class Controller {
             enemies.removeIf(entity -> !entity.isAlive());
             projectiles.removeIf(projectile -> !projectile.isActive());
 
-            // Uncomment the following and you'll spawn a new enemy every 1/60 of a second
-            //entities.add(ef.generateRandomEnemy());
+            sd.nextFrame();
         };
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();

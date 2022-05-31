@@ -7,7 +7,7 @@ public class SlowShotgun extends Weapon{
     private static final int DAMAGE_PER_PELLET = 30;
     private static final double PELLET_SPREAD = Math.PI / 30;
     public SlowShotgun(Entity entity) {
-        super(entity, 120, 3, 10, DAMAGE_PER_PELLET);
+        super(entity, 120, 3, 5, DAMAGE_PER_PELLET);
     }
 
     @Override

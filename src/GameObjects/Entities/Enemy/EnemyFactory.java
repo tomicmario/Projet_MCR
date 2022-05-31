@@ -13,7 +13,7 @@ public class EnemyFactory {
     private final Player p;
     Random r;
 
-    private final int ENEMY_TYPES = 2;
+    private final int ENEMY_TYPES = 3;
 
     public EnemyFactory(int minX, int minY, int maxX, int maxY, Player p){
         this.minX = minX;
@@ -33,6 +33,8 @@ public class EnemyFactory {
         switch (type){
             case 1:
                 return generateSniper(x, y);
+            case 2:
+                return generateTank(x,y);
             default:
                 return generateGrunt(x, y);
         }
