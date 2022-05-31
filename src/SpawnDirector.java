@@ -8,6 +8,7 @@ public class SpawnDirector {
     private final EnemyFactory ef;
     private int counter;
     private int spawnDelay = 120;
+    private int enemiesToSpawn = 1;
 
     public SpawnDirector(LinkedList<Enemy> enemies, EnemyFactory ef){
         this.enemies = enemies;
@@ -18,8 +19,14 @@ public class SpawnDirector {
     public void nextFrame(){
         counter++;
         if(counter == spawnDelay){
-            enemies.add(ef.generateRandomEnemy());
+            for(int i = 0; i < enemiesToSpawn; ++i) {
+                enemies.add(ef.generateRandomEnemy());
+            }
             spawnDelay--;
+            if(spawnDelay < 60){
+                spawnDelay = 90;
+                enemiesToSpawn++;
+            }
             counter = 0;
         }
     }
