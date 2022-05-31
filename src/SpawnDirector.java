@@ -7,7 +7,7 @@ public class SpawnDirector {
     private final LinkedList<Entity> entities;
     private final EnemyFactory ef;
     private int counter;
-    private int spawnDelay = 120;
+    private int spawnDelay = 90;
     private int enemiesToSpawn = 1;
 
     public SpawnDirector(LinkedList<Entity> entities, EnemyFactory ef){
@@ -23,7 +23,7 @@ public class SpawnDirector {
                 entities.add(ef.generateRandomEnemy());
             }
             spawnDelay--;
-            if(spawnDelay < 60){
+            if(spawnDelay < 80){
                 spawnDelay = 90;
                 enemiesToSpawn++;
             }

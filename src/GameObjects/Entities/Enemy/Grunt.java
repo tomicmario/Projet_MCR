@@ -30,4 +30,6 @@ public class Grunt extends Enemy{
         currentWeapon.nextFrame();
         b.move();
     }
+
+
 }

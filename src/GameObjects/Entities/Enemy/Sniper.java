@@ -17,6 +17,6 @@ public class Sniper extends Enemy{
 
     @Override
     public Color getColor() {
-        return Color.ORANGE;
+        return Color.MAGENTA;
     }
 }

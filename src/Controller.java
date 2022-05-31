@@ -26,12 +26,11 @@ public class Controller {
 
     private static final LinkedList<Entity> entities = new LinkedList<>();
     private static final LinkedList<Projectile> projectiles = new LinkedList<>();
-    private static final int REFRESH_TIME = 1000 / 120;
+    private static final int REFRESH_TIME = 1000 / 60;
     private final GameDisplay gameDisplay;
     private final Player p;
     public final static int WIDTH = 500;
     public final static int HEIGHT = 500;
-    private final EnemyFactory ef;
 
     private final SpawnDirector sd;
 
@@ -45,8 +44,7 @@ public class Controller {
         gameDisplay.setTitle("Not A Space Invader");
         gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
         p = new Player(WIDTH/2, HEIGHT / 2);
-        ef = new EnemyFactory(0, 0, WIDTH, HEIGHT, p);
-        sd = new SpawnDirector(entities, ef);
+        sd = new SpawnDirector(entities, new EnemyFactory(0, 0, WIDTH, HEIGHT, p));
         entities.add(p);
         /*
         enemies.add(new Grunt(0,0,p));

@@ -16,9 +16,12 @@ public abstract class Enemy extends Entity {
     protected Behaviour b;
     protected int speed = 2;
 
+    protected boolean canShoot;
+
     public Enemy(int x, int y, int maxHealth, Player p) {
         super(x, y, SIZE, maxHealth, new PlayerRenderer());
         this.p = p;
+        this.canShoot = true;
     }
 
     @Override
@@ -52,7 +55,14 @@ public abstract class Enemy extends Entity {
 
     @Override
     public Projectile[] attack() {
-        return currentWeapon.fire(x, y, p.getX(), p.getY());
+        if(canShoot) {
+            return currentWeapon.fire(x, y, p.getX(), p.getY());
+        }
+
+        return new Projectile[0];
     }
 
+    public void setCanShoot(boolean canShoot){
+        this.canShoot = canShoot;
+    }
 }
