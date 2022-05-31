@@ -17,12 +17,13 @@ public abstract class Entity {
 
     protected Renderer renderer;
     protected int health;
-    protected final static int MAX_HEALTH = 100;
+    protected final int MAX_HEALTH;
 
-    protected Entity(int x, int y, int size, Renderer r){
+    protected Entity(int x, int y, int size, int maxHealth, Renderer r){
         this.x = x;
         this.y = y;
         this.size = size;
+        this.MAX_HEALTH = maxHealth;
         renderer = r;
         health = MAX_HEALTH;
     }

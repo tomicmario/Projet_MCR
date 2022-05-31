@@ -1,14 +1,16 @@
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Entities.Enemy.Behaviour.Aggressive;
+import GameObjects.Entities.Enemy.Behaviour.Coward;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Pistol;
+import GameObjects.Weapons.Unarmed;
 
 import java.awt.*;
 
 public class Grunt extends Enemy{
     public Grunt(int x, int y, Player p) {
-        super(x, y, p);
+        super(x, y, 100, p);
         this.b = new Aggressive(this, p);
         this.currentWeapon = new Pistol(this);
     }
@@ -16,5 +18,15 @@ public class Grunt extends Enemy{
     @Override
     public Color getColor() {
         return Color.RED;
+    }
+
+    @Override
+    public void move() {
+        if(health < MAX_HEALTH / 2 && !(b instanceof Coward)){
+            b = new Coward(this, p);
+            currentWeapon = new Unarmed(p);
+        }
+        currentWeapon.nextFrame();
+        b.move();
     }
 }

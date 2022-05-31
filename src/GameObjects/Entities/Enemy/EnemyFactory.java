@@ -45,4 +45,6 @@ public class EnemyFactory {
     public Enemy generateSniper(int x, int y){
         return new Sniper(x, y, p);
     }
+
+    public Enemy generateTank(int x, int y) {return new Tank(x,y,p);}
 }

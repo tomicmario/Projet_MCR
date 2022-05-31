@@ -7,9 +7,7 @@
  -----------------------------------------------------------------------------------
  */
 
-import GameObjects.Entities.Enemy.EnemyFactory;
-import GameObjects.Entities.Enemy.Grunt;
-import GameObjects.Entities.Enemy.Sniper;
+import GameObjects.Entities.Enemy.*;
 import GameObjects.Entities.Player.Direction;
 import GameObjects.Entities.Entity;
 import GameObjects.Entities.Player.Player;
@@ -20,13 +18,13 @@ import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 
 public class Controller {
 
-    private static final LinkedList<Entity> entities = new LinkedList<>();
+    private static final LinkedList<Enemy> enemies = new LinkedList<>();
     private static final LinkedList<Projectile> projectiles = new LinkedList<>();
     private static final int REFRESH_TIME = 1000 / 60;
     private final GameDisplay gameDisplay;
@@ -46,9 +44,9 @@ public class Controller {
         gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
         p = new Player(WIDTH/2, HEIGHT / 2);
         ef = new EnemyFactory(0, 0, WIDTH, HEIGHT, p);
-        entities.add(p);
-        entities.add(new Grunt(0,0,p));
-        entities.add(new Sniper(300, 300, p));
+        enemies.add(new Grunt(0,0,p));
+        enemies.add(new Sniper(300, 300, p));
+        enemies.add(new Tank(WIDTH, HEIGHT, p));
 
 
         gameDisplay.addMouseMotionListener(new MouseInputAdapter() {
@@ -116,18 +114,19 @@ public class Controller {
             gameDisplay.repaint();
 
             // player shoots
+            p.move();
+            correctPosition(p);
+            p.draw(gameDisplay);
             if(gameDisplay.isClick()){
-                Projectile[] proj = p.attack();
-                for(Projectile p: proj){
-                    projectiles.add(p);
-                }
+                projectiles.addAll(Arrays.asList(p.attack()));
             }
 
             // entities move
-            for(Entity b : entities) {
-                b.move();
-                correctPosition(b);
-                b.draw(gameDisplay);
+            for(Entity e : enemies) {
+                e.move();
+                correctPosition(e);
+                e.draw(gameDisplay);
+                projectiles.addAll(Arrays.asList(e.attack()));
             }
 
             // collision check between projectiles and entities
@@ -139,7 +138,7 @@ public class Controller {
                     continue;
                 }
                 // damage check
-                for (Entity e : entities) {
+                for (Entity e : enemies) {
                     if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
                         e.damage(p.getDamage());
                         if(!p.isPersistent()) {
@@ -151,11 +150,11 @@ public class Controller {
                 p.draw(gameDisplay);
             }
             // removal of inactive projectiles
-            entities.removeIf(entity -> !entity.isAlive());
+            enemies.removeIf(entity -> !entity.isAlive());
             projectiles.removeIf(projectile -> !projectile.isActive());
 
             // Uncomment the following and you'll spawn a new enemy every 1/60 of a second
-            entities.add(ef.generateRandomEnemy());
+            //entities.add(ef.generateRandomEnemy());
         };
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();

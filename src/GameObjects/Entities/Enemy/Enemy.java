@@ -16,8 +16,8 @@ public abstract class Enemy extends Entity {
     protected Behaviour b;
     protected int speed = 2;
 
-    public Enemy(int x, int y, Player p) {
-        super(x, y, SIZE, new PlayerRenderer());
+    public Enemy(int x, int y, int maxHealth, Player p) {
+        super(x, y, SIZE, maxHealth, new PlayerRenderer());
         this.p = p;
     }
 
