@@ -31,8 +31,8 @@ public class Controller {
     private final Player p;
     public final static int WIDTH = 500;
     public final static int HEIGHT = 500;
-
     private final SpawnDirector sd;
+    private int score = 0;
 
     /**
      * Initialises the class and adds a key
@@ -145,9 +145,8 @@ public class Controller {
                 p.draw(gameDisplay);
             }
             // removal of inactive projectiles
-            entities.removeIf(entity -> !entity.isAlive());
+            entities.removeIf(entity -> !entity.isAlive() && (score += entity.getPoints()) > -1);
             projectiles.removeIf(projectile -> !projectile.isActive());
-
             sd.nextFrame();
         };
         Timer timer = new Timer(REFRESH_TIME, al);

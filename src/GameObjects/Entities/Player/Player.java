@@ -106,4 +106,9 @@ public class Player extends Entity {
         this.mouseY = y;
     }
 
+    @Override
+    public int getPoints(){
+        return 0;
+    }
+
 }

@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Sniper extends Enemy{
     public Sniper(int x, int y, Player p) {
-        super(x, y, 100, p);
+        super(x, y, 100, 100, p);
         this.b = new Balanced(this, p);
         this.currentWeapon = new Pistol(this);
         this.speed = 2;

@@ -41,14 +41,14 @@ public class PlayerRenderer implements Renderer {
     }
 
     private void makeHealthBar(Graphics2D g, Entity b){
-        g.translate(-6, -7);
-        int width = (int)(25 * b.getHealthRatio());
+        g.translate(-b.getSize() * 2 / 3, -10);
+        int width = (int)(b.getSize() * 2 * b.getHealthRatio());
         int height = 3;
         Rectangle2D bar = new Rectangle2D.Double(b.getX(), b.getY(), width, height);
-        Color c = width < 13 ? Color.RED : Color.GREEN;
+        Color c = width < b.getSize() ? Color.RED : Color.GREEN;
         g.setColor(c);
         g.fill(bar);
         g.draw(bar);
-        g.translate(6, 7);
+        g.translate(b.getSize() * 2 / 3, 10);
     }
 }

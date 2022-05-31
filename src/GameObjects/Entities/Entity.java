@@ -63,4 +63,6 @@ public abstract class Entity {
     public boolean isAlive(){
         return health > 0;
     }
+
+    public abstract int getPoints();
 }

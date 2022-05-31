@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class Grunt extends Enemy{
     public Grunt(int x, int y, Player p) {
-        super(x, y, 100, p);
+        super(x, y, 100, 100, p);
         this.b = new Aggressive(this, p);
         this.currentWeapon = new Pistol(this);
         currentWeapon.setDelay(100);

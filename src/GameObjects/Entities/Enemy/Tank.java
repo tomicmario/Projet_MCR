@@ -11,7 +11,7 @@ import java.awt.*;
 public class Tank extends Enemy{
 
     public Tank(int x, int y, Player p) {
-        super(x, y, 300, p);
+        super(x, y, 300, 300, p);
         this.b = new Aggressive(this, p);
         this.speed = 1;
         this.currentWeapon = new SlowShotgun(this);
