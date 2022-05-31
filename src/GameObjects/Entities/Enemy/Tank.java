@@ -15,6 +15,7 @@ public class Tank extends Enemy{
         this.b = new Aggressive(this, p);
         this.speed = 1;
         this.currentWeapon = new SlowShotgun(this);
+        currentWeapon.setDelay(100);
     }
 
     @Override

@@ -12,6 +12,7 @@ public class Sniper extends Enemy{
         this.b = new Balanced(this, p);
         this.currentWeapon = new Pistol(this);
         this.speed = 2;
+        currentWeapon.setDelay(100);
     }
 
     @Override

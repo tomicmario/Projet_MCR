@@ -13,6 +13,7 @@ public class Grunt extends Enemy{
         super(x, y, 100, p);
         this.b = new Aggressive(this, p);
         this.currentWeapon = new Pistol(this);
+        currentWeapon.setDelay(100);
     }
 
     @Override

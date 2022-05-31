@@ -34,6 +34,10 @@ public abstract class Weapon {
         return new Projectile[0];
     }
 
+    public void setDelay(int delay){
+        counter -= delay;
+    }
+
     protected Projectile[] generateProjectiles(double angle){
         return new Projectile[]{new Projectile(angle , PROJECTILE_SPEED, PROJECTILE_SIZE, damage, false, e)};
     }
