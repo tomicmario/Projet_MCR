@@ -14,11 +14,11 @@ public class SlowShotgun extends Weapon{
     protected Projectile[] generateProjectiles(double angle) {
         Projectile[] projectiles = new Projectile[PELLETS];
         for(int i = 0, j = PELLETS - 1; i < j; ++i, --j){
-            projectiles[i] = new Projectile(e.getX(), e.getY(), angle - (i+1) * PELLET_SPREAD , PROJECTILE_SPEED, PROJECTILE_SIZE, DAMAGE_PER_PELLET, e);
-            projectiles[j] = new Projectile(e.getX(), e.getY(), angle + (i+1) * PELLET_SPREAD  , PROJECTILE_SPEED, PROJECTILE_SIZE, DAMAGE_PER_PELLET, e);
+            projectiles[i] = new Projectile(angle - (i+1) * PELLET_SPREAD , PROJECTILE_SPEED, PROJECTILE_SIZE, DAMAGE_PER_PELLET, false, e);
+            projectiles[j] = new Projectile(angle + (i+1) * PELLET_SPREAD  , PROJECTILE_SPEED, PROJECTILE_SIZE, DAMAGE_PER_PELLET, false, e);
         }
         if(PELLETS % 2 == 1){
-            projectiles[PELLETS / 2] = new Projectile(e.getX(), e.getY(), angle , PROJECTILE_SPEED, PROJECTILE_SIZE, DAMAGE_PER_PELLET, e);
+            projectiles[PELLETS / 2] = new Projectile(angle , PROJECTILE_SPEED, PROJECTILE_SIZE, DAMAGE_PER_PELLET, false, e);
         }
         return projectiles;
     }

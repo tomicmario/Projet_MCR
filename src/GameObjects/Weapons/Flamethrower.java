@@ -9,7 +9,7 @@ public class Flamethrower extends Weapon{
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(e.getX(), e.getY(), angle , PROJECTILE_SPEED, PROJECTILE_SIZE, damage, true, e){
+        Projectile p = new Projectile(angle, PROJECTILE_SPEED, PROJECTILE_SIZE, damage, true, e, 30){
             @Override
             public void move() {
                 super.move();

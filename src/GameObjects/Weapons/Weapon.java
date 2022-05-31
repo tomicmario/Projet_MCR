@@ -35,6 +35,6 @@ public abstract class Weapon {
     }
 
     protected Projectile[] generateProjectiles(double angle){
-        return new Projectile[]{new Projectile(e.getX(), e.getY(), angle , PROJECTILE_SPEED, PROJECTILE_SIZE, damage, e)};
+        return new Projectile[]{new Projectile(angle , PROJECTILE_SPEED, PROJECTILE_SIZE, damage, false, e)};
     }
 }

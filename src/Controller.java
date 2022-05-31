@@ -26,7 +26,7 @@ public class Controller {
 
     private static final LinkedList<Enemy> enemies = new LinkedList<>();
     private static final LinkedList<Projectile> projectiles = new LinkedList<>();
-    private static final int REFRESH_TIME = 1000 / 60;
+    private static final int REFRESH_TIME = 1000 / 120;
     private final GameDisplay gameDisplay;
     private final Player p;
     public final static int WIDTH = 500;

@@ -18,24 +18,11 @@ public class Projectile {
     protected int damage;
     protected final Entity shooter;
     private final boolean persistent;
+    private int timeToLive;
 
-    public Projectile(int posX, int posY, double angle, int speed, int size, int damage, Entity e) {
-        this.x = posX;
-        this.y = posY;
-        this.size = size;
-        this.SPEED = speed;
-        this.angle = angle;
-        speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));
-        speedY = (int)(SPEED * Math.sin(angle) + SPEED * Math.cos(angle));
-        this.damage = damage;
-        isActive = true;
-        this.shooter = e;
-        this.persistent = false;
-    }
-
-    public Projectile(int posX, int posY, double angle, int speed, int size, int damage, boolean persistent, Entity e) {
-        this.x = posX;
-        this.y = posY;
+    public Projectile(double angle, int speed, int size, int damage, boolean persistent, Entity e, int timeToLive) {
+        this.x = e.getX();
+        this.y = e.getY();
         this.size = size;
         this.SPEED = speed;
         this.angle = angle;
@@ -45,11 +32,31 @@ public class Projectile {
         isActive = true;
         this.shooter = e;
         this.persistent = persistent;
+        this.timeToLive = timeToLive;
+    }
+
+    public Projectile(double angle, int speed, int size, int damage, boolean persistent, Entity e) {
+        this.x = e.getX();
+        this.y = e.getY();
+        this.size = size;
+        this.SPEED = speed;
+        this.angle = angle;
+        speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));
+        speedY = (int)(SPEED * Math.sin(angle) + SPEED * Math.cos(angle));
+        this.damage = damage;
+        isActive = true;
+        this.shooter = e;
+        this.persistent = persistent;
+        this.timeToLive = 300;
     }
 
     public void move() {
         x += speedX;
         y += speedY;
+        timeToLive--;
+        if(timeToLive <= 0){
+            isActive = false;
+        }
     }
 
     public Color getColor() {
