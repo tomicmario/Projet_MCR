@@ -4,7 +4,7 @@ import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
 public class Aggressive implements Behaviour{
-    private static final int MIN_DISTANCE = 30;
+    private static final int MIN_DISTANCE = 50;
     private static final int SHOOT_DISTANCE = 200;
     private final Enemy e;
     private final Entity target;

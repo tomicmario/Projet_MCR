@@ -117,4 +117,8 @@ public class GameDisplay implements Displayer {
             }
         });
     }
+
+    public void close(){
+        jFrame.setVisible(false);
+    }
 }

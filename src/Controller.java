@@ -13,6 +13,7 @@ import GameObjects.Entities.Entity;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Projectile;
 import View.GameDisplay;
+import View.GameOverScreen;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
@@ -148,9 +149,16 @@ public class Controller {
             entities.removeIf(entity -> !entity.isAlive() && (score += entity.getPoints()) > -1);
             projectiles.removeIf(projectile -> !projectile.isActive());
             sd.nextFrame();
+
+            if(!p.isAlive()){
+                new GameOverScreen(score);
+                ((Timer)event.getSource()).stop();
+                gameDisplay.close();
+            }
         };
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();
+
     }
 
     private double distance(int x1, int y1, int x2, int y2){
