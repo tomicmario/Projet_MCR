@@ -57,7 +57,9 @@ public abstract class Entity {
     public void damage(int damage){
         this.health -= damage;
     }
-
+    public double getHealthRatio(){
+        return (double)health / MAX_HEALTH;
+    }
     public boolean isAlive(){
         return health > 0;
     }
