@@ -1,6 +1,8 @@
 package GameObjects.Weapons;
 
+import GameObjects.Entities.Enemy.Grunt;
 import GameObjects.Entities.Entity;
+import GameObjects.Entities.Player.Player;
 
 import java.awt.*;
 
@@ -17,6 +19,9 @@ public class RocketLauncher extends Weapon{
                 x += speedX;
                 y += speedY;
                 timeToLive--;
+                if(persistent){
+                    size += 4;
+                }
             }
 
             @Override
@@ -30,8 +35,8 @@ public class RocketLauncher extends Weapon{
                 speedY = 0;
                 persistent = true;
                 timeToLive = 0;
-                damage = 2;
-                size = 50;
+                damage = 50;
+                size = 100;
             }
             @Override
             public Color getColor(){

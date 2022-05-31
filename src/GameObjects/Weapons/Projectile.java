@@ -64,7 +64,7 @@ public class Projectile {
     }
 
     public Shape getShape() {
-        return new Ellipse2D.Double(x, y, size, size);
+        return new Ellipse2D.Double(x - size /2.0, y  - size /2.0, size, size);
     }
 
     public void draw(Displayer view) {

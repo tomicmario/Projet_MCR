@@ -135,6 +135,7 @@ public class Controller {
                 p.move();
                 // damage check
                 for (Entity e : entities) {
+                    p.draw(gameDisplay);
                     if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
                         e.damage(p.getDamage());
                         if(!p.isPersistent()) {
@@ -143,7 +144,6 @@ public class Controller {
                         }
                     }
                 }
-                p.draw(gameDisplay);
             }
 
             // removal of inactive projectiles
