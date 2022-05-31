@@ -17,8 +17,8 @@ public class Projectile {
     protected boolean isActive;
     protected int damage;
     protected final Entity shooter;
-    private final boolean persistent;
-    private int timeToLive;
+    protected boolean persistent;
+    protected int timeToLive;
 
     public Projectile(double angle, int speed, int size, int damage, boolean persistent, Entity e, int timeToLive) {
         this.x = e.getX();

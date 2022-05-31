@@ -145,6 +145,7 @@ public class Controller {
                 }
                 p.draw(gameDisplay);
             }
+
             // removal of inactive projectiles
             entities.removeIf(entity -> !entity.isAlive() && (score += entity.getPoints()) > -1);
             projectiles.removeIf(projectile -> !projectile.isActive());

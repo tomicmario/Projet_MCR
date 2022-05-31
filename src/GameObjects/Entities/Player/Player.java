@@ -30,7 +30,7 @@ public class Player extends Entity {
         super(x, y, SIZE, 150, new PlayerRenderer());
         this.directionX = Direction.STILL;
         this.directionY = Direction.STILL;
-        weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this)};
+        weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
         currentIndex = 0;
         this.currentWeapon = weapons[currentIndex];
         mouseClicked = false;
