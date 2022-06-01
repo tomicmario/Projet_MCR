@@ -49,13 +49,6 @@ public class Controller {
         p = new Player(WIDTH/2, HEIGHT / 2);
         sd = new SpawnDirector(entities, new EnemyFactory(0, 0, WIDTH, HEIGHT, p));
         entities.add(p);
-        /*
-        enemies.add(new Grunt(0,0,p));
-        enemies.add(new Sniper(300, 300, p));
-        enemies.add(new Tank(WIDTH, HEIGHT, p));
-
-        */
-
 
         gameDisplay.addMouseMotionListener(new MouseInputAdapter() {
             @Override
@@ -114,67 +107,76 @@ public class Controller {
         });
     }
 
-    /**
-     * Moves the state of the bouncers and displays them
-     */
     public void run() {
         ActionListener al = event -> {
             gameDisplay.repaint();
-
-            // player shoots
-            p.setMouseClicked(gameDisplay.isMouseClicked());
-
-            // entities move
-            for(Entity e : entities) {
-                e.move();
-                correctPosition(e);
-                e.draw(gameDisplay);
-                Projectile[] p = e.attack();
-                if(p != null){
-                    projectiles.addAll(Arrays.asList(p));
-                }
-            }
-
-            // collision check between projectiles and entities
-            for(Projectile p : projectiles) {
-                p.move();
-                // damage check
-                for (Entity e : entities) {
-                    p.draw(gameDisplay);
-                    if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
-                        e.damage(p.getDamage());
-                        if(!p.isPersistent()) {
-                            p.setActive(false);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            // removal of inactive projectiles
-
-            Iterator<Entity> it = entities.iterator();
-            while (it.hasNext()) {
-                Entity entity = it.next();
-                if (!entity.isAlive()) {
-                    score += entity.getPoints();
-                    it.remove();
-                }
-            }
-
-            projectiles.removeIf(projectile -> !projectile.isActive());
+            getEntitiesNextFrame();
+            getProjectileNextFrame();
+            removeDeadObjects();
             sd.nextFrame();
-
             if(!p.isAlive()){
-                new GameOverScreen(score);
-                ((Timer)event.getSource()).stop();
-                gameDisplay.close();
+                endGame(event);
             }
         };
+
         Timer timer = new Timer(REFRESH_TIME, al);
         timer.start();
 
     }
+
+    private void endGame(ActionEvent event){
+        new GameOverScreen(score);
+        ((Timer)event.getSource()).stop();
+        gameDisplay.close();
+    }
+
+    private void getEntitiesNextFrame(){
+        p.setMouseClicked(gameDisplay.isMouseClicked());
+
+        for(Entity e : entities) {
+            e.move();
+            correctPosition(e);
+            e.draw(gameDisplay);
+            Projectile[] p = e.attack();
+            if(p != null){
+                projectiles.addAll(Arrays.asList(p));
+            }
+        }
+    }
+
+    private void getProjectileNextFrame(){
+        for(Projectile p : projectiles) {
+            p.move();
+            p.draw(gameDisplay);
+            checkProjectileCollision(p);
+        }
+    }
+
+    private void checkProjectileCollision(Projectile p){
+        for (Entity e : entities) {
+            if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
+                e.damage(p.getDamage());
+                if(!p.isPersistent()) {
+                    p.setActive(false);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void removeDeadObjects(){
+        Iterator<Entity> it = entities.iterator();
+        while (it.hasNext()) {
+            Entity entity = it.next();
+            if (!entity.isAlive()) {
+                score += entity.getPoints();
+                it.remove();
+            }
+        }
+
+        projectiles.removeIf(projectile -> !projectile.isActive());
+    }
+
 
     private double distance(int x1, int y1, int x2, int y2){
         return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
