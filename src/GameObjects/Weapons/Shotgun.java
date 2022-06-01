@@ -3,9 +3,9 @@ package GameObjects.Weapons;
 import GameObjects.Entities.Entity;
 
 public class Shotgun extends BaseWeapon {
-    protected int PELLETS = 7;
+    protected int PELLETS = 13;
     private static final int DAMAGE_PER_PELLET = 30;
-    protected double PELLET_SPREAD = Math.PI / 12;
+    protected double PELLET_SPREAD = Math.PI / 24;
     public Shotgun(Entity entity) {
         super(entity);
         damage = DAMAGE_PER_PELLET;

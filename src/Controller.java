@@ -36,74 +36,17 @@ public class Controller {
     private final SpawnDirector sd;
     private int score = 0;
 
-    /**
-     * Initialises the class and adds a key
-     */
-    public Controller() {
 
-        // Display
+    public Controller() {
         gameDisplay = GameDisplay.getInstance();
         gameDisplay.setTitle("Not A Space Invader");
         gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
+
         p = new Player(WIDTH/2, HEIGHT / 2);
         sd = new SpawnDirector(entities, new EnemyFactory(0, 0, WIDTH, HEIGHT, p));
         entities.add(p);
 
-        gameDisplay.addMouseMotionListener(new MouseInputAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                p.setMousePosition(e.getX(), e.getY());
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e){
-                p.setMousePosition(e.getX(), e.getY());
-            }
-        });
-
-
-        // Key handling
-        gameDisplay.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()){
-                    case KeyEvent.VK_Q: // Q
-                        System.exit(0);
-                        break;
-                    case KeyEvent.VK_W: // W
-                        p.setYDirection(Direction.UP);
-                        break;
-                    case KeyEvent.VK_A: // A
-                        p.setXDirection(Direction.LEFT);
-                        break;
-                    case KeyEvent.VK_S: // S
-                        p.setYDirection(Direction.DOWN);
-                        break;
-                    case KeyEvent.VK_D: // D
-                        p.setXDirection(Direction.RIGHT);
-                        break;
-                    case KeyEvent.VK_E:
-                        p.equipNextWeapon();
-                        break;
-                }
-            }
-        });
-
-        gameDisplay.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                switch (e.getKeyCode()){
-                    case KeyEvent.VK_W: // W
-                    case KeyEvent.VK_S: // S
-                        p.setYDirection(Direction.STILL);
-                        break;
-                    case KeyEvent.VK_A: // A
-                    case KeyEvent.VK_D: // D
-                        p.setXDirection(Direction.STILL);
-                        break;
-                }
-            }
-        });
+        new InputInterpereter(p, gameDisplay).InitialiseInputListeners();
     }
 
     public void run() {
