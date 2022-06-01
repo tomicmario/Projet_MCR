@@ -22,14 +22,14 @@ public abstract class BaseWeapon implements Weapon {
     }
 
     public void nextFrame() {
-        if(counter < fireRate){
-            counter++;
+        if(counter > 0){
+            counter--;
         }
     }
 
     public Projectile[] fire(int currentX, int currentY, int targetX, int targetY){
-        if(counter == fireRate){
-            counter = 0;
+        if(counter == 0){
+            counter = fireRate;
             double angle = Math.atan2(targetY - currentY, targetX - currentX) - Math.PI / 4;
             return generateProjectiles(angle);
         }
@@ -37,7 +37,7 @@ public abstract class BaseWeapon implements Weapon {
     }
 
     public void setDelay(int delay){
-        counter -= delay;
+        counter += delay;
     }
 
     protected Projectile[] generateProjectiles(double angle){
