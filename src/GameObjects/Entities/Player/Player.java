@@ -24,13 +24,13 @@ public class Player extends Entity {
     protected int mouseY;
     protected boolean mouseClicked;
     protected int currentIndex;
-    protected Weapon[] weapons;
+    protected ProjectileWeapon[] weapons;
 
     public Player(int x, int y) {
         super(x, y, SIZE, 150, new PlayerRenderer());
         this.directionX = Direction.STILL;
         this.directionY = Direction.STILL;
-        weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
+        weapons = new ProjectileWeapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
         currentIndex = 0;
         this.currentWeapon = weapons[currentIndex];
         mouseClicked = false;

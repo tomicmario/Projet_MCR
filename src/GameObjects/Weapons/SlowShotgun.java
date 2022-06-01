@@ -2,7 +2,7 @@ package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
 
-public class SlowShotgun extends Weapon{
+public class SlowShotgun extends ProjectileWeapon {
     private static final int PELLETS = 3;
     private static final int DAMAGE_PER_PELLET = 30;
     private static final double PELLET_SPREAD = Math.PI / 30;

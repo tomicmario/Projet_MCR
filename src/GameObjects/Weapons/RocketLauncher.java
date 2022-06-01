@@ -1,12 +1,10 @@
 package GameObjects.Weapons;
 
-import GameObjects.Entities.Enemy.Grunt;
 import GameObjects.Entities.Entity;
-import GameObjects.Entities.Player.Player;
 
 import java.awt.*;
 
-public class RocketLauncher extends Weapon{
+public class RocketLauncher extends ProjectileWeapon {
     public RocketLauncher(Entity entity){
         super(entity, 60, 5, 5, 0);
     }

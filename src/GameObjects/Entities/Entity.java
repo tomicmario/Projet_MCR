@@ -2,7 +2,7 @@ package GameObjects.Entities;
 
 import GameObjects.Renderer;
 import GameObjects.Weapons.Projectile;
-import GameObjects.Weapons.Weapon;
+import GameObjects.Weapons.ProjectileWeapon;
 import View.Displayer;
 
 import java.awt.*;
@@ -29,7 +29,7 @@ public abstract class Entity {
     }
 
     public abstract Projectile[] attack();
-    protected Weapon currentWeapon;
+    protected ProjectileWeapon currentWeapon;
 
     public void draw(Displayer view) {
         renderer.display(view.getGraphics(), this);
