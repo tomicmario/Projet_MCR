@@ -98,7 +98,7 @@ public class Player extends Entity {
             return currentWeapon.fire(x, y, mouseX, mouseY);
         }
 
-        return new Projectile[0];
+        return null;
     }
 
     public void setMousePosition(int x, int y){

@@ -31,7 +31,7 @@ public abstract class Weapon {
             double angle = Math.atan2(targetY - currentY, targetX - currentX) - Math.PI / 4;
             return generateProjectiles(angle);
         }
-        return new Projectile[0];
+        return null;
     }
 
     public void setDelay(int delay){

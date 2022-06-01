@@ -129,7 +129,10 @@ public class Controller {
                 e.move();
                 correctPosition(e);
                 e.draw(gameDisplay);
-                projectiles.addAll(Arrays.asList(e.attack()));
+                Projectile[] p = e.attack();
+                if(p != null){
+                    projectiles.addAll(Arrays.asList(p));
+                }
             }
 
             // collision check between projectiles and entities

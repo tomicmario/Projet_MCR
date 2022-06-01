@@ -59,7 +59,7 @@ public abstract class Enemy extends Entity {
             return currentWeapon.fire(x, y, p.getX(), p.getY());
         }
 
-        return new Projectile[0];
+        return null;
     }
 
     public void setCanShoot(boolean canShoot){

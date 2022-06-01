@@ -9,7 +9,7 @@ public class Unarmed extends Weapon{
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        return new Projectile[0];
+        return null;
     }
 
 }
