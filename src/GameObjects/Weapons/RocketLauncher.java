@@ -6,12 +6,14 @@ import java.awt.*;
 
 public class RocketLauncher extends BaseWeapon {
     public RocketLauncher(Entity entity){
-        super(entity, 60, 5, 5, 0);
+        super(entity);
+        fireRate = 60;
+        damage = 0;
     }
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(angle, PROJECTILE_SPEED, PROJECTILE_SIZE, damage, false, e, 300){
+        Projectile p = new Projectile(angle, projectileSpeed, projectileSize, damage, false, e, 300){
             @Override
             public void move() {
                 x += speedX;

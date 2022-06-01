@@ -7,6 +7,7 @@ public class Coward extends PlayerFocusedBehaviour{
 
     public Coward(Enemy e, Entity target){
         super(e, target);
+        e.setCanShoot(false);
     }
 
     @Override

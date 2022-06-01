@@ -4,29 +4,31 @@ import GameObjects.Entities.Entity;
 public abstract class BaseWeapon implements Weapon {
     protected Entity e;
     protected int counter;
-    protected final int PROJECTILE_SIZE;
-    protected final int FIRE_RATE;
-    protected final int PROJECTILE_SPEED;
-
+    protected int projectileSize;
+    protected int fireRate;
+    protected int projectileSpeed;
+    protected int projectileTimeToLive;
+    protected boolean persistentProjectile;
     protected int damage;
 
-    protected BaseWeapon(Entity e, int fireRate, int projectileSize, int projectileSpeed, int damage){
-        this.FIRE_RATE = fireRate;
-        this.PROJECTILE_SIZE = projectileSize;
-        this.PROJECTILE_SPEED = projectileSpeed;
-        this.counter = fireRate;
+    protected BaseWeapon(Entity e){
         this.e = e;
-        this.damage = damage;
+        fireRate = 20;
+        projectileSize = 5;
+        projectileSpeed = 5;
+        damage = 25;
+        persistentProjectile = false;
+        projectileTimeToLive = 300;
     }
 
     public void nextFrame() {
-        if(counter < FIRE_RATE){
+        if(counter < fireRate){
             counter++;
         }
     }
 
     public Projectile[] fire(int currentX, int currentY, int targetX, int targetY){
-        if(counter == FIRE_RATE){
+        if(counter == fireRate){
             counter = 0;
             double angle = Math.atan2(targetY - currentY, targetX - currentX) - Math.PI / 4;
             return generateProjectiles(angle);
@@ -39,6 +41,10 @@ public abstract class BaseWeapon implements Weapon {
     }
 
     protected Projectile[] generateProjectiles(double angle){
-        return new Projectile[]{new Projectile(angle , PROJECTILE_SPEED, PROJECTILE_SIZE, damage, false, e)};
+        return new Projectile[] { generateSingleProjectile(angle) };
+    }
+
+    protected Projectile generateSingleProjectile(double angle){
+        return new Projectile(angle, projectileSpeed, projectileSize, damage, persistentProjectile, e);
     }
 }

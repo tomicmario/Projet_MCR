@@ -6,12 +6,16 @@ import java.awt.*;
 
 public class Flamethrower extends BaseWeapon {
     public Flamethrower(Entity entity) {
-        super(entity, 5, 5, 3, 20);
+        super(entity);
+        projectileSpeed = 5;
+        fireRate = 5;
+        damage = 20;
+        persistentProjectile = true;
     }
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(angle, PROJECTILE_SPEED, PROJECTILE_SIZE, damage, true, e, 45){
+        Projectile p = new Projectile(angle, projectileSpeed, projectileSize, damage, persistentProjectile, e, 45){
             @Override
             public void move() {
                 super.move();

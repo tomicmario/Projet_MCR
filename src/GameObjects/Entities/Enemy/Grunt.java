@@ -4,7 +4,6 @@ import GameObjects.Entities.Enemy.Behaviour.Aggressive;
 import GameObjects.Entities.Enemy.Behaviour.Coward;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Pistol;
-import GameObjects.Weapons.Unarmed;
 
 import java.awt.*;
 
@@ -25,7 +24,6 @@ public class Grunt extends Enemy{
     public void move() {
         if(health < MAX_HEALTH / 2 && !(b instanceof Coward)){
             b = new Coward(this, p);
-            currentWeapon = new Unarmed(p);
         }
         currentWeapon.nextFrame();
         b.move();
