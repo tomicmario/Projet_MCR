@@ -4,7 +4,7 @@ import GameObjects.Entities.Entity;
 
 import java.awt.*;
 
-public class RocketLauncher extends ProjectileWeapon {
+public class RocketLauncher extends BaseWeapon {
     public RocketLauncher(Entity entity){
         super(entity, 60, 5, 5, 0);
     }

@@ -4,7 +4,7 @@ import GameObjects.Entities.Entity;
 
 import java.awt.*;
 
-public class Flamethrower extends ProjectileWeapon {
+public class Flamethrower extends BaseWeapon {
     public Flamethrower(Entity entity) {
         super(entity, 5, 5, 3, 20);
     }

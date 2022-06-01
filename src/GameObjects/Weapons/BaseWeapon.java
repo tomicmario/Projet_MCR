@@ -1,7 +1,7 @@
 package GameObjects.Weapons;
 import GameObjects.Entities.Entity;
 
-public abstract class ProjectileWeapon implements Weapon {
+public abstract class BaseWeapon implements Weapon {
     protected Entity e;
     protected int counter;
     protected final int PROJECTILE_SIZE;
@@ -10,7 +10,7 @@ public abstract class ProjectileWeapon implements Weapon {
 
     protected int damage;
 
-    protected ProjectileWeapon(Entity e, int fireRate, int projectileSize, int projectileSpeed, int damage){
+    protected BaseWeapon(Entity e, int fireRate, int projectileSize, int projectileSpeed, int damage){
         this.FIRE_RATE = fireRate;
         this.PROJECTILE_SIZE = projectileSize;
         this.PROJECTILE_SPEED = projectileSpeed;
