@@ -22,7 +22,6 @@ import java.awt.event.*;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.ListIterator;
 
 
 public class Controller {
@@ -154,7 +153,7 @@ public class Controller {
 
     private void checkProjectileCollision(Projectile p){
         for (Entity e : entities) {
-            if(e != p.getShooter() && distance(p.getX(), p.getY(), e.getX(), e.getY()) < p.getSize() + e.getSize()) {
+            if(e != p.getShooter() && checkCollision(p, e)) {
                 e.damage(p.getDamage());
                 if(!p.isPersistent()) {
                     p.setActive(false);
@@ -178,8 +177,14 @@ public class Controller {
     }
 
 
-    private double distance(int x1, int y1, int x2, int y2){
-        return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
+    private boolean checkCollision(Projectile p, Entity e){
+        int x1 = p.getX() + p.getSize() / 2;
+        int y1 = p.getY() + p.getSize() / 2;
+        int x2 = e.getX() + e.getSize() / 2;
+        int y2 = e.getY() + e.getSize() / 2;
+        double distance = Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
+
+        return distance < p.getSize() / 2.0 + e.getSize() / 2.0;
     }
 
     private void correctPosition(Entity e){
