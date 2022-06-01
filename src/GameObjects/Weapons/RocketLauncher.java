@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class RocketLauncher extends Weapon{
     public RocketLauncher(Entity entity){
-        super(entity, 30, 5, 5, 0);
+        super(entity, 60, 5, 5, 0);
     }
 
     @Override
@@ -20,13 +20,13 @@ public class RocketLauncher extends Weapon{
                 y += speedY;
                 timeToLive--;
                 if(persistent){
-                    size += 4;
+                    size += 10;
                 }
             }
 
             @Override
             public boolean isActive(){
-                return timeToLive > -10;
+                return timeToLive > 0;
             }
             @Override
             public void setActive(boolean isActive){
@@ -34,9 +34,9 @@ public class RocketLauncher extends Weapon{
                 speedX = 0;
                 speedY = 0;
                 persistent = true;
-                timeToLive = 0;
+                timeToLive = 5;
                 damage = 50;
-                size = 100;
+                size = 10;
             }
             @Override
             public Color getColor(){
