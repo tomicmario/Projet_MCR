@@ -20,7 +20,9 @@ import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 
 public class Controller {
@@ -147,7 +149,16 @@ public class Controller {
             }
 
             // removal of inactive projectiles
-            entities.removeIf(entity -> !entity.isAlive() && (score += entity.getPoints()) > -1);
+
+            Iterator<Entity> it = entities.iterator();
+            while (it.hasNext()) {
+                Entity entity = it.next();
+                if (!entity.isAlive()) {
+                    score += entity.getPoints();
+                    it.remove();
+                }
+            }
+
             projectiles.removeIf(projectile -> !projectile.isActive());
             sd.nextFrame();
 
