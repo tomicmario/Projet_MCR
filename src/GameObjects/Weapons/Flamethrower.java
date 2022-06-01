@@ -11,11 +11,13 @@ public class Flamethrower extends BaseWeapon {
         fireRate = 5;
         damage = 20;
         persistentProjectile = true;
+        projectileTimeToLive = 45;
     }
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(angle, projectileSpeed, projectileSize, damage, persistentProjectile, e, 45){
+        Projectile p = new Projectile(angle, projectileSpeed, projectileSize,
+                                        damage, persistentProjectile, e, projectileTimeToLive){
             @Override
             public void move() {
                 super.move();

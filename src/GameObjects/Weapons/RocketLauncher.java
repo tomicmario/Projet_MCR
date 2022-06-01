@@ -8,12 +8,13 @@ public class RocketLauncher extends BaseWeapon {
     public RocketLauncher(Entity entity){
         super(entity);
         fireRate = 60;
-        damage = 0;
+        damage = 50;
     }
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(angle, projectileSpeed, projectileSize, damage, false, e, 300){
+        Projectile p = new Projectile(angle, projectileSpeed, projectileSize,
+                                        damage, persistentProjectile, e, projectileTimeToLive){
             @Override
             public void move() {
                 x += speedX;
@@ -30,17 +31,15 @@ public class RocketLauncher extends BaseWeapon {
             }
             @Override
             public void setActive(boolean isActive){
-                this.isActive = false;
                 speedX = 0;
                 speedY = 0;
                 persistent = true;
                 timeToLive = 5;
-                damage = 50;
                 size = 10;
             }
             @Override
             public Color getColor(){
-                return damage == 0 ? Color.BLACK : Color.ORANGE;
+                return persistent ? Color.ORANGE : Color.BLACK;
             }
         };
         Projectile[] projectiles = new Projectile[1];
