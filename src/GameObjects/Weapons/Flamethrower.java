@@ -7,7 +7,7 @@ import java.awt.*;
 public class Flamethrower extends BaseWeapon {
     public Flamethrower(Entity entity) {
         super(entity);
-        projectileSpeed = 5;
+        projectileSpeed = 3;
         fireRate = 5;
         damage = 20;
         persistentProjectile = true;

@@ -13,7 +13,7 @@ public abstract class Enemy extends Entity {
     private static final int SIZE = 30;
     protected final Player p;
     protected Behaviour b;
-    protected int speed = 2;
+
     protected boolean canShoot;
     protected final int points;
 

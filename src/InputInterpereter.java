@@ -37,16 +37,16 @@ public class InputInterpereter {
                         System.exit(0);
                         break;
                     case KeyEvent.VK_W: // W
-                        p.setYDirection(Direction.UP);
+                        p.setDirection(Direction.UP);
                         break;
                     case KeyEvent.VK_A: // A
-                        p.setXDirection(Direction.LEFT);
+                        p.setDirection(Direction.LEFT);
                         break;
                     case KeyEvent.VK_S: // S
-                        p.setYDirection(Direction.DOWN);
+                        p.setDirection(Direction.DOWN);
                         break;
                     case KeyEvent.VK_D: // D
-                        p.setXDirection(Direction.RIGHT);
+                        p.setDirection(Direction.RIGHT);
                         break;
                     case KeyEvent.VK_E:
                         p.equipNextWeapon();
@@ -60,12 +60,16 @@ public class InputInterpereter {
             public void keyReleased(KeyEvent e) {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_W: // W
-                    case KeyEvent.VK_S: // S
-                        p.setYDirection(Direction.STILL);
+                        p.unsetDirection(Direction.UP);
                         break;
                     case KeyEvent.VK_A: // A
+                        p.unsetDirection(Direction.LEFT);
+                        break;
+                    case KeyEvent.VK_S: // S
+                        p.unsetDirection(Direction.DOWN);
+                        break;
                     case KeyEvent.VK_D: // D
-                        p.setXDirection(Direction.STILL);
+                        p.unsetDirection(Direction.RIGHT);
                         break;
                 }
             }

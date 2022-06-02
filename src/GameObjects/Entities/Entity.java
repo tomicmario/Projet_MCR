@@ -19,6 +19,7 @@ public abstract class Entity {
     protected int health;
     protected final int MAX_HEALTH;
 
+    protected int speed;
     protected Entity(int x, int y, int size, int maxHealth, Renderer r){
         this.x = x;
         this.y = y;
@@ -26,6 +27,7 @@ public abstract class Entity {
         this.MAX_HEALTH = maxHealth;
         renderer = r;
         health = MAX_HEALTH;
+        speed = 2;
     }
 
     public abstract Projectile[] attack();

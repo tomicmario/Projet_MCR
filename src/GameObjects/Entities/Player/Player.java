@@ -18,43 +18,27 @@ import java.awt.geom.Rectangle2D;
 public class Player extends Entity {
     private static final int SIZE = 10;
     protected int moves = 2;
-    protected Direction directionX;
-    protected Direction directionY;
     protected int mouseX;
     protected int mouseY;
     protected boolean mouseClicked;
     protected int currentIndex;
     protected BaseWeapon[] weapons;
+    protected int[] activeDirections;
 
     public Player(int x, int y) {
         super(x, y, SIZE, 150, new PlayerRenderer());
-        this.directionX = Direction.STILL;
-        this.directionY = Direction.STILL;
         weapons = new BaseWeapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
         currentIndex = 0;
         this.currentWeapon = weapons[currentIndex];
         mouseClicked = false;
+        activeDirections = new int[Direction.values().length];
     }
 
 
     @Override
     public void move() {
-        switch (directionX){
-            case LEFT:
-                x -= moves;
-                break;
-            case RIGHT:
-                x += moves;
-                break;
-        }
-        switch (directionY){
-            case UP:
-                y -= moves;
-                break;
-            case DOWN:
-                y += moves;
-                break;
-        }
+        x += activeDirections[Direction.RIGHT.ordinal()] - activeDirections[Direction.LEFT.ordinal()];
+        y += activeDirections[Direction.DOWN.ordinal()] - activeDirections[Direction.UP.ordinal()];
         currentWeapon.nextFrame();
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
@@ -62,12 +46,13 @@ public class Player extends Entity {
     public void setMouseClicked(boolean clicked){
         this.mouseClicked = clicked;
     }
-    public void setXDirection(Direction d){
-        directionX = d;
+
+    public void setDirection(Direction d){
+        activeDirections[d.ordinal()] = moves;
     }
 
-    public void setYDirection(Direction d){
-        directionY = d;
+    public void unsetDirection(Direction d){
+        activeDirections[d.ordinal()] = 0;
     }
 
     @Override
