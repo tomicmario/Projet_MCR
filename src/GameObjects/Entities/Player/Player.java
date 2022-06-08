@@ -22,15 +22,11 @@ public class Player extends Entity {
     protected int mouseX;
     protected int mouseY;
     protected boolean mouseClicked;
-    protected int currentIndex;
-    protected Weapon[] weapons;
     protected int[] activeDirections;
 
     public Player(int x, int y) {
         super(x, y, SIZE, 150, new EntityRenderer());
         weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
-        currentIndex = 0;
-        this.currentWeapon = weapons[currentIndex];
         mouseClicked = false;
         activeDirections = new int[Direction.values().length];
     }
@@ -40,7 +36,7 @@ public class Player extends Entity {
     public void move() {
         x += activeDirections[Direction.RIGHT.ordinal()] - activeDirections[Direction.LEFT.ordinal()];
         y += activeDirections[Direction.DOWN.ordinal()] - activeDirections[Direction.UP.ordinal()];
-        currentWeapon.nextFrame();
+        weapons[currentWeaponIndex].nextFrame();
         setAngle(Math.atan2(mouseY - y, mouseX - x));
     }
 
@@ -71,17 +67,16 @@ public class Player extends Entity {
     }
 
     public void equipNextWeapon(){
-        currentIndex++;
-        if(currentIndex >= weapons.length){
-            currentIndex = 0;
+        currentWeaponIndex++;
+        if(currentWeaponIndex >= weapons.length){
+            currentWeaponIndex = 0;
         }
-        currentWeapon = weapons[currentIndex];
     }
 
     @Override
     public Projectile[] attack() {
         if(mouseClicked) {
-            return currentWeapon.fire(x, y, mouseX, mouseY);
+            return weapons[currentWeaponIndex].fire(x, y, mouseX, mouseY);
         }
 
         return null;

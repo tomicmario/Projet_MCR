@@ -5,9 +5,7 @@ import GameObjects.Entities.Enemy.Behaviour.Behaviour;
 import GameObjects.Entities.Enemy.Behaviour.Coward;
 import GameObjects.Entities.Enemy.Behaviour.Distant;
 import GameObjects.Entities.Player.Player;
-import GameObjects.Weapons.Pistol;
-import GameObjects.Weapons.Shotgun;
-import GameObjects.Weapons.SlowShotgun;
+import GameObjects.Weapons.*;
 
 import java.awt.*;
 
@@ -17,8 +15,8 @@ public class Tank extends Enemy{
         super(x, y, 300, 300, p);
         this.behaviours = new Behaviour[]{new Aggressive(this, p), new Distant(this, p)};
         this.speed = 1;
-        this.currentWeapon = new SlowShotgun(this);
-        currentWeapon.setDelay(100);
+        this.weapons = new Weapon[]{new SlowShotgun(this), new Pistol(this)};
+        weapons[currentWeaponIndex].setDelay(100);
     }
 
     @Override
@@ -30,8 +28,10 @@ public class Tank extends Enemy{
     protected void checkBehaviourChanged() {
         if(health <= MAX_HEALTH / 4){
             currentBehaviourIndex = 1;
+            currentWeaponIndex = 1;
         } else {
             currentBehaviourIndex = 0;
+            currentWeaponIndex = 0;
         }
     }
 }

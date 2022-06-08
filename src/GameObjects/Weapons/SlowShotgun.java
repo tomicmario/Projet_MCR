@@ -8,7 +8,7 @@ public class SlowShotgun extends Shotgun {
         super(entity);
         fireRate = 120;
         damage = DAMAGE_PER_PELLET;
-        PELLET_SPREAD = Math.PI / 30;
+        PELLET_SPREAD = Math.PI / 10;
         PELLETS = 3;
         projectileSize = 10;
         projectileSpeed = 3;

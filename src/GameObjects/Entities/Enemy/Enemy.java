@@ -89,7 +89,7 @@ public abstract class Enemy extends Entity {
     public void move() {
         checkBehaviourChanged();
         setAngle();
-        currentWeapon.nextFrame();
+        weapons[currentWeaponIndex].nextFrame();
         behaviours[currentBehaviourIndex].move();
     }
 
@@ -103,7 +103,7 @@ public abstract class Enemy extends Entity {
     @Override
     public Projectile[] attack() {
         if(canShoot) {
-            return currentWeapon.fire(x, y, p.getX(), p.getY());
+            return weapons[currentWeaponIndex].fire(x, y, p.getX(), p.getY());
         }
 
         return null;

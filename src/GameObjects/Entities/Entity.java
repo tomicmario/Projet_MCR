@@ -20,7 +20,8 @@ public abstract class Entity {
     protected int health;
     protected final int MAX_HEALTH;
     protected int speed;
-    protected Weapon currentWeapon;
+    protected Weapon[] weapons;
+    protected int currentWeaponIndex = 0;
 
     /**
      * Entity Constructor. Used to initialize common values of all
@@ -158,6 +159,6 @@ public abstract class Entity {
     public abstract int getPointsWhenKilled();
 
     public Weapon getCurrentWeapon(){
-        return currentWeapon;
+        return weapons[currentWeaponIndex];
     }
 }
