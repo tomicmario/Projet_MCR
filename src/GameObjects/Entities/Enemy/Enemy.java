@@ -15,9 +15,10 @@ import java.awt.geom.Ellipse2D;
 public abstract class Enemy extends Entity {
     private static final int SIZE = 30;
     protected final Player p;
-    protected Behaviour b;
     protected boolean canShoot;
     protected final int points;
+    protected Behaviour[] behaviours;
+    protected int currentBehaviourIndex = 0;
 
     /**
      * Enemy Constructor. Used to initialize common values of all
@@ -86,11 +87,13 @@ public abstract class Enemy extends Entity {
 
     @Override
     public void move() {
+        checkBehaviourChanged();
         setAngle();
         currentWeapon.nextFrame();
-        b.move();
+        behaviours[currentBehaviourIndex].move();
     }
 
+    protected abstract void checkBehaviourChanged();
 
     @Override
     public Shape getShape() {

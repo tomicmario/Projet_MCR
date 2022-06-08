@@ -1,6 +1,9 @@
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Entities.Enemy.Behaviour.Aggressive;
+import GameObjects.Entities.Enemy.Behaviour.Behaviour;
+import GameObjects.Entities.Enemy.Behaviour.Coward;
+import GameObjects.Entities.Enemy.Behaviour.Distant;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Pistol;
 import GameObjects.Weapons.Shotgun;
@@ -12,7 +15,7 @@ public class Tank extends Enemy{
 
     public Tank(int x, int y, Player p) {
         super(x, y, 300, 300, p);
-        this.b = new Aggressive(this, p);
+        this.behaviours = new Behaviour[]{new Aggressive(this, p), new Distant(this, p)};
         this.speed = 1;
         this.currentWeapon = new SlowShotgun(this);
         currentWeapon.setDelay(100);
@@ -21,5 +24,14 @@ public class Tank extends Enemy{
     @Override
     public Color getColor() {
         return Color.GRAY;
+    }
+
+    @Override
+    protected void checkBehaviourChanged() {
+        if(health <= MAX_HEALTH / 4){
+            currentBehaviourIndex = 1;
+        } else {
+            currentBehaviourIndex = 0;
+        }
     }
 }

@@ -1,5 +1,7 @@
-package GameObjects.Entities.Enemy;
-
+import GameObjects.Entities.Enemy.Enemy;
+import GameObjects.Entities.Enemy.Grunt;
+import GameObjects.Entities.Enemy.Sniper;
+import GameObjects.Entities.Enemy.Tank;
 import GameObjects.Entities.Player.Player;
 
 import java.util.Random;

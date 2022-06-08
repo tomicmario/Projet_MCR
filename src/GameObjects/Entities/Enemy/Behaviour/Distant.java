@@ -3,11 +3,10 @@ package GameObjects.Entities.Enemy.Behaviour;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
-public class Aggressive extends Behaviour {
-    private static final int MIN_DISTANCE = 50;
-    private static final int SHOOT_DISTANCE = 200;
+public class Distant extends Behaviour {
+    private static final int MIN_DISTANCE = 300;
 
-    public Aggressive(Enemy e, Entity target){
+    public Distant(Enemy e, Entity target){
         super(e, target);
         e.setCanShoot(true);
     }
@@ -15,10 +14,13 @@ public class Aggressive extends Behaviour {
     @Override
     public void move() {
         int distance = getDistance();
-        if(distance > MIN_DISTANCE) {
-            double angle = getAngle();
+        if(distance < MIN_DISTANCE) {
+            e.setCanShoot(false);
+            double angle = getAngle() - Math.PI;
             moveEntity(getSpeedX(angle), getSpeedY(angle));
         }
-        e.setCanShoot(distance < SHOOT_DISTANCE);
+        else {
+            e.setCanShoot(true);
+        }
     }
 }

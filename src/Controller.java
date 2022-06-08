@@ -7,7 +7,6 @@
  -----------------------------------------------------------------------------------
  */
 
-import GameObjects.Entities.Enemy.*;
 import GameObjects.Entities.Entity;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Projectile;

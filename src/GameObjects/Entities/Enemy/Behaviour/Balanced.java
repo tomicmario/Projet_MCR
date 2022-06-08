@@ -17,7 +17,7 @@ public class Balanced extends Behaviour {
     public Balanced(Enemy e, Entity target){
         super(e, target);
         this.r = new Random();
-
+        e.setCanShoot(true);
     }
 
     @Override
