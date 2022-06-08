@@ -2,6 +2,8 @@ package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
 
+import java.awt.*;
+
 public class Shotgun extends Weapon {
     protected int PELLETS = 13;
     private static final int DAMAGE_PER_PELLET = 30;
@@ -24,5 +26,10 @@ public class Shotgun extends Weapon {
             projectiles[PELLETS / 2] = generateSingleProjectile(angle);
         }
         return projectiles;
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.PINK;
     }
 }

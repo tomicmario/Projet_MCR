@@ -156,4 +156,8 @@ public abstract class Entity {
      * @return The value of points of the entity when killed.
      */
     public abstract int getPointsWhenKilled();
+
+    public Weapon getCurrentWeapon(){
+        return currentWeapon;
+    }
 }

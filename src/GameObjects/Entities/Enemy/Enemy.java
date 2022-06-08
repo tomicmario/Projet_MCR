@@ -2,7 +2,7 @@ package GameObjects.Entities.Enemy;
 
 import GameObjects.Entities.Enemy.Behaviour.Behaviour;
 import GameObjects.Entities.Player.Player;
-import GameObjects.Entities.Player.PlayerRenderer;
+import GameObjects.Entities.EntityRenderer;
 import GameObjects.Entities.Entity;
 import GameObjects.Weapons.*;
 import java.awt.*;
@@ -29,7 +29,7 @@ public abstract class Enemy extends Entity {
      * @param p : Player of the game used so the enemy will track it down TODO ??
      */
     protected Enemy(int x, int y, int maxHealth, int points, Player p) {
-        super(x, y, SIZE, maxHealth, new PlayerRenderer());
+        super(x, y, SIZE, maxHealth, new EntityRenderer());
         this.p = p;
         this.canShoot = true;
         this.points = points;
@@ -80,8 +80,13 @@ public abstract class Enemy extends Entity {
         this.canShoot = canShoot;
     }
 
+    protected void setAngle(){
+        angle = Math.atan2(p.getY() - y, p.getX() - x);
+    }
+
     @Override
     public void move() {
+        setAngle();
         currentWeapon.nextFrame();
         b.move();
     }
@@ -105,4 +110,5 @@ public abstract class Enemy extends Entity {
     public int getPointsWhenKilled(){
         return points;
     }
+
 }

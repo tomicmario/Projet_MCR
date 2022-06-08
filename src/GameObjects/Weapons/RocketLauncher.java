@@ -46,4 +46,9 @@ public class RocketLauncher extends Weapon {
         projectiles[0] = p;
         return projectiles;
     }
+
+    @Override
+    public Color getColor() {
+        return Color.RED;
+    }
 }

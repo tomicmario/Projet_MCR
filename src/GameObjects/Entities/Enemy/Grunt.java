@@ -25,8 +25,7 @@ public class Grunt extends Enemy{
         if(health < MAX_HEALTH / 2 && !(b instanceof Coward)){
             b = new Coward(this, p);
         }
-        currentWeapon.nextFrame();
-        b.move();
+        super.move();
     }
 
 

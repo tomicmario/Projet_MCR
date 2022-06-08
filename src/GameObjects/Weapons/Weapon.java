@@ -1,6 +1,8 @@
 package GameObjects.Weapons;
 import GameObjects.Entities.Entity;
 
+import java.awt.*;
+
 public abstract class Weapon{
     protected Entity e;
     protected int counter;
@@ -47,4 +49,6 @@ public abstract class Weapon{
     protected Projectile generateSingleProjectile(double angle){
         return new Projectile(angle, projectileSpeed, projectileSize, damage, persistentProjectile, e);
     }
+
+    public abstract Color getColor();
 }

@@ -10,6 +10,7 @@
 package GameObjects.Entities.Player;
 
 import GameObjects.Entities.Entity;
+import GameObjects.Entities.EntityRenderer;
 import GameObjects.Weapons.*;
 
 import java.awt.*;
@@ -26,7 +27,7 @@ public class Player extends Entity {
     protected int[] activeDirections;
 
     public Player(int x, int y) {
-        super(x, y, SIZE, 150, new PlayerRenderer());
+        super(x, y, SIZE, 150, new EntityRenderer());
         weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
         currentIndex = 0;
         this.currentWeapon = weapons[currentIndex];
@@ -57,7 +58,7 @@ public class Player extends Entity {
 
     @Override
     public Color getColor() {
-        return Color.BLUE;
+        return Color.CYAN;
     }
 
     @Override

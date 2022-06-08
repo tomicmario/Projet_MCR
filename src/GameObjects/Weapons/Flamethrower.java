@@ -22,7 +22,7 @@ public class Flamethrower extends Weapon {
             public void move() {
                 super.move();
                 size++;
-                damage = damage == 1 ? damage : damage - 1;
+                damage = damage == 3 ? damage : damage - 1;
             }
 
             @Override
@@ -33,6 +33,11 @@ public class Flamethrower extends Weapon {
         Projectile[] projectiles = new Projectile[1];
         projectiles[0] = p;
         return projectiles;
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.BLUE;
     }
 
 }
