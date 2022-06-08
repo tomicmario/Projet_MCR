@@ -8,19 +8,76 @@ import GameObjects.Weapons.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
+
+/**
+ * Abstract class defining the Enemies of the game. Inherits of Entity.
+ */
 public abstract class Enemy extends Entity {
     private static final int SIZE = 30;
     protected final Player p;
     protected Behaviour b;
-
     protected boolean canShoot;
     protected final int points;
 
+    /**
+     * Enemy Constructor. Used to initialize common values of all
+     * classes that inherits of Enemy.
+     * @param x : Position x of the enemy.
+     * @param y : Position y of the enemy.
+     * @param maxHealth : Maximum health of the enemy.
+     * @param points : Value of points of the enemy the player gets when killed.
+     * @param p : Player of the game used so the enemy will track it down TODO ??
+     */
     protected Enemy(int x, int y, int maxHealth, int points, Player p) {
         super(x, y, SIZE, maxHealth, new PlayerRenderer());
         this.p = p;
         this.canShoot = true;
         this.points = points;
+    }
+
+
+    /**
+     *
+     * @param x : The x position of the enemy to be set.
+     * @param y : The y position of the enemy to be set.
+     */
+    public void setCoordinates(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     *
+     * @return The speed of the enemy.
+     */
+    public int getSpeed(){
+        return speed;
+    }
+
+    /**
+     *
+     * @param x : The position x of the enemy we want to set.
+     */
+    public void setX(int x){
+        this.x = x;
+    }
+
+    /**
+     *
+     * @param y : The position y of the enemy we want to set.
+     */
+    public void setY(int y){
+        this.y = y;
+    }
+
+
+    /**
+     * Sets if an enemy can shoot or not.
+     *
+     * @param canShoot : the boolean value to set if the enemy can shoot or not.
+     */
+    public void setCanShoot(boolean canShoot){
+        this.canShoot = canShoot;
     }
 
     @Override
@@ -35,23 +92,6 @@ public abstract class Enemy extends Entity {
         return new Ellipse2D.Double(x, y, size, size);
     }
 
-    public void setCoordinates(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getSpeed(){
-        return speed;
-    }
-
-    public void setX(int x){
-        this.x = x;
-    }
-
-    public void setY(int y){
-        this.y = y;
-    }
-
     @Override
     public Projectile[] attack() {
         if(canShoot) {
@@ -59,10 +99,6 @@ public abstract class Enemy extends Entity {
         }
 
         return null;
-    }
-
-    public void setCanShoot(boolean canShoot){
-        this.canShoot = canShoot;
     }
 
     @Override
