@@ -92,7 +92,7 @@ public class Player extends Entity {
     }
 
     @Override
-    public int getPoints(){
+    public int getPointsWhenKilled(){
         return 0;
     }
 

@@ -5,7 +5,6 @@ import GameObjects.Entities.Player.Player;
 import GameObjects.Entities.Player.PlayerRenderer;
 import GameObjects.Entities.Entity;
 import GameObjects.Weapons.*;
-
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
@@ -67,7 +66,7 @@ public abstract class Enemy extends Entity {
     }
 
     @Override
-    public int getPoints(){
+    public int getPointsWhenKilled(){
         return points;
     }
 }

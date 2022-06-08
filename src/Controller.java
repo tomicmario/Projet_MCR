@@ -8,7 +8,6 @@
  */
 
 import GameObjects.Entities.Enemy.*;
-import GameObjects.Entities.Player.Direction;
 import GameObjects.Entities.Entity;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Projectile;
@@ -16,7 +15,6 @@ import View.GameDisplay;
 import View.GameOverScreen;
 
 import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -111,7 +109,7 @@ public class Controller {
         while (it.hasNext()) {
             Entity entity = it.next();
             if (!entity.isAlive()) {
-                score += entity.getPoints();
+                score += entity.getPointsWhenKilled();
                 it.remove();
             }
         }
