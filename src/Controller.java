@@ -43,7 +43,6 @@ public class Controller {
         p = new Player(WIDTH/2, HEIGHT / 2);
         sd = new SpawnDirector(entities, new EnemyFactory(0, 0, WIDTH, HEIGHT, p));
         entities.add(p);
-
         new InputInterpereter(p, gameDisplay).InitialiseInputListeners();
     }
 

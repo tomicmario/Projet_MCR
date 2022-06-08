@@ -2,7 +2,7 @@ package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
 
-public class Shotgun extends BaseWeapon {
+public class Shotgun extends Weapon {
     protected int PELLETS = 13;
     private static final int DAMAGE_PER_PELLET = 30;
     protected double PELLET_SPREAD = Math.PI / 24;

@@ -3,7 +3,7 @@ package GameObjects.Entities.Enemy.Behaviour;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
-public class Coward extends PlayerFocusedBehaviour{
+public class Coward extends Behaviour {
 
     public Coward(Enemy e, Entity target){
         super(e, target);

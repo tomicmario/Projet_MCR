@@ -5,7 +5,7 @@ import GameObjects.Entities.Entity;
 
 import java.util.Random;
 
-public class Balanced extends PlayerFocusedBehaviour {
+public class Balanced extends Behaviour {
     private final int TOLERABLE_DISTANCE_CLOSE = 150;
     private final int TOLERABLE_DISTANCE_FAR = 200;
     private final int TIME_UNTIL_REFRESH = 15;

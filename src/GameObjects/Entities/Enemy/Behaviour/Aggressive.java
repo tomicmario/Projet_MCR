@@ -3,7 +3,7 @@ package GameObjects.Entities.Enemy.Behaviour;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
-public class Aggressive extends PlayerFocusedBehaviour {
+public class Aggressive extends Behaviour {
     private static final int MIN_DISTANCE = 50;
     private static final int SHOOT_DISTANCE = 200;
 

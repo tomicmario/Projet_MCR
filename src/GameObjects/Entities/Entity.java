@@ -2,7 +2,7 @@ package GameObjects.Entities;
 
 import GameObjects.Renderer;
 import GameObjects.Weapons.Projectile;
-import GameObjects.Weapons.BaseWeapon;
+import GameObjects.Weapons.Weapon;
 import View.Displayer;
 import java.awt.*;
 import java.awt.Shape;
@@ -20,7 +20,7 @@ public abstract class Entity {
     protected int health;
     protected final int MAX_HEALTH;
     protected int speed;
-    protected BaseWeapon currentWeapon;
+    protected Weapon currentWeapon;
 
     /**
      * Entity Constructor. Used to initialize common values of all

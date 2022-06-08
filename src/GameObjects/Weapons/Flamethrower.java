@@ -4,7 +4,7 @@ import GameObjects.Entities.Entity;
 
 import java.awt.*;
 
-public class Flamethrower extends BaseWeapon {
+public class Flamethrower extends Weapon {
     public Flamethrower(Entity entity) {
         super(entity);
         projectileSpeed = 3;
