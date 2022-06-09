@@ -26,11 +26,7 @@ public class RocketLauncher extends Weapon {
             }
 
             @Override
-            public boolean isActive(){
-                return timeToLive > 0;
-            }
-            @Override
-            public void setActive(boolean isActive){
+            public void setInactive(){
                 speedX = 0;
                 speedY = 0;
                 persistent = true;

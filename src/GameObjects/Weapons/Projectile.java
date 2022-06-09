@@ -14,7 +14,6 @@ public class Projectile {
     protected int y;
     protected int size;
     protected double angle;
-    protected boolean isActive;
     protected int damage;
     protected final Entity shooter;
     protected boolean persistent;
@@ -29,7 +28,6 @@ public class Projectile {
         speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));
         speedY = (int)(SPEED * Math.sin(angle) + SPEED * Math.cos(angle));
         this.damage = damage;
-        isActive = true;
         this.shooter = e;
         this.persistent = persistent;
         this.timeToLive = timeToLive;
@@ -44,7 +42,6 @@ public class Projectile {
         speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));
         speedY = (int)(SPEED * Math.sin(angle) + SPEED * Math.cos(angle));
         this.damage = damage;
-        isActive = true;
         this.shooter = e;
         this.persistent = persistent;
         this.timeToLive = 300;
@@ -54,9 +51,6 @@ public class Projectile {
         x += speedX;
         y += speedY;
         timeToLive--;
-        if(timeToLive <= 0){
-            isActive = false;
-        }
     }
 
     public Color getColor() {
@@ -84,12 +78,12 @@ public class Projectile {
         g.fill(getShape());
         g.draw(getShape());
     }
-    public void setActive(boolean isActive){
-        this.isActive = isActive;
+    public void setInactive(){
+        timeToLive = 0;
     }
 
     public boolean isActive(){
-        return isActive;
+        return timeToLive > 0;
     }
 
     public int getSize(){

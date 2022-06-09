@@ -95,7 +95,7 @@ public class Controller {
             if(e != p.getShooter() && checkCollision(p, e)) {
                 e.damage(p.getDamage());
                 if(!p.isPersistent()) {
-                    p.setActive(false);
+                    p.setInactive();
                     break;
                 }
             }
