@@ -12,8 +12,10 @@ public class Coward extends Behaviour {
     @Override
     public void move() {
         int distance = getDistance();
-        double angle = getAngle() - Math.PI;
-        moveEntity(getSpeedX(angle), getSpeedY(angle));
+        if(distance < MIN_DISTANCE) {
+            double angle = getAngle() - Math.PI;
+            moveEntity(getSpeedX(angle), getSpeedY(angle));
+        }
         e.setCanShoot(MIN_DISTANCE < distance);
     }
 }
