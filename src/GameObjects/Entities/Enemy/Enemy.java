@@ -82,12 +82,21 @@ public abstract class Enemy extends Entity {
     /**
      * Sets the angle for the entity used to move to (used in move()).
      */
-    protected void setAngle() {
+    protected void setAngle(){
         angle = Math.atan2(p.getY() - y, p.getX() - x);
     }
 
     @Override
-    public void move() {
+    public Projectile[] attack(){
+        if(canShoot) {
+            return weapons[currentWeaponIndex].fire(x, y, p.getX(), p.getY());
+        }
+
+        return null;
+    }
+
+    @Override
+    public void move(){
         checkBehaviourChanged();
         setAngle();
         weapons[currentWeaponIndex].nextFrame();
@@ -95,17 +104,8 @@ public abstract class Enemy extends Entity {
     }
 
     @Override
-    public Shape getShape() {
+    public Shape getShape(){
         return new Ellipse2D.Double(x, y, size, size);
-    }
-
-    @Override
-    public Projectile[] attack() {
-        if(canShoot) {
-            return weapons[currentWeaponIndex].fire(x, y, p.getX(), p.getY());
-        }
-
-        return null;
     }
 
     @Override
