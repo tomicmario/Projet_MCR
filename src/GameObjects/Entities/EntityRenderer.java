@@ -10,7 +10,6 @@
 package GameObjects.Entities;
 
 import GameObjects.Renderer;
-
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;

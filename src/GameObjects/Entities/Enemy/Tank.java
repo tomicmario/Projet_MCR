@@ -3,25 +3,29 @@ package GameObjects.Entities.Enemy;
 import GameObjects.Entities.Enemy.Behaviour.Aggressive;
 import GameObjects.Entities.Enemy.Behaviour.Behaviour;
 import GameObjects.Entities.Enemy.Behaviour.Coward;
-import GameObjects.Entities.Enemy.Behaviour.Distant;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.*;
-
 import java.awt.*;
 
+/**
+ * Tank class that creates snipers. A more sophisticated enemy of the game.
+ * Inherits of Enemy.
+ */
 public class Tank extends Enemy{
 
+    /**
+     * Constructor of the class used to initialize the tanks in the game.
+     *
+     * @param x : The position x of the tanks.
+     * @param y : The position y of the tanks.
+     * @param p : The player on which the tank will focus his attacks.
+     */
     public Tank(int x, int y, Player p) {
         super(x, y, 300, 300, p);
         this.behaviours = new Behaviour[]{new Aggressive(this, p), new Coward(this, p)};
         this.speed = 1;
         this.weapons = new Weapon[]{new SlowShotgun(this), new Heal(this)};
         weapons[currentWeaponIndex].setDelay(100);
-    }
-
-    @Override
-    public Color getColor() {
-        return Color.GRAY;
     }
 
     @Override
@@ -36,5 +40,10 @@ public class Tank extends Enemy{
             currentBehaviourIndex = 0;
             currentWeaponIndex = 0;
         }
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.GRAY;
     }
 }

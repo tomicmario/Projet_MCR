@@ -8,7 +8,6 @@ import GameObjects.Weapons.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
-
 /**
  * Abstract class defining the Enemies of the game. Inherits of Entity.
  */
@@ -28,7 +27,7 @@ public abstract class Enemy extends Entity {
      * @param y : Position y of the enemy.
      * @param maxHealth : Maximum health of the enemy.
      * @param points : Value of points of the enemy the player gets when killed.
-     * @param p : Player of the game used so the enemy will track it down TODO ??
+     * @param p : The player on which the enemy will focus his attacks.
      */
     protected Enemy(int x, int y, int maxHealth, int points, Player p){
         super(x, y, SIZE, maxHealth, new EntityRenderer());

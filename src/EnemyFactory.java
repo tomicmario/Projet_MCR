@@ -24,7 +24,7 @@ public class EnemyFactory {
      * @param minY : The min position y on where the enemy is created.
      * @param maxX : The max position x on where the enemy is created.
      * @param maxY : The max position y on where the enemy is created.
-     * @param p : The player on which the enemy will focus.
+     * @param p : The player on which the enemy will focus his attacks.
      */
     public EnemyFactory(int minX, int minY, int maxX, int maxY, Player p){
         this.minX = minX;
