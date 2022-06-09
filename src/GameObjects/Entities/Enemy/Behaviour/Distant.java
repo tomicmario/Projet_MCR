@@ -8,19 +8,14 @@ public class Distant extends Behaviour {
 
     public Distant(Enemy e, Entity target){
         super(e, target);
-        e.setCanShoot(true);
     }
 
     @Override
     public void move() {
         int distance = getDistance();
         if(distance < MIN_DISTANCE) {
-            e.setCanShoot(false);
             double angle = getAngle() - Math.PI;
             moveEntity(getSpeedX(angle), getSpeedY(angle));
-        }
-        else {
-            e.setCanShoot(true);
         }
     }
 }

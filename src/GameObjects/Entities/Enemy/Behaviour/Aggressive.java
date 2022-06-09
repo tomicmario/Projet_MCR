@@ -9,11 +9,11 @@ public class Aggressive extends Behaviour {
 
     public Aggressive(Enemy e, Entity target){
         super(e, target);
-        e.setCanShoot(true);
     }
 
     @Override
     public void move() {
+        e.setCanShoot(true);
         int distance = getDistance();
         if(distance > MIN_DISTANCE) {
             double angle = getAngle();
