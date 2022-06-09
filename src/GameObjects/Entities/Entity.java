@@ -46,7 +46,7 @@ public abstract class Entity {
      *  Displays the entity on the game.
      * @param view
      */
-    public void draw(Displayer view) {
+    public void draw(Displayer view){
         renderer.display(view.getGraphics(), this);
     }
 
@@ -125,6 +125,14 @@ public abstract class Entity {
     }
 
     /**
+     *
+     * @return the current weapon used by the entity.
+     */
+    public Weapon getCurrentWeapon(){
+        return weapons[currentWeaponIndex];
+    }
+
+    /**
      * Attack function redefined in the classes that inherits of Entity.
      *
      * @return An array containing all the projectiles used during the attack.
@@ -158,7 +166,4 @@ public abstract class Entity {
      */
     public abstract int getPointsWhenKilled();
 
-    public Weapon getCurrentWeapon(){
-        return weapons[currentWeaponIndex];
-    }
 }
