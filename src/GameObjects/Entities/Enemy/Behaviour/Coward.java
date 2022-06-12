@@ -7,7 +7,6 @@ import GameObjects.Entities.Entity;
 public class Coward extends Behaviour {
     private static final int MIN_DISTANCE = 300;
 
-
     public Coward(Enemy e, Entity target){
         super(e, target);
     }
@@ -18,7 +17,7 @@ public class Coward extends Behaviour {
 
         if(distance < MIN_DISTANCE) {
             double angle = getAngle() - Math.PI;
-            moveEntity(getSpeedX(angle), getSpeedY(angle));
+            moveEntity(getSpeedX(angle) * 2, getSpeedY(angle) * 2);
         }
         e.setCanShoot(MIN_DISTANCE < distance);
     }

@@ -113,7 +113,11 @@ public abstract class Entity {
      * @return The ratio of health of the entity.
      */
     public double getHealthRatio(){
-        return (double)health / MAX_HEALTH;
+        if(health != MAX_HEALTH){
+            double test =(double)health / (double)MAX_HEALTH;
+            test++;
+        }
+        return (double)health / (double)MAX_HEALTH;
     }
 
     /**

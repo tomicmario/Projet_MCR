@@ -21,7 +21,7 @@ public class Sniper extends Enemy {
      */
     public Sniper(int x, int y, Player p){
         super(x, y, 100, 100, p);
-        this.behaviours = new Behaviour[]{new Balanced(this, p), new Distant(this, p)};
+        this.behaviours = new Behaviour[]{new Balanced(this, p), new Teleporting(this, p)};
         this.weapons = new Weapon[]{new Pistol(this)};
         this.speed = 2;
         weapons[currentWeaponIndex].setDelay(100);
@@ -29,7 +29,7 @@ public class Sniper extends Enemy {
 
     @Override
     protected void checkBehaviourChanged(){
-        if(health != MAX_HEALTH){
+        if(getHealthRatio() <= 0.25){
             currentBehaviourIndex = 1;
         }
     }
