@@ -7,7 +7,7 @@ import java.awt.*;
 public class RocketLauncher extends Weapon {
     public RocketLauncher(Entity entity){
         super(entity);
-        fireRate = 60;
+        fireRate = 30;
         damage = 50;
     }
 
@@ -30,12 +30,20 @@ public class RocketLauncher extends Weapon {
                 speedX = 0;
                 speedY = 0;
                 persistent = true;
-                timeToLive = 5;
+                timeToLive = 6;
                 size = 10;
             }
             @Override
             public Color getColor(){
                 return persistent ? Color.ORANGE : Color.BLACK;
+            }
+
+            @Override
+            public Entity getShooter(){
+                if(persistent){
+                    return null;
+                }
+                return shooter;
             }
         };
         Projectile[] projectiles = new Projectile[1];
