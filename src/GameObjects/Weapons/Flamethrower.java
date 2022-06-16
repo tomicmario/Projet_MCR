@@ -3,15 +3,17 @@ package GameObjects.Weapons;
 import GameObjects.Entities.Entity;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 public class Flamethrower extends Weapon {
     public Flamethrower(Entity entity) {
         super(entity);
-        projectileSpeed = 3;
+        projectileSpeed = 2;
+        projectileSize = 1;
         fireRate = 5;
         damage = 20;
         persistentProjectile = true;
-        projectileTimeToLive = 45;
+        projectileTimeToLive = 40;
     }
 
     @Override
@@ -21,7 +23,7 @@ public class Flamethrower extends Weapon {
             @Override
             public void move() {
                 super.move();
-                size++;
+                radius++;
                 damage = damage == 3 ? damage : damage - 1;
             }
 

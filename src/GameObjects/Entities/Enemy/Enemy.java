@@ -12,7 +12,7 @@ import java.awt.geom.Ellipse2D;
  * Abstract class defining the Enemies of the game. Inherits of Entity.
  */
 public abstract class Enemy extends Entity {
-    private static final int SIZE = 30;
+    private static final int RADIUS = 15;
     protected final Player p;
     protected boolean canShoot;
     protected final int points;
@@ -30,7 +30,7 @@ public abstract class Enemy extends Entity {
      * @param p : The player on which the enemy will focus his attacks.
      */
     protected Enemy(int x, int y, int maxHealth, int points, Player p){
-        super(x, y, SIZE, maxHealth, new EntityRenderer());
+        super(x, y, RADIUS, maxHealth, new EntityRenderer());
         this.p = p;
         this.canShoot = true;
         this.points = points;
@@ -105,7 +105,7 @@ public abstract class Enemy extends Entity {
 
     @Override
     public Shape getShape(){
-        return new Ellipse2D.Double(x, y, size, size);
+        return new Ellipse2D.Double(x, y, radius * 2, radius * 2);
     }
 
     @Override

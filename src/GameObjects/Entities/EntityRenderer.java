@@ -41,15 +41,15 @@ public class EntityRenderer implements Renderer {
     }
 
     private void makeHealthBar(Graphics2D g, Entity b){
-        g.translate(-b.getSize() * 2 / 3, -10);
-        int width = (int)(b.getSize() * 2 * b.getHealthRatio());
+        g.translate(-b.getRadius() * 2 / 3, -10);
+        int width = (int)(b.getRadius() * 2 * b.getHealthRatio());
         int height = 3;
         Rectangle2D bar = new Rectangle2D.Double(b.getX(), b.getY(), width, height);
-        Color c = width < b.getSize() ? Color.RED : Color.GREEN;
+        Color c = width < b.getRadius() ? Color.RED : Color.GREEN;
         g.setColor(c);
         g.fill(bar);
         g.draw(bar);
-        g.translate(b.getSize() * 2 / 3, 10);
+        g.translate(b.getRadius() * 2 / 3, 10);
     }
 
     private void displayWeapon(Graphics2D g, Entity b){
@@ -63,7 +63,7 @@ public class EntityRenderer implements Renderer {
         g.translate(-cx - b.getX(), -cy -b.getY());
 
         g.translate(-5, 0);
-        Rectangle2D bar = new Rectangle2D.Double(b.getX(), b.getY(), 5, b.getSize());
+        Rectangle2D bar = new Rectangle2D.Double(b.getX(), b.getY(), 5, b.getRadius());
         g.setColor(b.getCurrentWeapon().getColor());
         g.fill(bar);
         g.draw(bar);

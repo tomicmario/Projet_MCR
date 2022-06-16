@@ -117,21 +117,25 @@ public class Controller {
 
 
     private boolean checkCollision(Projectile p, Entity e){
-        int x1 = p.getX() + p.getSize() / 2;
-        int y1 = p.getY() + p.getSize() / 2;
-        int x2 = e.getX() + e.getSize() / 2;
-        int y2 = e.getY() + e.getSize() / 2;
+        int x1 = p.getX() + p.getRadius();
+        int y1 = p.getY() + p.getRadius();
+        int x2 = e.getX() + e.getRadius();
+        int y2 = e.getY() + e.getRadius();
         double distance = Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
 
-        return distance < p.getSize() / 2.0 + e.getSize() / 2.0;
+        return distance < p.getRadius() + e.getRadius();
     }
 
     private void correctPosition(Entity e){
-        if(e.getX() >= WIDTH - e.getSize() || e.getX() <= 0) {
-            e.setX(e.getX() <= 0 ? 0 : WIDTH - e.getSize());
+        if(e.getX() < 0) {
+            e.setX(0);
+        } else if (e.getX() >= WIDTH - 2 * e.getRadius()){
+            e.setX(WIDTH - 2 * e.getRadius());
         }
-        if(e.getY() >= HEIGHT - e.getSize() || e.getY() <= 0) {
-            e.setY(e.getY() <= 0 ? 0 : HEIGHT - e.getSize());
+        if(e.getY() < 0) {
+            e.setY(0);
+        } else if (e.getY() >= HEIGHT - 2 * e.getRadius()){
+            e.setY(HEIGHT - 2 * e.getRadius());
         }
     }
 

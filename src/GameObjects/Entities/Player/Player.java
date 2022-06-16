@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
  * Inherits of Entity.
  */
 public class Player extends Entity {
-    private static final int SIZE = 10;
+    private static final int RADIUS = 5;
     protected int moves = 2;
     protected int mouseX;
     protected int mouseY;
@@ -25,7 +25,7 @@ public class Player extends Entity {
      * @param y
      */
     public Player(int x, int y){
-        super(x, y, SIZE, 150, new EntityRenderer());
+        super(x, y, RADIUS, 150, new EntityRenderer());
         weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
         mouseClicked = false;
         activeDirections = new int[Direction.values().length];
@@ -95,7 +95,7 @@ public class Player extends Entity {
 
     @Override
     public Shape getShape(){
-        return new Rectangle2D.Double(x, y, size, size);
+        return new Rectangle2D.Double(x, y, radius * 2, radius * 2);
     }
 
 

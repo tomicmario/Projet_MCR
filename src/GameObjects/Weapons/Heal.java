@@ -21,7 +21,7 @@ public class Heal extends Weapon{
             @Override
             public void move() {
                 super.move();
-                size += 3;
+                radius += 3;
             }
 
             @Override

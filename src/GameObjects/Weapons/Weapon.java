@@ -16,7 +16,7 @@ public abstract class Weapon{
     protected Weapon(Entity e){
         this.e = e;
         fireRate = 20;
-        projectileSize = 5;
+        projectileSize = 4;
         projectileSpeed = 5;
         damage = 25;
         persistentProjectile = false;
@@ -47,7 +47,7 @@ public abstract class Weapon{
     }
 
     protected Projectile generateSingleProjectile(double angle){
-        return new Projectile(angle, projectileSpeed, projectileSize, damage, persistentProjectile, e);
+        return new Projectile(angle, projectileSpeed, projectileSize, damage, persistentProjectile, e, projectileTimeToLive);
     }
 
     public abstract Color getColor();

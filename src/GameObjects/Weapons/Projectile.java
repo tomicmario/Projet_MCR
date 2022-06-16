@@ -12,7 +12,7 @@ public class Projectile {
     protected int speedY;
     protected int x;
     protected int y;
-    protected int size;
+    protected int radius;
     protected double angle;
     protected int damage;
     protected final Entity shooter;
@@ -20,9 +20,9 @@ public class Projectile {
     protected int timeToLive;
 
     public Projectile(double angle, int speed, int size, int damage, boolean persistent, Entity e, int timeToLive) {
-        this.x = e.getX();
-        this.y = e.getY();
-        this.size = size;
+        this.x = e.getX() + e.getRadius();
+        this.y = e.getY() + e.getRadius();
+        this.radius = size;
         this.SPEED = speed;
         this.angle = angle;
         speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));
@@ -31,20 +31,6 @@ public class Projectile {
         this.shooter = e;
         this.persistent = persistent;
         this.timeToLive = timeToLive;
-    }
-
-    public Projectile(double angle, int speed, int size, int damage, boolean persistent, Entity e) {
-        this.x = e.getX();
-        this.y = e.getY();
-        this.size = size;
-        this.SPEED = speed;
-        this.angle = angle;
-        speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));
-        speedY = (int)(SPEED * Math.sin(angle) + SPEED * Math.cos(angle));
-        this.damage = damage;
-        this.shooter = e;
-        this.persistent = persistent;
-        this.timeToLive = 300;
     }
 
     public void move() {
@@ -58,7 +44,7 @@ public class Projectile {
     }
 
     public Shape getShape() {
-        return new Ellipse2D.Double(x - size /2.0, y  - size /2.0, size, size);
+        return new Ellipse2D.Double(x, y, radius, radius);
     }
 
     public void draw(Displayer view) {
@@ -86,8 +72,8 @@ public class Projectile {
         return timeToLive > 0;
     }
 
-    public int getSize(){
-        return size;
+    public int getRadius(){
+        return radius;
     }
 
     public int getDamage(){

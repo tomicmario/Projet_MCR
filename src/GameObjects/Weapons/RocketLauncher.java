@@ -21,7 +21,7 @@ public class RocketLauncher extends Weapon {
                 y += speedY;
                 timeToLive--;
                 if(persistent){
-                    size += 10;
+                    radius += 10;
                 }
             }
 
@@ -31,7 +31,7 @@ public class RocketLauncher extends Weapon {
                 speedY = 0;
                 persistent = true;
                 timeToLive = 6;
-                size = 10;
+                radius = 10;
             }
             @Override
             public Color getColor(){

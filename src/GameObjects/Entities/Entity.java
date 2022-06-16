@@ -14,7 +14,7 @@ public abstract class Entity {
 
     protected int x;
     protected int y;
-    protected int size;
+    protected int radius;
     protected double angle = 0;
     protected Renderer renderer;
     protected int health;
@@ -35,7 +35,7 @@ public abstract class Entity {
     protected Entity(int x, int y, int size, int maxHealth, Renderer r){
         this.x = x;
         this.y = y;
-        this.size = size;
+        this.radius = size;
         this.MAX_HEALTH = maxHealth;
         renderer = r;
         health = MAX_HEALTH;
@@ -54,8 +54,8 @@ public abstract class Entity {
      *
      * @return The size of the entity.
      */
-    public int getSize(){
-        return size;
+    public int getRadius(){
+        return radius;
     }
 
     /**
@@ -113,10 +113,6 @@ public abstract class Entity {
      * @return The ratio of health of the entity.
      */
     public double getHealthRatio(){
-        if(health != MAX_HEALTH){
-            double test =(double)health / (double)MAX_HEALTH;
-            test++;
-        }
         return (double)health / (double)MAX_HEALTH;
     }
 
