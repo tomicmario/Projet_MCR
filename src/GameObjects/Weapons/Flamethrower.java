@@ -8,12 +8,12 @@ import java.awt.geom.Ellipse2D;
 public class Flamethrower extends Weapon {
     public Flamethrower(Entity entity) {
         super(entity);
-        projectileSpeed = 2;
-        projectileSize = 1;
-        fireRate = 5;
+        projectileSpeed = 3;
+        projectileSize = 2;
+        fireRate = 3;
         damage = 20;
         persistentProjectile = true;
-        projectileTimeToLive = 40;
+        projectileTimeToLive = 30;
     }
 
     @Override
