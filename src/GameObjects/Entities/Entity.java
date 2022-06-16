@@ -1,5 +1,6 @@
 package GameObjects.Entities;
 
+import GameObjects.Coordinates;
 import GameObjects.Renderer;
 import GameObjects.Weapons.Projectile;
 import GameObjects.Weapons.Weapon;
@@ -165,5 +166,19 @@ public abstract class Entity {
      * @return The value of points of the entity when killed.
      */
     public abstract int getPointsWhenKilled();
+
+    public Coordinates getCoordinates(){
+        return new Coordinates() {
+            @Override
+            public int getX() {
+                return x;
+            }
+
+            @Override
+            public int getY() {
+                return y;
+            }
+        };
+    }
 
 }

@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Behaviour.Aggressive;
 import GameObjects.Entities.Enemy.Behaviour.Behaviour;
 import GameObjects.Entities.Player.Player;
@@ -21,7 +22,7 @@ public class Grunt extends Enemy {
      * @param y : The position y of the grunt.
      * @param p : The player on which the grunt will focus his attacks.
      */
-    public Grunt(int x, int y, Player p){
+    public Grunt(int x, int y, Coordinates p){
         super(x, y, 100, 100, p);
         this.behaviours = new Behaviour[]{new Aggressive(this, p)};
         this.weapons = new Weapon[]{new Flamethrower(this)};

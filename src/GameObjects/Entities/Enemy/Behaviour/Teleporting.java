@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy.Behaviour;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
@@ -23,7 +24,7 @@ public class Teleporting extends Behaviour {
      * @param e : The enemy on which we affect the distant behaviour.
      * @param target : The player on which the enemy will have the distant behaviour.
      */
-    public Teleporting(Enemy e, Entity target){
+    public Teleporting(Enemy e, Coordinates target){
         super(e, target);
         counter = TIME_UNTIL_REFRESH;
     }

@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy.Behaviour;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 import java.util.Random;
@@ -22,7 +23,7 @@ public class Balanced extends Behaviour {
      * @param e : The enemy on which we affect the balanced behaviour.
      * @param target : The player on which the enemy will have the balanced behaviour.
      */
-    public Balanced(Enemy e, Entity target){
+    public Balanced(Enemy e, Coordinates target){
         super(e, target);
     }
 

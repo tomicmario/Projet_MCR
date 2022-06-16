@@ -19,6 +19,7 @@ public class Player extends Entity {
     protected boolean mouseClicked;
     protected int[] activeDirections;
 
+
     /**
      *
      * @param x

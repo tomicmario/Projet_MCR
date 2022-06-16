@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Behaviour.*;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Pistol;
@@ -19,7 +20,7 @@ public class Sniper extends Enemy {
      * @param y : The position y of the sniper.
      * @param p : The player on which the sniper will focus his attacks.
      */
-    public Sniper(int x, int y, Player p){
+    public Sniper(int x, int y, Coordinates p){
         super(x, y, 100, 100, p);
         this.behaviours = new Behaviour[]{new Balanced(this, p), new Teleporting(this, p)};
         this.weapons = new Weapon[]{new Pistol(this)};

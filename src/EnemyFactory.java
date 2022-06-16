@@ -63,7 +63,7 @@ public class EnemyFactory {
      * @return An enemy, more specifically a grunt.
      */
     public Enemy generateGrunt(int x, int y){
-        return new Grunt(x, y, p);
+        return new Grunt(x, y, p.getCoordinates());
     }
 
     /**
@@ -74,7 +74,7 @@ public class EnemyFactory {
      * @return An enemy, more specifically a sniper.
      */
     public Enemy generateSniper(int x, int y){
-        return new Sniper(x, y, p);
+        return new Sniper(x, y, p.getCoordinates());
     }
 
     /**
@@ -85,6 +85,6 @@ public class EnemyFactory {
      * @return An enemy, more specifically a tank.
      */
     public Enemy generateTank(int x, int y){
-        return new Tank(x,y,p);
+        return new Tank(x,y,p.getCoordinates());
     }
 }

@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy.Behaviour;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
@@ -18,7 +19,7 @@ public class Aggressive extends Behaviour {
      * @param e : The enemy on which we affect the aggressive behaviour.
      * @param target : The player on which the enemy will have the aggressive behaviour.
      */
-    public Aggressive(Enemy e, Entity target){
+    public Aggressive(Enemy e, Coordinates target){
         super(e, target);
     }
 

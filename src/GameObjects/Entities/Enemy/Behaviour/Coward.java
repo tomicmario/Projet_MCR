@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy.Behaviour;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
@@ -7,7 +8,7 @@ import GameObjects.Entities.Entity;
 public class Coward extends Behaviour {
     private static final int MIN_DISTANCE = 300;
 
-    public Coward(Enemy e, Entity target){
+    public Coward(Enemy e, Coordinates target){
         super(e, target);
     }
 

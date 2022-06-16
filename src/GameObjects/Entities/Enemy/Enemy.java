@@ -1,7 +1,7 @@
 package GameObjects.Entities.Enemy;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Behaviour.Behaviour;
-import GameObjects.Entities.Player.Player;
 import GameObjects.Entities.EntityRenderer;
 import GameObjects.Entities.Entity;
 import GameObjects.Weapons.*;
@@ -13,7 +13,7 @@ import java.awt.geom.Ellipse2D;
  */
 public abstract class Enemy extends Entity {
     private static final int RADIUS = 15;
-    protected final Player p;
+    protected final Coordinates target;
     protected boolean canShoot;
     protected final int points;
     protected Behaviour[] behaviours;
@@ -29,9 +29,9 @@ public abstract class Enemy extends Entity {
      * @param points : Value of points of the enemy the player gets when killed.
      * @param p : The player on which the enemy will focus his attacks.
      */
-    protected Enemy(int x, int y, int maxHealth, int points, Player p){
+    protected Enemy(int x, int y, int maxHealth, int points, Coordinates target){
         super(x, y, RADIUS, maxHealth, new EntityRenderer());
-        this.p = p;
+        this.target = target;
         this.canShoot = true;
         this.points = points;
     }
@@ -83,13 +83,13 @@ public abstract class Enemy extends Entity {
      * Sets the angle for the entity used to move to (used in move()).
      */
     protected void setAngle(){
-        angle = Math.atan2(p.getY() - y, p.getX() - x);
+        angle = Math.atan2(target.getY() - y, target.getX() - x);
     }
 
     @Override
     public Projectile[] attack(){
         if(canShoot) {
-            return weapons[currentWeaponIndex].fire(x, y, p.getX(), p.getY());
+            return weapons[currentWeaponIndex].fire(x, y, target.getX(), target.getY());
         }
 
         return null;

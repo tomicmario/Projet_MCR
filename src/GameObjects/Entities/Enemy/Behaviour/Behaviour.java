@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy.Behaviour;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Entity;
 
@@ -8,7 +9,7 @@ import GameObjects.Entities.Entity;
  */
 public abstract class Behaviour {
     protected final Enemy e;
-    protected final Entity target;
+    protected final Coordinates target;
 
     /**
      * Behaviour Constructor. Used to initialize common values of all
@@ -17,7 +18,7 @@ public abstract class Behaviour {
      * @param e : The enemy on which we affect the behaviour.
      * @param target : The player on which the enemy will behave depending on the behaviour.
      */
-    protected Behaviour(Enemy e, Entity target){
+    protected Behaviour(Enemy e, Coordinates target){
         this.e = e;
         this.target = target;
     }

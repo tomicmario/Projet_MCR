@@ -1,5 +1,6 @@
 package GameObjects.Entities.Enemy;
 
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Behaviour.Aggressive;
 import GameObjects.Entities.Enemy.Behaviour.Behaviour;
 import GameObjects.Entities.Enemy.Behaviour.Coward;
@@ -20,7 +21,7 @@ public class Tank extends Enemy{
      * @param y : The position y of the tanks.
      * @param p : The player on which the tank will focus his attacks.
      */
-    public Tank(int x, int y, Player p) {
+    public Tank(int x, int y, Coordinates p) {
         super(x, y, 300, 300, p);
         this.behaviours = new Behaviour[]{new Aggressive(this, p), new Coward(this, p)};
         this.speed = 1;
