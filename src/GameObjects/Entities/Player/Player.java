@@ -2,7 +2,7 @@
  -----------------------------------------------------------------------------------
  Lab          : 03 (Projet)
  File         : Player.java
- Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
  Date         : 18/06/2022
  -----------------------------------------------------------------------------------
  */
@@ -28,9 +28,10 @@ public class Player extends Entity {
 
 
     /**
+     * Constructor of the class used to initialize the player in the game.
      *
-     * @param x
-     * @param y
+     * @param x : The position x of the player.
+     * @param y : The position y of the player.
      */
     public Player(int x, int y){
         super(x, y, RADIUS, 150, new EntityRenderer());

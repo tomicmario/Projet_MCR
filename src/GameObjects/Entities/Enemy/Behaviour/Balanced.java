@@ -2,7 +2,7 @@
  -----------------------------------------------------------------------------------
  Lab          : 03 (Projet)
  File         : Balanced.java
- Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
  Date         : 18/06/2022
  -----------------------------------------------------------------------------------
  */

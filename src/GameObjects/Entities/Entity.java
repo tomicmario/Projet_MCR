@@ -2,7 +2,7 @@
  -----------------------------------------------------------------------------------
  Lab          : 03 (Projet)
  File         : Entity.java
- Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
  Date         : 18/06/2022
  -----------------------------------------------------------------------------------
  */
@@ -112,7 +112,7 @@ public abstract class Entity extends GameObject {
     public abstract int getPointsWhenKilled();
 
     /**
-     * Returns the coordinates created via the Coordinates constructor of the entity.
+     * Returns the coordinates of the entity created via an anonymous class that implements the interface Coordinates.
      *
      * @return the coordinates of the entity.
      */
