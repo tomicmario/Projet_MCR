@@ -1,3 +1,12 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : EnemyFactory.java
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Enemy.Grunt;
 import GameObjects.Entities.Enemy.Sniper;

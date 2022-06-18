@@ -1,9 +1,9 @@
 /*
  -----------------------------------------------------------------------------------
- Lab          : 01
- File         : Bouncers.java
- Authors      : Lange Yanik, Mario Tomic
- Date         : 16/03/2022
+ Lab          : 03 (Projet)
+ File         : Controller.java
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
+ Date         : 18/06/2022
  -----------------------------------------------------------------------------------
  */
 
@@ -12,7 +12,6 @@ import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Projectile;
 import View.GameDisplay;
 import View.GameOverScreen;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -21,6 +20,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
+/**
+ * Controller class. Creates a controller that manages all the game (all game objects, the displayer,  the score ...)
+ */
 public class Controller {
 
     private static final LinkedList<Entity> entities = new LinkedList<>();
@@ -32,9 +34,13 @@ public class Controller {
     public final static int HEIGHT = 500;
     private final SpawnDirector sd;
     private int score = 0;
-    private final int TICKS_UNTIL_END = 240;
+    private final int TICKS_UNTIL_END = 120;
     private int endCounter = TICKS_UNTIL_END;
 
+    /**
+     * Controller constructor. Initializing the game display/window, the player , the spawnDirector managing
+     * the enemy spawn, the inputInterpreter managing the inputs of the game
+     */
     public Controller() {
         gameDisplay = GameDisplay.getInstance();
         gameDisplay.setTitle("Not A Space Invader");
@@ -43,9 +49,12 @@ public class Controller {
         p = new Player(WIDTH/2, HEIGHT / 2);
         sd = new SpawnDirector(entities, new EnemyFactory(0, 0, WIDTH, HEIGHT, p));
         entities.add(p);
-        new InputInterpereter(p, gameDisplay).InitialiseInputListeners();
+        new InputInterpreter(p, gameDisplay).InitialiseInputListeners();
     }
 
+    /**
+     * Run method. Runs the game.
+     */
     public void run() {
         ActionListener al = event -> {
             gameDisplay.repaint();
@@ -64,6 +73,11 @@ public class Controller {
 
     }
 
+    /**
+     * Sets the end of the game once the player lost.
+     *
+     * @param event : TODO:
+     */
     private void endGame(ActionEvent event){
         if(endCounter > 0){
             endCounter--;
@@ -75,6 +89,9 @@ public class Controller {
         }
     }
 
+    /**
+     *
+     */
     private void getEntitiesNextFrame(){
         p.setMouseClicked(gameDisplay.isMouseClicked());
 
@@ -124,7 +141,13 @@ public class Controller {
         projectiles.removeIf(projectile -> !projectile.isActive());
     }
 
-
+    /**
+     * Check collisions between projectiles and entities.
+     *
+     * @param p : The projectile that is supposed to collide the entity.
+     * @param e : The entity to check if it is collided by a projectile.
+     * @return True if the projectile collided an entity, False if not.
+     */
     private boolean checkCollision(Projectile p, Entity e){
         int x1 = p.getX() + p.getRadius();
         int y1 = p.getY() + p.getRadius();

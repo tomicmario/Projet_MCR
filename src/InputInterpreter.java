@@ -1,17 +1,27 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : InputInterpreter.java
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 import GameObjects.Entities.Player.Direction;
 import GameObjects.Entities.Player.Player;
 import View.Displayer;
-
 import javax.swing.event.MouseInputAdapter;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-public class InputInterpereter {
+
+
+public class InputInterpreter {
     private final Displayer gameDisplay;
     private final Player p;
 
-    public InputInterpereter(Player p, Displayer d){
+    public InputInterpreter(Player p, Displayer d){
         this.p = p;
         this.gameDisplay = d;
     }
