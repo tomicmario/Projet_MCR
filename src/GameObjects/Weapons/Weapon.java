@@ -1,6 +1,15 @@
-package GameObjects.Weapons;
-import GameObjects.Entities.Entity;
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Weapon.java
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
 
+package GameObjects.Weapons;
+
+import GameObjects.Entities.Entity;
 import java.awt.*;
 
 /**

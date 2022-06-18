@@ -1,8 +1,16 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Projectile.java
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
 import GameObjects.GameObject;
-
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
@@ -60,22 +68,41 @@ public class Projectile extends GameObject {
     }
 
 
+    /**
+     * Sets the time to live of the projectile to 0, deactivating the projectile.
+     */
     public void setInactive(){
         timeToLive = 0;
     }
 
+    /**
+     *
+     * @return True if the projectile is still alive, false if not.
+     */
     public boolean isActive(){
         return timeToLive > 0;
     }
 
+    /**
+     *
+     * @return The damage dealt with the projectile.
+     */
     public int getDamage(){
         return damage;
     }
 
+    /**
+     *
+     * @return The entity that shoots the projectile.
+     */
     public Entity getShooter(){
         return shooter;
     }
 
+    /**
+     *
+     * @return True if the projectile is still active after a collision, False if not.
+     */
     public boolean isPersistent() {
         return persistent;
     }
