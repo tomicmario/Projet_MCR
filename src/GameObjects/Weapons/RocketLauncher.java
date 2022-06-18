@@ -10,6 +10,8 @@
 package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
+import GameObjects.GameObject;
+
 import java.awt.*;
 
 /**
@@ -68,7 +70,7 @@ public class RocketLauncher extends Weapon {
             }
 
             @Override
-            public Entity getShooter(){
+            public GameObject getShooter(){
                 if(persistent){
                     return null;
                 }

@@ -24,7 +24,7 @@ public class Projectile extends GameObject {
     protected int speedX;
     protected int speedY;
     protected int damage;
-    protected final Entity shooter;
+    protected final GameObject shooter;
     protected boolean persistent;
     protected int timeToLive;
 
@@ -38,7 +38,7 @@ public class Projectile extends GameObject {
      * @param e Entity shooting the projectile
      * @param timeToLive Amount of ticks before the projectile becomes inactive
      */
-    public Projectile(double angle, int speed, int radius, int damage, boolean persistent, Entity e, int timeToLive) {
+    public Projectile(double angle, int speed, int radius, int damage, boolean persistent, GameObject e, int timeToLive) {
         super(e.getX() + e.getRadius(), e.getY() + e.getRadius(), radius);
         this.speed = speed;
         this.angle = angle;
@@ -95,7 +95,7 @@ public class Projectile extends GameObject {
      *
      * @return The entity that shoots the projectile.
      */
-    public Entity getShooter(){
+    public GameObject getShooter(){
         return shooter;
     }
 
