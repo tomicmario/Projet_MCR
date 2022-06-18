@@ -6,6 +6,12 @@ import View.Displayer;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
+/**
+ * It's what the weapons shoot. All projectile has an owner attached to them, in order to avoid the projectile to
+ * collide immediately with the shooter, leading to the shooter killing itself.
+ *
+ * @author Mario Tomic
+ */
 public class Projectile {
     protected final int SPEED;
     protected int speedX;
@@ -19,10 +25,20 @@ public class Projectile {
     protected boolean persistent;
     protected int timeToLive;
 
-    public Projectile(double angle, int speed, int size, int damage, boolean persistent, Entity e, int timeToLive) {
+    /**
+     * Projectile Constructor
+     * @param angle Angle of the projectile
+     * @param speed Speed of the projectile in units per ticks
+     * @param radius Radius of the projectile in units
+     * @param damage Damage dealt by the projectile to an entity on collisions
+     * @param persistent Flag determining if a projectile becomes inactive on collision or not
+     * @param e Entity shooting the projectile
+     * @param timeToLive Amount of ticks before the projectile becomes inactive
+     */
+    public Projectile(double angle, int speed, int radius, int damage, boolean persistent, Entity e, int timeToLive) {
         this.x = e.getX() + e.getRadius();
         this.y = e.getY() + e.getRadius();
-        this.radius = size;
+        this.radius = radius;
         this.SPEED = speed;
         this.angle = angle;
         speedX = (int)(SPEED * Math.cos(angle) - SPEED * Math.sin(angle));

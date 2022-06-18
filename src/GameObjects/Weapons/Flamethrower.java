@@ -5,7 +5,7 @@ import GameObjects.Entities.Entity;
 import java.awt.*;
 
 /**
- * Weapon that fires expanding projectile at a quick pace.
+ * Weapon that fires expanding projectiles at a quick pace.
  *
  * @author Mario Tomic
  */
@@ -13,7 +13,7 @@ public class Flamethrower extends Weapon {
 
     /**
      * Constructor of the flamethrower
-     * @param entity
+     * @param entity Owner of the flamethrower
      */
     public Flamethrower(Entity entity) {
         super(entity);
@@ -27,7 +27,7 @@ public class Flamethrower extends Weapon {
 
     @Override
     protected Projectile generateSingleProjectile(double angle) {
-        // Anonymous class
+
         return  new Projectile(angle, projectileSpeed, projectileSize,
                                         damage, persistentProjectile, e, projectileTimeToLive){
             @Override

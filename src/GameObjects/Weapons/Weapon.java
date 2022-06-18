@@ -7,7 +7,7 @@ import java.awt.*;
  * Weapon abstract class, serving as the basis of all the weapons. Stores the different attributes of a weapon, such
  * as the fire rate, the size and damage of the projectiles. Handles the fire rate of the weapon. If a weapon can
  * shoot, the weapon will return an array of projectiles that will be handled by the controller.
- * 
+ *
  * @author Mario Tomic
  */
 public abstract class Weapon{
