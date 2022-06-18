@@ -13,7 +13,6 @@ import java.awt.geom.Rectangle2D;
  */
 public class Player extends Entity {
     private static final int RADIUS = 5;
-    protected int moves = 2;
     protected int mouseX;
     protected int mouseY;
     protected boolean mouseClicked;
@@ -45,7 +44,7 @@ public class Player extends Entity {
      * @param d
      */
     public void setDirection(Direction d){
-        activeDirections[d.ordinal()] = moves;
+        activeDirections[d.ordinal()] = speed;
     }
 
     /**

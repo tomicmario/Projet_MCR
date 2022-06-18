@@ -35,7 +35,7 @@ public class RocketLauncher extends Weapon {
         return new Projectile(angle, projectileSpeed, projectileSize,
                 damage, persistentProjectile, e, projectileTimeToLive){
             @Override
-            public void nextFrame() {
+            public void move() {
                 x += speedX;
                 y += speedY;
                 timeToLive--;

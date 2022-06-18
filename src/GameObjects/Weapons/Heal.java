@@ -30,8 +30,8 @@ public class Heal extends Weapon{
         return new Projectile(angle, projectileSpeed, projectileSize,
                 damage, persistentProjectile, e, projectileTimeToLive){
             @Override
-            public void nextFrame() {
-                super.nextFrame();
+            public void move() {
+                super.move();
                 radius += RADIUS_EXPANSION;
                 x -= RADIUS_EXPANSION / 2;
                 y -= RADIUS_EXPANSION / 2;

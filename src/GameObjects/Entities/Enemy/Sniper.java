@@ -25,7 +25,6 @@ public class Sniper extends Enemy {
         this.behaviours = new Behaviour[] { new Balanced(this, target),
                                                 new Teleporting(this, target) };
         this.weapons = new Weapon[] { new Pistol(this) };
-        this.speed = 2;
         weapons[currentWeaponIndex].setDelay(100);
     }
 

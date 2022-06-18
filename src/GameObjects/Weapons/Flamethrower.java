@@ -31,8 +31,8 @@ public class Flamethrower extends Weapon {
         return  new Projectile(angle, projectileSpeed, projectileSize,
                                         damage, persistentProjectile, e, projectileTimeToLive){
             @Override
-            public void nextFrame() {
-                super.nextFrame();
+            public void move() {
+                super.move();
                 radius++;
                 damage = damage == 1 ? damage : damage - 1;
             }

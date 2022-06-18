@@ -1,6 +1,7 @@
 package GameObjects.Entities;
 
 import GameObjects.Coordinates;
+import GameObjects.GameObject;
 import GameObjects.Renderer;
 import GameObjects.Weapons.Projectile;
 import GameObjects.Weapons.Weapon;
@@ -11,16 +12,10 @@ import java.awt.Shape;
 /**
  *  Abstract Entity class. Defining all entities of our game.
  */
-public abstract class Entity {
-
-    protected int x;
-    protected int y;
-    protected int radius;
-    protected double angle = 0;
+public abstract class Entity extends GameObject {
     protected Renderer renderer;
     protected int health;
     protected final int MAX_HEALTH;
-    protected int speed;
     protected Weapon[] weapons;
     protected int currentWeaponIndex = 0;
 
@@ -34,53 +29,10 @@ public abstract class Entity {
      * @param r : Renderer used to render the entity on the game.
      */
     protected Entity(int x, int y, int size, int maxHealth, Renderer r){
-        this.x = x;
-        this.y = y;
-        this.radius = size;
+        super(x, y, size);
         this.MAX_HEALTH = maxHealth;
         renderer = r;
         health = MAX_HEALTH;
-        speed = 2;
-    }
-
-    /**
-     *  Displays the entity on the game.
-     * @param view
-     */
-    public void draw(Displayer view){
-        renderer.display(view.getGraphics(), this);
-    }
-
-    /**
-     *
-     * @return The size of the entity.
-     */
-    public int getRadius(){
-        return radius;
-    }
-
-    /**
-     *
-     * @return The angle of the speed vector of the entity.
-     */
-    public double getAngle(){
-        return angle;
-    }
-
-    /**
-     *
-     * @return The position y of the entity.
-     */
-    public int getY(){
-        return y;
-    }
-
-    /**
-     *
-     * @return The position x of the entity.
-     */
-    public int getX(){
-        return x;
     }
 
     /**
@@ -97,6 +49,11 @@ public abstract class Entity {
      */
     public void setY(int y){
         this.y = y;
+    }
+
+    @Override
+    public void draw(Displayer view){
+        renderer.display(view.getGraphics(), this);
     }
 
     /**
@@ -139,26 +96,6 @@ public abstract class Entity {
      * @return An array containing all the projectiles used during the attack.
      */
     public abstract Projectile[] attack();
-
-    /**
-     * Move function redefined in the classes that inherits of Entity.
-     * Moves the current entity on the game.
-     */
-    public abstract void move();
-
-    /**
-     * Getter of color used in the classes that inherits of Entity.
-     *
-     * @return The color of the entity.
-     */
-    public abstract Color getColor();
-
-    /**
-     * Getter of shape used in the classes that inherits of Entity.
-     *
-     * @return The shape of the entity.
-     */
-    public abstract Shape getShape();
 
     /**
      * Returns the number of points the entity is valued when killed

@@ -23,9 +23,9 @@ public class Tank extends Enemy{
      */
     public Tank(int x, int y, Coordinates target) {
         super(x, y, 300, 300, target);
+        this.speed = 1;
         this.behaviours = new Behaviour[] { new Aggressive(this, target),
                                                 new Coward(this, target) };
-        this.speed = 1;
         this.weapons = new Weapon[]{ new SlowShotgun(this),
                                         new Heal(this) };
         weapons[currentWeaponIndex].setDelay(100);
