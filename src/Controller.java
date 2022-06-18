@@ -51,6 +51,7 @@ public class Controller {
             getEntitiesNextFrame();
             getProjectileNextFrame();
             removeDeadObjects();
+            gameDisplay.getGraphics().drawString("Score : " + score, WIDTH - 100, HEIGHT - 10);
             sd.nextFrame();
             if(!p.isAlive()){
                 endGame(event);
