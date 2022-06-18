@@ -1,9 +1,9 @@
 /*
  -----------------------------------------------------------------------------------
- Lab          : 01
- File         : BouncerDisplay.java
- Authors      : Lange Yanik, Mario Tomic
- Date         : 16/03/2022
+ Lab          : 03 (Projet)
+ File         : GameDisplay.java
+ Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
+ Date         : 18/06/2022
  -----------------------------------------------------------------------------------
  */
 
@@ -18,7 +18,8 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 /**
- * View of the application, using a JFrame and a JPanel
+ * View of the application, using a JFrame and a JPanel.
+ * Implements the Displayer interface.
  */
 public class GameDisplay implements Displayer {
 
@@ -62,6 +63,11 @@ public class GameDisplay implements Displayer {
 
     }
 
+    /**
+     * Sets the size of the panel.
+     *
+     * @param d Dimension of the panel size.
+     */
     public void setPanelSize(Dimension d){
         jPanel.setSize(d);
         jFrame.getContentPane().setPreferredSize(d);
@@ -99,10 +105,16 @@ public class GameDisplay implements Displayer {
         jFrame.addKeyListener(ka);
     }
 
+    /**
+     *
+     * @return True if the mouse is clicked, False if not.
+     */
     public boolean isMouseClicked(){
         return click;
     }
 
+
+    @Override
     public void addMouseMotionListener(MouseAdapter ma) {
         jPanel.addMouseMotionListener(ma);
         jPanel.addMouseListener(new MouseInputAdapter() {
@@ -118,6 +130,9 @@ public class GameDisplay implements Displayer {
         });
     }
 
+    /**
+     * closes the frame.
+     */
     public void close(){
         jFrame.setVisible(false);
     }
