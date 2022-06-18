@@ -13,7 +13,7 @@ public class Flamethrower extends Weapon {
         fireRate = 3;
         damage = 20;
         persistentProjectile = true;
-        projectileTimeToLive = 30;
+        projectileTimeToLive = 37;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Flamethrower extends Weapon {
             public void move() {
                 super.move();
                 radius++;
-                damage = damage == 3 ? damage : damage - 1;
+                damage = damage == 1 ? damage : damage - 1;
             }
 
             @Override

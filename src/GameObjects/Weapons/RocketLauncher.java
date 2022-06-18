@@ -5,9 +5,10 @@ import GameObjects.Entities.Entity;
 import java.awt.*;
 
 public class RocketLauncher extends Weapon {
+    private static final int EXPLOSION_RADIUS = 10;
     public RocketLauncher(Entity entity){
         super(entity);
-        fireRate = 30;
+        fireRate = 45;
         damage = 50;
     }
 
@@ -21,7 +22,9 @@ public class RocketLauncher extends Weapon {
                 y += speedY;
                 timeToLive--;
                 if(persistent){
-                    radius += 10;
+                    radius += EXPLOSION_RADIUS;
+                    x -= EXPLOSION_RADIUS / 2;
+                    y -= EXPLOSION_RADIUS / 2;
                 }
             }
 
@@ -31,7 +34,7 @@ public class RocketLauncher extends Weapon {
                 speedY = 0;
                 persistent = true;
                 timeToLive = 6;
-                radius = 10;
+                radius = EXPLOSION_RADIUS;
             }
             @Override
             public Color getColor(){

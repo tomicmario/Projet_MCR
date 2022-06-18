@@ -5,14 +5,15 @@ import GameObjects.Entities.Entity;
 import java.awt.*;
 
 public class Shotgun extends Weapon {
-    protected int PELLETS = 13;
-    private static final int DAMAGE_PER_PELLET = 30;
-    protected double PELLET_SPREAD = Math.PI / 24;
+    protected int PELLETS = 11;
+    private static final int DAMAGE_PER_PELLET = 45;
+    protected double PELLET_SPREAD = Math.PI / 30;
     public Shotgun(Entity entity) {
         super(entity);
         damage = DAMAGE_PER_PELLET;
         projectileSpeed = 10;
-        fireRate = 30;
+        fireRate = 45;
+        projectileTimeToLive = 15;
     }
 
     @Override
