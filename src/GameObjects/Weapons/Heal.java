@@ -4,7 +4,18 @@ import GameObjects.Entities.Entity;
 
 import java.awt.*;
 
+/**
+ * Healing weapon, creating a small expanding radius with negative damage.
+ *
+ * @author Mario Tomic
+ */
 public class Heal extends Weapon{
+    private static final int RADIUS_EXPANSION = 4;
+
+    /**
+     * Constructor of the healing weapon
+     * @param entity Owner of the healing weapon
+     */
     public Heal(Entity entity) {
         super(entity);
         projectileSpeed = 0;
@@ -15,13 +26,15 @@ public class Heal extends Weapon{
     }
 
     @Override
-    protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(angle, projectileSpeed, projectileSize,
+    protected Projectile generateSingleProjectile(double angle) {
+        return new Projectile(angle, projectileSpeed, projectileSize,
                 damage, persistentProjectile, e, projectileTimeToLive){
             @Override
-            public void move() {
-                super.move();
-                radius += 3;
+            public void nextFrame() {
+                super.nextFrame();
+                radius += RADIUS_EXPANSION;
+                x -= RADIUS_EXPANSION / 2;
+                y -= RADIUS_EXPANSION / 2;
             }
 
             @Override
@@ -34,9 +47,6 @@ public class Heal extends Weapon{
                 return Color.GREEN;
             }
         };
-        Projectile[] projectiles = new Projectile[1];
-        projectiles[0] = p;
-        return projectiles;
     }
 
     @Override

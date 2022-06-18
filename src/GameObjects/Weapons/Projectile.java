@@ -33,7 +33,7 @@ public class Projectile {
         this.timeToLive = timeToLive;
     }
 
-    public void move() {
+    public void nextFrame() {
         x += speedX;
         y += speedY;
         timeToLive--;

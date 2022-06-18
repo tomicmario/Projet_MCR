@@ -3,9 +3,18 @@ package GameObjects.Weapons;
 import GameObjects.Entities.Entity;
 
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 
+/**
+ * Weapon that fires expanding projectile at a quick pace.
+ *
+ * @author Mario Tomic
+ */
 public class Flamethrower extends Weapon {
+
+    /**
+     * Constructor of the flamethrower
+     * @param entity
+     */
     public Flamethrower(Entity entity) {
         super(entity);
         projectileSpeed = 3;
@@ -17,12 +26,13 @@ public class Flamethrower extends Weapon {
     }
 
     @Override
-    protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(angle, projectileSpeed, projectileSize,
+    protected Projectile generateSingleProjectile(double angle) {
+        // Anonymous class
+        return  new Projectile(angle, projectileSpeed, projectileSize,
                                         damage, persistentProjectile, e, projectileTimeToLive){
             @Override
-            public void move() {
-                super.move();
+            public void nextFrame() {
+                super.nextFrame();
                 radius++;
                 damage = damage == 1 ? damage : damage - 1;
             }
@@ -32,9 +42,6 @@ public class Flamethrower extends Weapon {
                 return Color.ORANGE;
             }
         };
-        Projectile[] projectiles = new Projectile[1];
-        projectiles[0] = p;
-        return projectiles;
     }
 
     @Override

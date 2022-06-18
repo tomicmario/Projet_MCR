@@ -4,20 +4,38 @@ import GameObjects.Entities.Entity;
 
 import java.awt.*;
 
+/**
+ * Weapon launching projectiles with a special behaviour.
+ * It behaves as a normal projectile until a collision with an entity happens. After the collision, the
+ * projectile becomes persistent and grows, while also changing color, simulating an explosion.
+ *
+ * @author Mario Tomic
+ */
 public class RocketLauncher extends Weapon {
     private static final int EXPLOSION_RADIUS = 10;
+
+    /**
+     * Constructor of a rocket launcher
+     * @param entity Owner of the rocket launcher
+     */
     public RocketLauncher(Entity entity){
         super(entity);
         fireRate = 45;
         damage = 50;
     }
 
+
     @Override
-    protected Projectile[] generateProjectiles(double angle) {
-        Projectile p = new Projectile(angle, projectileSpeed, projectileSize,
-                                        damage, persistentProjectile, e, projectileTimeToLive){
+    public Color getColor() {
+        return Color.RED;
+    }
+
+    @Override
+    protected Projectile generateSingleProjectile(double angle) {
+        return new Projectile(angle, projectileSpeed, projectileSize,
+                damage, persistentProjectile, e, projectileTimeToLive){
             @Override
-            public void move() {
+            public void nextFrame() {
                 x += speedX;
                 y += speedY;
                 timeToLive--;
@@ -49,13 +67,5 @@ public class RocketLauncher extends Weapon {
                 return shooter;
             }
         };
-        Projectile[] projectiles = new Projectile[1];
-        projectiles[0] = p;
-        return projectiles;
-    }
-
-    @Override
-    public Color getColor() {
-        return Color.RED;
     }
 }

@@ -91,7 +91,7 @@ public class Controller {
 
     private void getProjectileNextFrame(){
         for(Projectile p : projectiles) {
-            p.move();
+            p.nextFrame();
             p.draw(gameDisplay);
             checkProjectileCollision(p);
         }
