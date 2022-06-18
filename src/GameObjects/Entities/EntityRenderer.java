@@ -1,9 +1,9 @@
 /*
  -----------------------------------------------------------------------------------
- Lab          : 01
- File         : FullRenderer.java
- Authors      : Lange Yanik, Mario Tomic
- Date         : 16/03/2022
+ Lab          : 03 (Projet)
+ File         : EntityRenderer.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
  -----------------------------------------------------------------------------------
  */
 

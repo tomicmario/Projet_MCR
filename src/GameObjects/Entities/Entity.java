@@ -1,3 +1,12 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Entity.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Entities;
 
 import GameObjects.Coordinates;
@@ -6,8 +15,6 @@ import GameObjects.Renderer;
 import GameObjects.Weapons.Projectile;
 import GameObjects.Weapons.Weapon;
 import View.Displayer;
-import java.awt.*;
-import java.awt.Shape;
 
 /**
  *  Abstract Entity class. Defining all entities of our game.
@@ -91,19 +98,24 @@ public abstract class Entity extends GameObject {
     }
 
     /**
-     * Attack function redefined in the classes that inherits of Entity.
+     * Attack method redefined in the classes that inherits of Entity.
      *
      * @return An array containing all the projectiles used during the attack.
      */
     public abstract Projectile[] attack();
 
     /**
-     * Returns the number of points the entity is valued when killed
+     *  get point method redefined in the classes that inherits of Entity.
      *
      * @return The value of points of the entity when killed.
      */
     public abstract int getPointsWhenKilled();
 
+    /**
+     * Returns the coordinates created via the Coordinates constructor of the entity.
+     *
+     * @return the coordinates of the entity.
+     */
     public Coordinates getCoordinates(){
         return new Coordinates() {
             @Override
