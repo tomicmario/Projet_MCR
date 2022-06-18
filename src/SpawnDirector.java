@@ -23,7 +23,7 @@ public class SpawnDirector {
             }
             spawnDelay--;
             if(spawnDelay < 80){
-                spawnDelay = 90;
+                spawnDelay = 90 + 10 * enemiesToSpawn;
                 enemiesToSpawn++;
             }
             counter = 0;

@@ -32,7 +32,8 @@ public class Controller {
     public final static int HEIGHT = 500;
     private final SpawnDirector sd;
     private int score = 0;
-
+    private final int TICKS_UNTIL_END = 240;
+    private int endCounter = TICKS_UNTIL_END;
 
     public Controller() {
         gameDisplay = GameDisplay.getInstance();
@@ -64,9 +65,14 @@ public class Controller {
     }
 
     private void endGame(ActionEvent event){
-        new GameOverScreen(score);
-        ((Timer)event.getSource()).stop();
-        gameDisplay.close();
+        if(endCounter > 0){
+            endCounter--;
+            gameDisplay.getGraphics().drawString("GAME OVER", WIDTH/2 - 50, HEIGHT/2 - 10);
+        } else {
+            new GameOverScreen(score);
+            ((Timer) event.getSource()).stop();
+            gameDisplay.close();
+        }
     }
 
     private void getEntitiesNextFrame(){
@@ -108,7 +114,9 @@ public class Controller {
         while (it.hasNext()) {
             Entity entity = it.next();
             if (!entity.isAlive()) {
-                score += entity.getPointsWhenKilled();
+                if(p.isAlive()) {
+                    score += entity.getPointsWhenKilled();
+                }
                 it.remove();
             }
         }
