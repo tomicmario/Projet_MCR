@@ -1,10 +1,18 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Tank.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Behaviour.Aggressive;
 import GameObjects.Entities.Enemy.Behaviour.Behaviour;
 import GameObjects.Entities.Enemy.Behaviour.Coward;
-import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.*;
 import java.awt.*;
 

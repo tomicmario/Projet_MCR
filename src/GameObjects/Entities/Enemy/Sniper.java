@@ -1,8 +1,16 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Sniper.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Behaviour.*;
-import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Pistol;
 import GameObjects.Weapons.Weapon;
 import java.awt.*;

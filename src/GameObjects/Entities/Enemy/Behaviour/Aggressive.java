@@ -1,8 +1,16 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Aggressive.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
-import GameObjects.Entities.Entity;
 
 /**
  * Aggresssive behaviour class used to create aggressive behaviours for the enemies.
@@ -17,7 +25,7 @@ public class Aggressive extends Behaviour {
      * Aggressive Constructor. Used to initialize values for the aggressive behaviour.
      *
      * @param e : The enemy on which we affect the aggressive behaviour.
-     * @param target : The player on which the enemy will have the aggressive behaviour.
+     * @param target : The player coordinates on which the enemy will have the aggressive behaviour.
      */
     public Aggressive(Enemy e, Coordinates target){
         super(e, target);

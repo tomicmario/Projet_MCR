@@ -1,15 +1,22 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Teleporting.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
-import GameObjects.Entities.Entity;
-
 import java.util.Random;
 
 
 /**
- * Coward behaviour class used to create coward behaviours for the enemies.
- * Moves away of the player to keep a certain distance from him.
+ * Teleporting behaviour class used to create teleport behaviours for the enemies.
+ * Teleports the enemy at a random location after a certain time.
  * Inherits of Behaviour.
  */
 public class Teleporting extends Behaviour {
@@ -19,10 +26,10 @@ public class Teleporting extends Behaviour {
     private final static Random random = new Random();
 
     /**
-     * Distant Constructor. Used to initialize values for the distant behaviour.
+     * Teleport Constructor. Used to initialize values for the teleport behaviour.
      *
      * @param e : The enemy on which we affect the distant behaviour.
-     * @param target : The player on which the enemy will have the distant behaviour.
+     * @param target : The player coordinates on which the enemy will have the distant behaviour.
      */
     public Teleporting(Enemy e, Coordinates target){
         super(e, target);

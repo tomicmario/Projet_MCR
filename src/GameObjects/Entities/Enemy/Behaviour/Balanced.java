@@ -1,9 +1,17 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Balanced.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
-import GameObjects.Entities.Entity;
-import java.util.Random;
+
 
 /**
  * Balanced behaviour class used to create balanced behaviours for the enemies.
@@ -21,7 +29,7 @@ public class Balanced extends Behaviour {
      * Balanced Constructor. Used to initialize values for the balanced behaviour.
      *
      * @param e : The enemy on which we affect the balanced behaviour.
-     * @param target : The player on which the enemy will have the balanced behaviour.
+     * @param target : The player coordinates on which the enemy will have the balanced behaviour.
      */
     public Balanced(Enemy e, Coordinates target){
         super(e, target);

@@ -1,8 +1,16 @@
+/*
+ -----------------------------------------------------------------------------------
+ Lab          : 03 (Projet)
+ File         : Behaviour.java
+ Authors      : Janis Chiffelle, Yanik Lange, Karel Ngueukam, Pierre-Olivier Sandoz, Mario Tomic
+ Date         : 18/06/2022
+ -----------------------------------------------------------------------------------
+ */
+
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
-import GameObjects.Entities.Entity;
 
 /**
  * Abstract class used to define all the behaviours of the IA trough inheritance.
