@@ -20,11 +20,11 @@ public class Grunt extends Enemy {
      *
      * @param x : The position x of the grunt.
      * @param y : The position y of the grunt.
-     * @param p : The player on which the grunt will focus his attacks.
+     * @param target : The coordinates of the target on which the grunt will focus his attacks.
      */
-    public Grunt(int x, int y, Coordinates p){
-        super(x, y, 100, 100, p);
-        this.behaviours = new Behaviour[]{new Aggressive(this, p)};
+    public Grunt(int x, int y, Coordinates target){
+        super(x, y, 100, 100, target);
+        this.behaviours = new Behaviour[]{new Aggressive(this, target)};
         this.weapons = new Weapon[]{new Flamethrower(this)};
         weapons[currentWeaponIndex].setDelay(100);
     }

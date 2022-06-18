@@ -72,6 +72,13 @@ public class Player extends Entity {
         }
     }
 
+    public void equipPreviousWeapon(){
+        currentWeaponIndex--;
+        if(currentWeaponIndex <= 0){
+            currentWeaponIndex = weapons.length - 1;
+        }
+    }
+
     @Override
     public Projectile[] attack(){
         if(mouseClicked){

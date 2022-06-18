@@ -34,7 +34,7 @@ public class InputInterpereter {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_Q: // Q
-                        System.exit(0);
+                        p.equipPreviousWeapon();
                         break;
                     case KeyEvent.VK_W: // W
                         p.setDirection(Direction.UP);
@@ -50,6 +50,9 @@ public class InputInterpereter {
                         break;
                     case KeyEvent.VK_E:
                         p.equipNextWeapon();
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        System.exit(0);
                         break;
                 }
             }

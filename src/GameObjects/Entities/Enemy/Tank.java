@@ -19,13 +19,15 @@ public class Tank extends Enemy{
      *
      * @param x : The position x of the tanks.
      * @param y : The position y of the tanks.
-     * @param p : The player on which the tank will focus his attacks.
+     * @param target : The coordinates of the player on which the tank will focus his attacks.
      */
-    public Tank(int x, int y, Coordinates p) {
-        super(x, y, 300, 300, p);
-        this.behaviours = new Behaviour[]{new Aggressive(this, p), new Coward(this, p)};
+    public Tank(int x, int y, Coordinates target) {
+        super(x, y, 300, 300, target);
+        this.behaviours = new Behaviour[] { new Aggressive(this, target),
+                                                new Coward(this, target) };
         this.speed = 1;
-        this.weapons = new Weapon[]{new SlowShotgun(this), new Heal(this)};
+        this.weapons = new Weapon[]{ new SlowShotgun(this),
+                                        new Heal(this) };
         weapons[currentWeaponIndex].setDelay(100);
     }
 
@@ -36,7 +38,6 @@ public class Tank extends Enemy{
             currentWeaponIndex = 1;
         } else if(health <= MAX_HEALTH / 2 && currentWeaponIndex == 1) {
             currentBehaviourIndex = 1;
-            currentWeaponIndex = 1;
         } else {
             currentBehaviourIndex = 0;
             currentWeaponIndex = 0;

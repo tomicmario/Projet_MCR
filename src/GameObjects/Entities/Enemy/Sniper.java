@@ -18,12 +18,13 @@ public class Sniper extends Enemy {
      *
      * @param x : The position x of the sniper.
      * @param y : The position y of the sniper.
-     * @param p : The player on which the sniper will focus his attacks.
+     * @param target : The coordinates of the player on which the sniper will focus his attacks.
      */
-    public Sniper(int x, int y, Coordinates p){
-        super(x, y, 100, 100, p);
-        this.behaviours = new Behaviour[]{new Balanced(this, p), new Teleporting(this, p)};
-        this.weapons = new Weapon[]{new Pistol(this)};
+    public Sniper(int x, int y, Coordinates target){
+        super(x, y, 100, 100, target);
+        this.behaviours = new Behaviour[] { new Balanced(this, target),
+                                                new Teleporting(this, target) };
+        this.weapons = new Weapon[] { new Pistol(this) };
         this.speed = 2;
         weapons[currentWeaponIndex].setDelay(100);
     }

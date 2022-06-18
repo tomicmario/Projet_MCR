@@ -27,7 +27,7 @@ public abstract class Enemy extends Entity {
      * @param y : Position y of the enemy.
      * @param maxHealth : Maximum health of the enemy.
      * @param points : Value of points of the enemy the player gets when killed.
-     * @param p : The player on which the enemy will focus his attacks.
+     * @param target : The coordinates of the target on which the enemy will focus his attacks.
      */
     protected Enemy(int x, int y, int maxHealth, int points, Coordinates target){
         super(x, y, RADIUS, maxHealth, new EntityRenderer());
