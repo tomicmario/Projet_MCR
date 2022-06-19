@@ -16,13 +16,13 @@ import java.util.Random;
  *  @version Java 11
  */
 public class EnemyFactory {
-    private final int MIN_X;
-    private final int MAX_X;
-    private final int MIN_Y;
-    private final int MAX_Y;
+    private final int minX;
+    private final int maxX;
+    private final int minY;
+    private final int maxY;
     private final Coordinates playerCoordinates;
     private final Random random;
-    private final int ENEMY_TYPES = 3;
+    private static final int ENEMY_TYPES = 3;
 
     /**
      * Constructor of the factory used to generate the enemies.
@@ -34,10 +34,10 @@ public class EnemyFactory {
      * @param playerCoordinates : The coordinates of the player on which the enemy will focus his attacks.
      */
     public EnemyFactory(int minX, int minY, int maxX, int maxY, Coordinates playerCoordinates){
-        this.MIN_X = minX;
-        this.MIN_Y = minY;
-        this.MAX_X = maxX;
-        this.MAX_Y = maxY;
+        this.minX = minX;
+        this.minY = minY;
+        this.maxX = maxX;
+        this.maxY = maxY;
         random = new Random();
         this.playerCoordinates = playerCoordinates;
     }
@@ -48,8 +48,8 @@ public class EnemyFactory {
      * @return a random enemy type on a random location.
      */
     public Enemy generateRandomEnemy(){
-        int x = random.nextInt(MAX_X - MIN_X) + MIN_X;
-        int y = random.nextInt(MAX_Y - MIN_Y) + MIN_Y;
+        int x = random.nextInt(maxX - minX) + minX;
+        int y = random.nextInt(maxY - minY) + minY;
         int type = random.nextInt(ENEMY_TYPES);
 
         switch (type){

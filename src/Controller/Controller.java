@@ -22,8 +22,8 @@ import java.util.LinkedList;
  */
 public class Controller {
 
-    private static final LinkedList<Entity> entities = new LinkedList<>();
-    private static final LinkedList<Projectile> projectiles = new LinkedList<>();
+    private final LinkedList<Entity> entities = new LinkedList<>();
+    private final LinkedList<Projectile> projectiles = new LinkedList<>();
     private static final int REFRESH_TIME = 1000 / 60;
     private final GameDisplay gameDisplay;
     private final Player p;
@@ -31,7 +31,7 @@ public class Controller {
     public final static int HEIGHT = 500;
     private final SpawnDirector sd;
     private int score = 0;
-    private final int TICKS_UNTIL_END = 120;
+    private static final int TICKS_UNTIL_END = 120;
     private int endCounter = TICKS_UNTIL_END;
 
     /**
