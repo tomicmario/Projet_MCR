@@ -17,7 +17,7 @@ import View.Displayer;
 public abstract class Entity extends GameObject {
     protected Renderer renderer;
     protected int health;
-    protected final int MAX_HEALTH;
+    protected final int maxHealth;
     protected Weapon[] weapons;
     protected int currentWeaponIndex = 0;
 
@@ -32,9 +32,9 @@ public abstract class Entity extends GameObject {
      */
     protected Entity(int x, int y, int size, int maxHealth, Renderer r){
         super(x, y, size);
-        this.MAX_HEALTH = maxHealth;
+        this.maxHealth = maxHealth;
         renderer = r;
-        health = MAX_HEALTH;
+        health = this.maxHealth;
     }
 
     /**
@@ -73,7 +73,7 @@ public abstract class Entity extends GameObject {
      * @return The ratio of health of the entity.
      */
     public double getHealthRatio(){
-        return (double)health / (double)MAX_HEALTH;
+        return (double)health / (double) maxHealth;
     }
 
     /**

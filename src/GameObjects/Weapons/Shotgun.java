@@ -11,7 +11,7 @@ import java.awt.*;
  * @version Java 11
  */
 public class Shotgun extends Weapon {
-    protected int PELLETS = 11;
+    protected int pellets = 11;
     private static final int DAMAGE_PER_PELLET = 45;
     protected double PELLET_SPREAD = Math.PI / 30;
 
@@ -29,16 +29,16 @@ public class Shotgun extends Weapon {
 
     @Override
     protected Projectile[] generateProjectiles(double angle) {
-        Projectile[] projectiles = new Projectile[PELLETS];
+        Projectile[] projectiles = new Projectile[pellets];
         // Generates a couple of projectiles in a < pattern, with the angle growing every iteration
-        for(int i = 0, j = PELLETS - 1; i < j; ++i, --j){
+        for(int i = 0, j = pellets - 1; i < j; ++i, --j){
             projectiles[i] = generateSingleProjectile(angle - (i+1) * PELLET_SPREAD );
             projectiles[j] = generateSingleProjectile(angle + (i+1) * PELLET_SPREAD );
         }
 
         // Generates the projectile shooting at the angle of the shooter
-        if(PELLETS % 2 == 1){
-            projectiles[PELLETS / 2] = generateSingleProjectile(angle);
+        if(pellets % 2 == 1){
+            projectiles[pellets / 2] = generateSingleProjectile(angle);
         }
         return projectiles;
     }

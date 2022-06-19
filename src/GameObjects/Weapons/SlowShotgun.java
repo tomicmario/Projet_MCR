@@ -22,7 +22,7 @@ public class SlowShotgun extends Shotgun {
         fireRate = 120;
         damage = DAMAGE_PER_PELLET;
         PELLET_SPREAD = Math.PI / 10;
-        PELLETS = 3;
+        pellets = 3;
         projectileSize = 10;
         projectileSpeed = 4;
         projectileTimeToLive = 60;
