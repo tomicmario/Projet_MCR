@@ -15,51 +15,69 @@ import java.awt.geom.Rectangle2D;
 public class EntityRenderer implements Renderer {
 
     @Override
-    public void display(Graphics2D g, Entity b) {
-        makeHealthBar(g, b);
-        int cx = b.getRadius();
-        int cy = b.getRadius();
+    public void display(Graphics2D g, Entity e) {
+        displayHealthBar(g, e);
+        displayEntity(g, e);
+        displayWeapon(g, e);
+    }
+
+    /**
+     * Draws the entity
+     * @param g Graphics of the display
+     * @param e Entity to render
+     */
+    private void displayEntity(Graphics2D g, Entity e){
+        int cx = e.getRadius();
+        int cy = e.getRadius();
 
         AffineTransform oldAT = g.getTransform();
 
-        g.translate(cx + b.getX(), cy + b.getY());
-        g.rotate(b.getAngle());
-        g.translate(-cx - b.getX(), -cy -b.getY());
+        g.translate(cx + e.getX(), cy + e.getY());
+        g.rotate(e.getAngle());
+        g.translate(-cx - e.getX(), -cy -e.getY());
 
-        g.setColor(b.getColor());
-        g.fill(b.getShape());
-        g.draw(b.getShape());
+        g.setColor(e.getColor());
+        g.fill(e.getShape());
+        g.draw(e.getShape());
 
         g.setTransform(oldAT);
-
-        displayWeapon(g, b);
     }
 
-    private void makeHealthBar(Graphics2D g, Entity b){
-        g.translate(-b.getRadius() * 2 / 3, -10);
-        int width = (int)(b.getRadius() * 3 * b.getHealthRatio());
+    /**
+     * Draws the health bar of the entity
+     * @param g Graphics of the display
+     * @param e Entity to render
+     */
+    private void displayHealthBar(Graphics2D g, Entity e){
+        g.translate(-e.getRadius() * 2 / 3, -10);
+        int width = (int)(e.getRadius() * 3 * e.getHealthRatio());
         int height = 3;
-        Rectangle2D bar = new Rectangle2D.Double(b.getX(), b.getY(), width, height);
-        Color c = b.getHealthRatio() < 0.5 ? Color.RED : Color.GREEN;
+        Rectangle2D bar = new Rectangle2D.Double(e.getX(), e.getY(), width, height);
+        Color c = e.getHealthRatio() < 0.5 ? Color.RED : Color.GREEN;
         g.setColor(c);
         g.fill(bar);
         g.draw(bar);
-        g.translate(b.getRadius() * 2 / 3, 10);
+        g.translate(e.getRadius() * 2 / 3, 10);
     }
 
-    private void displayWeapon(Graphics2D g, Entity b){
-        int cx = b.getRadius();
-        int cy = b.getRadius();
+    /**
+     * Draws the weapon of the entity
+     * @param g Graphics of the display
+     * @param e Entity to render
+     */
+    private void displayWeapon(Graphics2D g, Entity e){
+        int cx = e.getRadius();
+        int cy = e.getRadius();
 
         AffineTransform oldAT = g.getTransform();
 
-        g.translate(cx + b.getX(), cy + b.getY());
-        g.rotate(b.getAngle() + Math.PI / 2);
-        g.translate(-cx - b.getX(), -cy -b.getY());
+        g.translate(cx + e.getX(), cy + e.getY());
+        g.rotate(e.getAngle() + Math.PI / 2);
+        g.translate(-cx - e.getX(), -cy -e.getY());
 
         g.translate(-5, 0);
-        Rectangle2D bar = new Rectangle2D.Double(b.getX(), b.getY(), 5, b.getRadius() * 2);
-        g.setColor(b.getCurrentWeapon().getColor());
+        Rectangle2D bar = new Rectangle2D.Double(e.getX(), e.getY(), 5, e.getRadius() * 2);
+        g.setColor(e.getCurrentWeapon().getColor());
         g.fill(bar);
         g.draw(bar);
         g.setTransform(oldAT);
