@@ -18,6 +18,8 @@ import java.awt.*;
  * shoot, the weapon will return an array of projectiles that will be handled by the controller.
  *
  * @author Mario Tomic
+ * @date 04.05.2022
+ * @version Java 11
  */
 public abstract class Weapon{
     protected Entity e;

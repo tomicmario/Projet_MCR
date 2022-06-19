@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Heal.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
@@ -16,6 +7,8 @@ import java.awt.*;
  * Healing weapon, creating a small expanding radius with negative damage.
  *
  * @author Mario Tomic
+ * @date 09.06.2022
+ * @version Java 11
  */
 public class Heal extends Weapon{
     private static final int RADIUS_EXPANSION = 4;

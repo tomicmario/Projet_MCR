@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Flamethrower.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
@@ -16,6 +7,8 @@ import java.awt.*;
  * Weapon that fires expanding projectiles at a quick pace.
  *
  * @author Mario Tomic
+ * @date 25.05.2022
+ * @version Java 11
  */
 public class Flamethrower extends Weapon {
 

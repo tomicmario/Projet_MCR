@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : RocketLauncher.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
@@ -20,6 +11,8 @@ import java.awt.*;
  * projectile becomes persistent and grows, while also changing color, simulating an explosion.
  *
  * @author Mario Tomic
+ * @date 31.05.2022
+ * @version Java 11
  */
 public class RocketLauncher extends Weapon {
     private static final int EXPLOSION_RADIUS = 10;

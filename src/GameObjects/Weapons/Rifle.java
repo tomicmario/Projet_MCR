@@ -16,6 +16,8 @@ import java.awt.*;
  * Simple extension of the weapon class, creating a fast shooting rifle for the player.
  *
  * @author Mario Tomic
+ * @date 31.05.2022
+ * @version Java 11
  */
 public class Rifle extends Weapon {
     /**

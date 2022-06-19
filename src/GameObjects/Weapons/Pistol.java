@@ -16,6 +16,8 @@ import java.awt.*;
  * Simple extension of the weapon class, creating a slow shooting pistol for the enemies.
  *
  * @author Mario Tomic
+ * @date 04.05.2022
+ * @version Java 11
  */
 public class Pistol extends Weapon {
     /**

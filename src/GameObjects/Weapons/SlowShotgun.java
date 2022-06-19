@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : SlowShotgun.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
@@ -16,6 +7,8 @@ import GameObjects.Entities.Entity;
  * would be way too strong for them.
  *
  * @author Mario Tomic
+ * @date 31.05.2022
+ * @version Java 11
  */
 public class SlowShotgun extends Shotgun {
     private static final int DAMAGE_PER_PELLET = 30;

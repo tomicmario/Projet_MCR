@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Shotgun.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Weapons;
 
 import GameObjects.Entities.Entity;
@@ -16,6 +7,8 @@ import java.awt.*;
  * Shotgun class, creating a weapon that fires multiple projectiles, forming a small segment of circle
  *
  * @author Mario Tomic
+ * @date 19.05.2022
+ * @version Java 11
  */
 public class Shotgun extends Weapon {
     protected int PELLETS = 11;

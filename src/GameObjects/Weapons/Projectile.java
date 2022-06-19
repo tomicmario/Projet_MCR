@@ -1,15 +1,5 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Projectile.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Weapons;
 
-import GameObjects.Entities.Entity;
 import GameObjects.GameObject;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -19,6 +9,8 @@ import java.awt.geom.Ellipse2D;
  * collide immediately with the shooter, leading to the shooter killing itself.
  *
  * @author Mario Tomic
+ * @date 04.05.2022
+ * @version Java 11
  */
 public class Projectile extends GameObject {
     protected int speedX;
