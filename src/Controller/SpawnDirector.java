@@ -1,8 +1,10 @@
+package Controller;
+
 import GameObjects.Entities.Entity;
 import java.util.LinkedList;
 
 /**
- * SpawnDirector class. Managing the time/rythme on which the enemies spawn.
+ * Controller.SpawnDirector class. Managing the time/rythme on which the enemies spawn.
  *
  * @author Janis Chiffelle, Yanik Lange, Mario Tomic
  * @date 01.06.2022

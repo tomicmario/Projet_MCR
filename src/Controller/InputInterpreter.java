@@ -1,3 +1,5 @@
+package Controller;
+
 import GameObjects.Entities.Player.Direction;
 import GameObjects.Entities.Player.Player;
 import View.Displayer;
@@ -8,7 +10,7 @@ import java.awt.event.MouseEvent;
 
 
 /**
- * InputInterpreter class. Used to handle all the inputs of the game.
+ * Controller.InputInterpreter class. Used to handle all the inputs of the game.
  *
  * @author Janis Chiffelle, Yanik Lange, Mario Tomic
  * @date 01.06.2022
@@ -19,7 +21,7 @@ public class InputInterpreter {
     private final Player p;
 
     /**
-     * InputInterpreter Constructor. Used to instanciate an InputInterpreter.
+     * Controller.InputInterpreter Constructor. Used to instanciate an Controller.InputInterpreter.
      *
      * @param p : The player on which we apply the modifications depending on the inputs.
      * @param d : The display on which we apply the modifications depending on the inputs.

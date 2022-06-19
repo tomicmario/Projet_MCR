@@ -1,3 +1,5 @@
+package Controller;
+
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Enemy.Grunt;

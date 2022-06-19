@@ -1,3 +1,5 @@
+package Controller;
+
 import GameObjects.Entities.Entity;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Projectile;
@@ -12,7 +14,7 @@ import java.util.LinkedList;
 
 
 /**
- * Controller class. Creates a controller that manages all the game (all game objects, the displayer,  the score ...)
+ * Controller.Controller class. Creates a controller that manages all the game (all game objects, the displayer,  the score ...)
  *
  * @author Janis Chiffelle, Yanik Lange, Mario Tomic
  * @date 04.05.2022
@@ -33,7 +35,7 @@ public class Controller {
     private int endCounter = TICKS_UNTIL_END;
 
     /**
-     * Controller constructor. Initializing the game display/window, the player , the spawnDirector managing
+     * Controller.Controller constructor. Initializing the game display/window, the player , the spawnDirector managing
      * the enemy spawn, the inputInterpreter managing the inputs of the game
      */
     public Controller() {
@@ -181,10 +183,6 @@ public class Controller {
         } else if (e.getY() >= HEIGHT - 2 * e.getRadius()){
             e.setY(HEIGHT - 2 * e.getRadius());
         }
-    }
-
-    public static void main(String ... args) {
-        new Controller().run();
     }
 
 }
