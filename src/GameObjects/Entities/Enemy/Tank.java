@@ -33,13 +33,15 @@ public class Tank extends Enemy{
     protected void defineBehaviours() {
         this.behaviours = new Behaviour[] { new Aggressive(this, target),
                 new Coward(this, target) };
+        this.behaviour = behaviours[currentBehaviourIndex];
     }
 
     @Override
     protected void defineWeapons() {
         this.weapons = new Weapon[]{ new SlowShotgun(this),
                 new Heal(this) };
-        weapons[currentWeaponIndex].setDelay(100);
+        this.weapon = weapons[currentWeaponIndex];
+        this.weapon.setDelay(100);
     }
 
     @Override
@@ -58,6 +60,8 @@ public class Tank extends Enemy{
             currentBehaviourIndex = 0;
             currentWeaponIndex = 0;
         }
+        this.weapon = weapons[currentWeaponIndex];
+        this.behaviour = behaviours[currentBehaviourIndex];
     }
 
     @Override

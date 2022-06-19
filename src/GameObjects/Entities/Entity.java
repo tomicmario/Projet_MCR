@@ -20,6 +20,7 @@ public abstract class Entity extends GameObject {
     protected final int maxHealth;
     protected Weapon[] weapons;
     protected int currentWeaponIndex = 0;
+    protected Weapon weapon;
 
     /**
      * Entity Constructor. Used to initialize common values of all
@@ -35,7 +36,16 @@ public abstract class Entity extends GameObject {
         this.maxHealth = maxHealth;
         renderer = r;
         health = this.maxHealth;
+        defineWeapons();
+        if(weapon == null){
+            throw new RuntimeException("An entity must have a weapon");
+        }
     }
+
+    /**
+     * Defines an array containing all the possible weapons of the enemy
+     */
+    protected abstract void defineWeapons();
 
     /**
      *
@@ -89,7 +99,7 @@ public abstract class Entity extends GameObject {
      * @return the current weapon used by the entity.
      */
     public Weapon getCurrentWeapon(){
-        return weapons[currentWeaponIndex];
+        return weapon;
     }
 
     /**

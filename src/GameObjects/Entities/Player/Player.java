@@ -30,7 +30,6 @@ public class Player extends Entity {
      */
     public Player(int x, int y){
         super(x, y, RADIUS, 500, new EntityRenderer());
-        weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
         mouseClicked = false;
         activeDirections = new int[Direction.values().length];
     }
@@ -81,6 +80,7 @@ public class Player extends Entity {
         if(currentWeaponIndex >= weapons.length){
             currentWeaponIndex = 0;
         }
+        weapon = weapons[currentWeaponIndex];
     }
 
     /**
@@ -91,12 +91,20 @@ public class Player extends Entity {
         if(currentWeaponIndex <= 0){
             currentWeaponIndex = weapons.length - 1;
         }
+        weapon = weapons[currentWeaponIndex];
+    }
+
+    @Override
+    protected void defineWeapons() {
+        weapons = new Weapon[]{ new Rifle(this), new Shotgun(this),
+                                    new Flamethrower(this), new RocketLauncher(this)};
+        weapon = weapons[currentWeaponIndex];
     }
 
     @Override
     public Projectile[] attack(){
         if(mouseClicked){
-            return weapons[currentWeaponIndex].fire(x, y, mouseX, mouseY);
+            return weapon.fire(x, y, mouseX, mouseY);
         }
 
         return null;

@@ -30,13 +30,13 @@ public class Grunt extends Enemy {
 
     @Override
     protected void defineBehaviours() {
-        this.behaviours = new Behaviour[]{ new Aggressive(this, target) };
+        this.behaviour = new Aggressive(this, target);
     }
 
     @Override
     protected void defineWeapons() {
-        this.weapons = new Weapon[]{ new Flamethrower(this) };
-        weapons[currentWeaponIndex].setDelay(100);
+        this.weapon = new Flamethrower(this) ;
+        weapon.setDelay(100);
     }
 
     @Override

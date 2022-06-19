@@ -22,6 +22,7 @@ public abstract class Enemy extends Entity {
     protected final int points;
     protected Behaviour[] behaviours;
     protected int currentBehaviourIndex = 0;
+    protected Behaviour behaviour = null;
 
     /**
      * Enemy Constructor. Used to initialize common values of all
@@ -39,7 +40,9 @@ public abstract class Enemy extends Entity {
         this.canShoot = true;
         this.points = points;
         defineBehaviours();
-        defineWeapons();
+        if(behaviour == null){
+            throw new RuntimeException("An enemy must have a behaviour");
+        }
     }
 
     /**
@@ -47,10 +50,6 @@ public abstract class Enemy extends Entity {
      */
     protected abstract void defineBehaviours();
 
-    /**
-     * Defines an array containing all the possible weapons of the enemy
-     */
-    protected abstract void defineWeapons();
 
     /**
      *
@@ -105,7 +104,7 @@ public abstract class Enemy extends Entity {
     @Override
     public Projectile[] attack(){
         if(canShoot) {
-            return weapons[currentWeaponIndex].fire(x, y, target.getX(), target.getY());
+            return weapon.fire(x, y, target.getX(), target.getY());
         }
 
         return null;
@@ -115,8 +114,8 @@ public abstract class Enemy extends Entity {
     public void move(){
         checkBehaviourChanged();
         setAngle();
-        weapons[currentWeaponIndex].nextFrame();
-        behaviours[currentBehaviourIndex].move();
+        weapon.nextFrame();
+        behaviour.move();
     }
 
     @Override

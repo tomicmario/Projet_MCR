@@ -31,19 +31,20 @@ public class Sniper extends Enemy {
     protected void defineBehaviours() {
         this.behaviours = new Behaviour[] { new Balanced(this, target),
                 new Teleporting(this, target) };
+        this.behaviour = behaviours[currentBehaviourIndex];
     }
 
     @Override
     protected void defineWeapons() {
-        this.weapons = new Weapon[] { new Pistol(this) };
-        weapons[currentWeaponIndex].setDelay(100);
+        this.weapon = new Pistol(this);
+        weapon.setDelay(100);
     }
 
     @Override
     protected void checkBehaviourChanged(){
         // Teleports if the health becomes low
         if(getHealthRatio() <= 0.25){
-            currentBehaviourIndex = 1;
+            this.behaviour = behaviours[1];
         }
     }
 
