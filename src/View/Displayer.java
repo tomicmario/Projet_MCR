@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Displayer.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package View;
 
 import java.awt.*;
@@ -14,20 +5,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.MouseAdapter;
 
 /**
- * Displayer interface. Implemented in the classes of the display to create a display.
+ * Adapted Displayer interface from the first Lab of the MCR course, used for the display of the game.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 04.05.2022
+ * @version Java 11
  */
 public interface Displayer {
-    /**
-     *
-     * @return The width of the display.
-     */
-    int getWidth();
-
-    /**
-     *
-     * @return The height of the display.
-     */
-    int getHeight();
 
     /**
      *

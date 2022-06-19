@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : GameDisplay.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package View;
 
 import javax.swing.*;
@@ -20,6 +11,10 @@ import java.awt.image.BufferedImage;
 /**
  * View of the application, using a JFrame and a JPanel.
  * Implements the Displayer interface.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 01.06.2022
+ * @version Java 11
  */
 public class GameDisplay implements Displayer {
 
@@ -74,15 +69,6 @@ public class GameDisplay implements Displayer {
         jFrame.pack();
     }
 
-    @Override
-    public int getWidth() {
-        return jPanel.getWidth();
-    }
-
-    @Override
-    public int getHeight() {
-        return jPanel.getHeight();
-    }
 
     @Override
     public Graphics2D getGraphics() {
@@ -106,6 +92,7 @@ public class GameDisplay implements Displayer {
     }
 
     /**
+     * Used to return the state of the mouse click
      *
      * @return True if the mouse is clicked, False if not.
      */

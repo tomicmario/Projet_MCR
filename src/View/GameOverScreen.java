@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : GameOverScreen.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package View;
 
 import javax.swing.*;
@@ -14,6 +5,10 @@ import java.awt.*;
 
 /**
  * GameOverScreen class. Adding a window with the final score of the player once he's dead.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 31.05.2022
+ * @version Java 11
  */
 public class GameOverScreen {
     private final JFrame jFrame;
