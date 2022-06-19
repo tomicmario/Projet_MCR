@@ -16,17 +16,32 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 
-
+/**
+ * InputInterpreter class. Used to handle all the inputs of the game.
+ */
 public class InputInterpreter {
     private final Displayer gameDisplay;
     private final Player p;
 
+    /**
+     * InputInterpreter Constructor. Used to instanciate an InputInterpreter.
+     *
+     * @param p : The player on which we apply the modifications depending on the inputs.
+     * @param d : The display on which we apply the modifications depending on the inputs.
+     */
     public InputInterpreter(Player p, Displayer d){
         this.p = p;
         this.gameDisplay = d;
     }
 
+    /**
+     * Initialise the input listener for every input needed. // TODO
+     */
     public void InitialiseInputListeners(){
+
+        /**
+         * Listens of the movement of the mouse.
+         */
         gameDisplay.addMouseMotionListener(new MouseInputAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -39,6 +54,9 @@ public class InputInterpreter {
             }
         });
 
+        /**
+         *  Listens if a keyboard key is pressed.
+         */
         gameDisplay.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -68,6 +86,9 @@ public class InputInterpreter {
             }
         });
 
+        /**
+         * Listens  if a keyboard key is released.
+         */
         gameDisplay.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {

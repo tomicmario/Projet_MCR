@@ -33,7 +33,7 @@ public abstract class Behaviour {
 
     /**
      *
-     * @return The angle needed by the enemy used to move toward the target/player. // TODO.
+     * @return The angle needed by the enemy used to move toward the target/player.
      */
     protected double getAngle(){
         return Math.atan2(target.getY() - e.getY(), target.getX() - e.getX()) - Math.PI / 4;

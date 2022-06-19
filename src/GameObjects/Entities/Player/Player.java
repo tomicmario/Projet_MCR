@@ -41,8 +41,9 @@ public class Player extends Entity {
     }
 
     /**
+     * Sets the click state for the player. //TODO
      *
-     * @param clicked
+     * @param clicked : Boolean that returns True if a mouse is clicked, False else.
      */
     public void setMouseClicked(boolean clicked){
         this.mouseClicked = clicked;
@@ -50,7 +51,7 @@ public class Player extends Entity {
 
     /**
      *
-     * @param d
+     * @param d : The direction of the player to set. So he moves in that direction.
      */
     public void setDirection(Direction d){
         activeDirections[d.ordinal()] = speed;
@@ -58,7 +59,7 @@ public class Player extends Entity {
 
     /**
      * 
-     * @param d
+     * @param d :  The direction of the player to unset. So he stops moving.
      */
     public void unsetDirection(Direction d){
         activeDirections[d.ordinal()] = 0;
@@ -69,10 +70,17 @@ public class Player extends Entity {
         this.mouseY = y;
     }
 
+    /**
+     *
+     * @param angle : the angle of the player to be set.
+     */
     public void setAngle(double angle) {
         this.angle = angle;
     }
 
+    /**
+     * Equip the next weapon that the player has.
+     */
     public void equipNextWeapon(){
         currentWeaponIndex++;
         if(currentWeaponIndex >= weapons.length){
@@ -80,6 +88,9 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Equip the previous weapon that the player has.
+     */
     public void equipPreviousWeapon(){
         currentWeaponIndex--;
         if(currentWeaponIndex <= 0){

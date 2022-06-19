@@ -76,7 +76,7 @@ public class Controller {
     /**
      * Sets the end of the game once the player lost.
      *
-     * @param event : TODO:
+     * @param event : Event we stop once the game has ended.
      */
     private void endGame(ActionEvent event){
         if(endCounter > 0){
@@ -90,7 +90,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Draws the entities on the next frame  after they moved on the display/window.
      */
     private void getEntitiesNextFrame(){
         p.setMouseClicked(gameDisplay.isMouseClicked());
@@ -106,6 +106,9 @@ public class Controller {
         }
     }
 
+    /**
+     *  Draws the projectile next frame after they moved.
+     */
     private void getProjectileNextFrame(){
         for(Projectile p : projectiles) {
             p.move();
@@ -114,6 +117,12 @@ public class Controller {
         }
     }
 
+    /**
+     * Checks if a projectile is in colision with an entity, deals the damage on the entity
+     * and deactivate the projectile if it is not persisten.
+     *
+     * @param p : The projectile we want to check on colisions
+     */
     private void checkProjectileCollision(Projectile p){
         for (Entity e : entities) {
             if(e != p.getShooter() && checkCollision(p, e)) {
@@ -126,6 +135,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Adds the score for the dead entities and remove them from the display/window.
+     */
     private void removeDeadObjects(){
         Iterator<Entity> it = entities.iterator();
         while (it.hasNext()) {
@@ -158,6 +170,11 @@ public class Controller {
         return distance < p.getRadius() + e.getRadius();
     }
 
+    /**
+     * Corrects the position of an entity so it doesn't go out the display/window.
+     *
+     * @param e : The entity we are checking the position on.
+     */
     private void correctPosition(Entity e){
         if(e.getX() < 0) {
             e.setX(0);
