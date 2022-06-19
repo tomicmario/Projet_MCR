@@ -19,7 +19,7 @@ public class SpawnDirector {
     private int enemiesToSpawn = 1;
     private int spawnCycles = 0;
     private static final int CYCLES_TO_INCREMENT = 10;
-    private static final int ADDED_TICKS_BY_SPAWNED_ENEMIES = 60;
+    private static final int ADDED_TICKS_BY_SPAWNED_ENEMIES = 30;
 
     /**
      *

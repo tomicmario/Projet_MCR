@@ -29,7 +29,7 @@ public class Player extends Entity {
      * @param y : The position y of the player.
      */
     public Player(int x, int y){
-        super(x, y, RADIUS, 150, new EntityRenderer());
+        super(x, y, RADIUS, 500, new EntityRenderer());
         weapons = new Weapon[]{ new Rifle(this), new Shotgun(this), new Flamethrower(this), new RocketLauncher(this)};
         mouseClicked = false;
         activeDirections = new int[Direction.values().length];
