@@ -58,8 +58,8 @@ public class Controller {
     public void run() {
         ActionListener al = event -> {
             gameDisplay.repaint();
-            getEntitiesNextFrame();
-            getProjectileNextFrame();
+            entitiesNextTick();
+            projectilesNextTick();
             removeDeadObjects();
             gameDisplay.getGraphics().drawString("Score : " + score, WIDTH - 100, HEIGHT - 10);
             sd.nextFrame();
@@ -81,7 +81,7 @@ public class Controller {
     private void endGame(ActionEvent event){
         if(endCounter > 0){
             endCounter--;
-            gameDisplay.getGraphics().drawString("GAME OVER", WIDTH/2 - 50, HEIGHT/2 - 10);
+            gameDisplay.getGraphics().drawString("GAME OVER", WIDTH / 2 - 50, HEIGHT / 2 - 10);
         } else {
             new GameOverScreen(score);
             ((Timer) event.getSource()).stop();
@@ -92,7 +92,7 @@ public class Controller {
     /**
      * Draws the entities on the next frame  after they moved on the display/window.
      */
-    private void getEntitiesNextFrame(){
+    private void entitiesNextTick(){
         p.setMouseClicked(gameDisplay.isMouseClicked());
 
         for(Entity e : entities) {
@@ -109,11 +109,11 @@ public class Controller {
     /**
      *  Draws the projectile next frame after they moved.
      */
-    private void getProjectileNextFrame(){
+    private void projectilesNextTick(){
         for(Projectile p : projectiles) {
             p.move();
             p.draw(gameDisplay);
-            checkProjectileCollision(p);
+            manageProjectileCollisions(p);
         }
     }
 
@@ -123,7 +123,7 @@ public class Controller {
      *
      * @param p : The projectile we want to check on colisions
      */
-    private void checkProjectileCollision(Projectile p){
+    private void manageProjectileCollisions(Projectile p){
         for (Entity e : entities) {
             if(e != p.getShooter() && checkCollision(p, e)) {
                 e.damage(p.getDamage());
