@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : GameObject.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects;
 
 import View.Displayer;
@@ -15,6 +6,10 @@ import java.awt.*;
 /**
  *  Abstract game object class. used by the classes that inherits of it.
  *  In our case Projectile and Entity of the game.
+ *
+ *  @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ *  @date 18.06.2022
+ *  @version Java 11
  */
 public abstract class GameObject {
     protected int x;
