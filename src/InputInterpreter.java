@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : InputInterpreter.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 import GameObjects.Entities.Player.Direction;
 import GameObjects.Entities.Player.Player;
 import View.Displayer;
@@ -18,6 +9,10 @@ import java.awt.event.MouseEvent;
 
 /**
  * InputInterpreter class. Used to handle all the inputs of the game.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 01.06.2022
+ * @version Java 11
  */
 public class InputInterpreter {
     private final Displayer gameDisplay;

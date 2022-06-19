@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Controller.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 import GameObjects.Entities.Entity;
 import GameObjects.Entities.Player.Player;
 import GameObjects.Weapons.Projectile;
@@ -22,6 +13,10 @@ import java.util.LinkedList;
 
 /**
  * Controller class. Creates a controller that manages all the game (all game objects, the displayer,  the score ...)
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 04.05.2022
+ * @version Java 11
  */
 public class Controller {
 
@@ -47,7 +42,7 @@ public class Controller {
         gameDisplay.setPanelSize(new Dimension(WIDTH, HEIGHT));
 
         p = new Player(WIDTH/2, HEIGHT / 2);
-        sd = new SpawnDirector(entities, new EnemyFactory(0, 0, WIDTH, HEIGHT, p));
+        sd = new SpawnDirector(entities, new EnemyFactory(0, 0, WIDTH, HEIGHT, p.getCoordinates()));
         entities.add(p);
         new InputInterpreter(p, gameDisplay).InitialiseInputListeners();
     }
@@ -62,7 +57,7 @@ public class Controller {
             projectilesNextTick();
             removeDeadObjects();
             gameDisplay.getGraphics().drawString("Score : " + score, WIDTH - 100, HEIGHT - 10);
-            sd.nextFrame();
+            sd.nextTick();
             if(!p.isAlive()){
                 endGame(event);
             }

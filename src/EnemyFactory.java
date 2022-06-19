@@ -1,29 +1,25 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : EnemyFactory.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
+import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import GameObjects.Entities.Enemy.Grunt;
 import GameObjects.Entities.Enemy.Sniper;
 import GameObjects.Entities.Enemy.Tank;
-import GameObjects.Entities.Player.Player;
+
 import java.util.Random;
 
 /**
- *  Factory class used to create a Factory that creates enemies.
+ *  Simplistic factory class used to create create different types of enemies
+ *
+ *  @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ *  @date 29.05.2022
+ *  @version Java 11
  */
 public class EnemyFactory {
-    private int minX;
-    private int maxX;
-    private int minY;
-    private int maxY;
-    private final Player p;
-    private Random r;
+    private final int MIN_X;
+    private final int MAX_X;
+    private final int MIN_Y;
+    private final int MAX_Y;
+    private final Coordinates playerCoordinates;
+    private final Random random;
     private final int ENEMY_TYPES = 3;
 
     /**
@@ -33,15 +29,15 @@ public class EnemyFactory {
      * @param minY : The min position y on where the enemy is created.
      * @param maxX : The max position x on where the enemy is created.
      * @param maxY : The max position y on where the enemy is created.
-     * @param p : The player on which the enemy will focus his attacks.
+     * @param playerCoordinates : The coordinates of the player on which the enemy will focus his attacks.
      */
-    public EnemyFactory(int minX, int minY, int maxX, int maxY, Player p){
-        this.minX = minX;
-        this.minY = minY;
-        this.maxX = maxX;
-        this.maxY = maxY;
-        r = new Random();
-        this.p = p;
+    public EnemyFactory(int minX, int minY, int maxX, int maxY, Coordinates playerCoordinates){
+        this.MIN_X = minX;
+        this.MIN_Y = minY;
+        this.MAX_X = maxX;
+        this.MAX_Y = maxY;
+        random = new Random();
+        this.playerCoordinates = playerCoordinates;
     }
 
     /**
@@ -50,15 +46,15 @@ public class EnemyFactory {
      * @return a random enemy type on a random location.
      */
     public Enemy generateRandomEnemy(){
-        int x = r.nextInt(maxX - minX) + minX;
-        int y = r.nextInt(maxY - minY) + minY;
-        int type = r.nextInt(ENEMY_TYPES);
+        int x = random.nextInt(MAX_X - MIN_X) + MIN_X;
+        int y = random.nextInt(MAX_Y - MIN_Y) + MIN_Y;
+        int type = random.nextInt(ENEMY_TYPES);
 
         switch (type){
             case 1:
                 return generateSniper(x, y);
             case 2:
-                return generateTank(x,y);
+                return generateTank(x, y);
             default:
                 return generateGrunt(x, y);
         }
@@ -72,7 +68,7 @@ public class EnemyFactory {
      * @return An enemy, more specifically a grunt.
      */
     public Enemy generateGrunt(int x, int y){
-        return new Grunt(x, y, p.getCoordinates());
+        return new Grunt(x, y, playerCoordinates);
     }
 
     /**
@@ -83,7 +79,7 @@ public class EnemyFactory {
      * @return An enemy, more specifically a sniper.
      */
     public Enemy generateSniper(int x, int y){
-        return new Sniper(x, y, p.getCoordinates());
+        return new Sniper(x, y, playerCoordinates);
     }
 
     /**
@@ -94,6 +90,6 @@ public class EnemyFactory {
      * @return An enemy, more specifically a tank.
      */
     public Enemy generateTank(int x, int y){
-        return new Tank(x,y,p.getCoordinates());
+        return new Tank(x, y, playerCoordinates);
     }
 }
