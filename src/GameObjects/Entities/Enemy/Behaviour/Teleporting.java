@@ -1,23 +1,17 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Teleporting.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
 import GameObjects.Entities.Enemy.Enemy;
 import java.util.Random;
 
-
 /**
  * Teleporting behaviour class used to create teleport behaviours for the enemies.
  * Teleports the enemy at a random location after a certain time.
  * Inherits of Behaviour.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 12.06.2022
+ * @version Java 11
  */
 public class Teleporting extends Behaviour {
     private static final int TELEPORT_RANGE = 300;

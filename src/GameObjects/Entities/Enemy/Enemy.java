@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Enemy.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Coordinates;
@@ -19,6 +10,10 @@ import java.awt.geom.Ellipse2D;
 
 /**
  * Abstract class defining the Enemies of the game. Inherits of Entity.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 19.05.2022
+ * @version Java 11
  */
 public abstract class Enemy extends Entity {
     private static final int RADIUS = 15;
@@ -43,7 +38,19 @@ public abstract class Enemy extends Entity {
         this.target = target;
         this.canShoot = true;
         this.points = points;
+        defineBehaviours();
+        defineWeapons();
     }
+
+    /**
+     * Defines an array containing all the possible behaviours of the enemy
+     */
+    protected abstract void defineBehaviours();
+
+    /**
+     * Defines an array containing all the possible weapons of the enemy
+     */
+    protected abstract void defineWeapons();
 
     /**
      *

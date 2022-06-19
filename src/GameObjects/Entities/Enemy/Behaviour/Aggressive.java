@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Aggressive.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
@@ -16,6 +7,10 @@ import GameObjects.Entities.Enemy.Enemy;
  * Aggresssive behaviour class used to create aggressive behaviours for the enemies.
  * Will get close to the player and start shooting at a certain distance.
  * Inherits of Behaviour.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 19.05.2022
+ * @version Java 11
  */
 public class Aggressive extends Behaviour {
     private static final int MIN_DISTANCE = 50; //min distance that enemy with this behaviour will stay away from the player.

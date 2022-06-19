@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Balanced.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
@@ -16,6 +7,10 @@ import GameObjects.Entities.Enemy.Enemy;
 /**
  * Balanced behaviour class used to create balanced behaviours for the enemies.
  * Inherits of Behaviour.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 24.05.2022
+ * @version Java 11
  */
 public class Balanced extends Behaviour {
     private final static int TOLERABLE_DISTANCE_CLOSE = 150;

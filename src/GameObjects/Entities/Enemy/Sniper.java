@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Sniper.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Coordinates;
@@ -18,6 +9,10 @@ import java.awt.*;
 /**
  * Sniper class that creates snipers. A more sophisticated enemy of the game.
  * Inherits of Enemy.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 19.05.2022
+ * @version Java 11
  */
 public class Sniper extends Enemy {
 
@@ -30,8 +25,16 @@ public class Sniper extends Enemy {
      */
     public Sniper(int x, int y, Coordinates target){
         super(x, y, 100, 100, target);
+    }
+
+    @Override
+    protected void defineBehaviours() {
         this.behaviours = new Behaviour[] { new Balanced(this, target),
-                                                new Teleporting(this, target) };
+                new Teleporting(this, target) };
+    }
+
+    @Override
+    protected void defineWeapons() {
         this.weapons = new Weapon[] { new Pistol(this) };
         weapons[currentWeaponIndex].setDelay(100);
     }

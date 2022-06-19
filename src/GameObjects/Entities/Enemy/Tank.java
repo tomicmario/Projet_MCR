@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Tank.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Coordinates;
@@ -19,6 +10,10 @@ import java.awt.*;
 /**
  * Tank class that creates snipers. A more sophisticated enemy of the game.
  * Inherits of Enemy.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 31.05.2022
+ * @version Java 11
  */
 public class Tank extends Enemy{
 
@@ -32,10 +27,18 @@ public class Tank extends Enemy{
     public Tank(int x, int y, Coordinates target) {
         super(x, y, 300, 300, target);
         this.speed = 1;
+    }
+
+    @Override
+    protected void defineBehaviours() {
         this.behaviours = new Behaviour[] { new Aggressive(this, target),
-                                                new Coward(this, target) };
+                new Coward(this, target) };
+    }
+
+    @Override
+    protected void defineWeapons() {
         this.weapons = new Weapon[]{ new SlowShotgun(this),
-                                        new Heal(this) };
+                new Heal(this) };
         weapons[currentWeaponIndex].setDelay(100);
     }
 

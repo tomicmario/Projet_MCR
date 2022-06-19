@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Grunt.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy;
 
 import GameObjects.Coordinates;
@@ -19,6 +10,10 @@ import java.awt.*;
 /**
  * Grunt class that creates grunts. The basic enemy of the game.
  * Inherits of Enemy.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 19.05.2022
+ * @version Java 11
  */
 public class Grunt extends Enemy {
 
@@ -31,8 +26,16 @@ public class Grunt extends Enemy {
      */
     public Grunt(int x, int y, Coordinates target){
         super(x, y, 100, 100, target);
-        this.behaviours = new Behaviour[]{new Aggressive(this, target)};
-        this.weapons = new Weapon[]{new Flamethrower(this)};
+    }
+
+    @Override
+    protected void defineBehaviours() {
+        this.behaviours = new Behaviour[]{ new Aggressive(this, target) };
+    }
+
+    @Override
+    protected void defineWeapons() {
+        this.weapons = new Weapon[]{ new Flamethrower(this) };
         weapons[currentWeaponIndex].setDelay(100);
     }
 

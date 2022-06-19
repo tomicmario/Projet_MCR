@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Coward.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Enemy.Behaviour;
 
 import GameObjects.Coordinates;
@@ -16,6 +7,10 @@ import GameObjects.Entities.Enemy.Enemy;
  * Coward behaviour class used to create coward behaviours for the enemies.
  * Moves away of the player to keep a certain distance from him.
  * Inherits of Behaviour.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 24.05.2022
+ * @version Java 11
  */
 public class Coward extends Behaviour {
     private static final int MIN_DISTANCE = 300;
