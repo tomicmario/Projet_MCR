@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Player.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities.Player;
 
 import GameObjects.Entities.Entity;
@@ -18,6 +9,10 @@ import java.awt.geom.Rectangle2D;
 /**
  * Player class used to instanciate a player for the game.
  * Inherits of Entity.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 04.05.2022
+ * @version Java 11
  */
 public class Player extends Entity {
     private static final int RADIUS = 5;

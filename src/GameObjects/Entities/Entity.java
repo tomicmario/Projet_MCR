@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : Entity.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities;
 
 import GameObjects.Coordinates;
@@ -18,6 +9,10 @@ import View.Displayer;
 
 /**
  *  Abstract Entity class. Defining all entities of our game.
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 24.05.2022
+ * @version Java 11
  */
 public abstract class Entity extends GameObject {
     protected Renderer renderer;

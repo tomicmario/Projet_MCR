@@ -31,7 +31,7 @@ public class Balanced extends Behaviour {
     }
 
     @Override
-    public void move(){ // TODO
+    public void move(){
         e.setCanShoot(true);
         counter++;
         if(counter >= TIME_UNTIL_REFRESH){

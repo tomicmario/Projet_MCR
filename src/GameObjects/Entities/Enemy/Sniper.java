@@ -41,6 +41,7 @@ public class Sniper extends Enemy {
 
     @Override
     protected void checkBehaviourChanged(){
+        // Teleports if the health becomes low
         if(getHealthRatio() <= 0.25){
             currentBehaviourIndex = 1;
         }

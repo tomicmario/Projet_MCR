@@ -41,7 +41,7 @@ public class Grunt extends Enemy {
 
     @Override
     protected void checkBehaviourChanged() {
-        // TODO
+        // Simple grunt, just keeps chasing the target
     }
 
     @Override

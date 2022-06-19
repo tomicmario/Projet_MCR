@@ -1,12 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Lab          : 03 (Projet)
- File         : EntityRenderer.java
- Authors      : Janis Chiffelle, Yanik Lange, Mario Tomic
- Date         : 18/06/2022
- -----------------------------------------------------------------------------------
- */
-
 package GameObjects.Entities;
 
 import GameObjects.Renderer;
@@ -16,6 +7,10 @@ import java.awt.geom.Rectangle2D;
 
 /**
  * Assists the rendering of a bouncer that is filled with a color
+ *
+ * @author Janis Chiffelle, Yanik Lange, Mario Tomic
+ * @date 24.05.2022
+ * @version Java 11
  */
 public class EntityRenderer implements Renderer {
 

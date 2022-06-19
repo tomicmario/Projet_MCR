@@ -44,12 +44,17 @@ public class Tank extends Enemy{
 
     @Override
     protected void checkBehaviourChanged() {
-        if(health <= MAX_HEALTH / 4 && currentWeaponIndex == 0){
+        // Equips the heal weapon if the life is <= 25% and flees
+        if(health <= MAX_HEALTH / 4){
             currentBehaviourIndex = 1;
             currentWeaponIndex = 1;
-        } else if(health <= MAX_HEALTH / 2 && currentWeaponIndex == 1) {
+        }
+        // Flees as long as he didn't heal back
+        else if(health <= MAX_HEALTH / 2 && currentWeaponIndex == 1) {
             currentBehaviourIndex = 1;
-        } else {
+        }
+        // Default, pistol equipped and chasing the target
+        else {
             currentBehaviourIndex = 0;
             currentWeaponIndex = 0;
         }
